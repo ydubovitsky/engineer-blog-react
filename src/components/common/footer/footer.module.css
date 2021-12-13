@@ -1,0 +1,32 @@
+.container {
+  border-top: 1px solid silver;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 20%;
+  height: 500px;
+  justify-items: center;
+  align-items: center;
+}
+
+.column {
+  width: 50%;
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+
+.footerContent {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.footerBottom {
+  background-color: var(--primary-color);
+  width: 100%;
+  height: 100%;
+}

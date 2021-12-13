@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-template-rows: 1fr;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px 1px silver;
+}

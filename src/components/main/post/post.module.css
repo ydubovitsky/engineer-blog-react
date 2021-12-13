@@ -1,0 +1,26 @@
+.container {
+  box-shadow: 1px 1px 1px 2px silver;
+  padding: 2%;
+  display: grid;
+  grid-template-columns: auto 1fr 5fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "date image info";
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+
+.date {
+  grid-area: date;
+}
+
+.image {
+  grid-area: image;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.info {
+  grid-area: info;
+}
