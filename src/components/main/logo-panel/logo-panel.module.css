@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: 'Annie Use Your Telescope', cursive;
+  transition: 0.2s ease;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.title:hover {
+  color: var(--secondary-text-color);
+}
+
+.subtitle {
+  font-family: "Roboto Condensed",sans-serif;
+  color: silver;
+  letter-spacing: 0.2rem;
+}

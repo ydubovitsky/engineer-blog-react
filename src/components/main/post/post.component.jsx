@@ -1,18 +1,20 @@
 import styles from './post.module.css';
 
-const Post = (props) => {
+const Post = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.date}>05/05/2021</div>
-      <div className={styles.image}>
-        <img src="http://demo.alx.media/slanted/wp-content/uploads/sites/5/2019/03/slanted-profile.png" alt="" srcset="" />
+      <img src="https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1" alt="" srcset="" />
+      <div className={styles.category}>Category</div>
+      <div className={styles.title}>Lorem ipsum dolor sit amet.</div>
+      <div className={styles.date}>October 3, 2020 </div>
+      <div className={styles.description}>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia et temporibus ex quasi placeat iste, eos omnis cumque maiores quod vel ducimus tempora corrupti, nisi a accusantium animi aut quas. Consequatur, illum ducimus ipsam deleniti, voluptas tempora aliquam quam voluptatum accusamus, at quas minima? Sed vitae vel atque ad tempore.
+        </p>
       </div>
-      <div className={styles.info}>
-        <h1>Post name</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium assumenda praesentium dolores, voluptate cumque quaerat perspiciatis quam natus debitis aperiam.</p>
-      </div>
+      <button className={styles.button}>Continue reading</button>
     </div>
-  );
-};
+  )
+}
 
 export default Post;

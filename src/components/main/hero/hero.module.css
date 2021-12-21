@@ -1,45 +1,136 @@
-.hero {
-  background-image: url("https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80");
-  background-blend-mode: multiply;
-  background-color: var(--primary-color);
+.container {
+  position: relative;
+  background-image: url("https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1450&q=80");
+  background-position: left;
+  background-size: cover;
   width: 100%;
-  height: 100vh;
+  height: 500px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* https://cssgradient.io/ */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 40%, rgba(231, 81, 72, 1) 60%);
+  width: 100%;
+  height: 100%;
   color: white;
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 70%, 0 50%);
+  z-index: 1000;
+}
+
+.sideHeader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px repeat(3, 50px);
-  justify-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: 30px 5px 30px 50px auto;
+  grid-gap: 20px;
+  align-content: center;
   align-items: center;
+  justify-items: center;
 }
 
-.hero h1 {
-  font-size: 6rem;
+.subTitle {
+  font-size: 2rem;
 }
 
-.line {
-  width: 300px;
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hr {
+  width: 20%;
   height: 1px;
-  background-color: white;
+  background-color: silver;
 }
 
-.avatar {
+.button {
+  background-color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 800;
+  color: rgba(231, 81, 72, 1);
+  padding: 15px 45px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+
+.right {
   position: absolute;
   top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
-  border: 5px solid white;
-  transform: translateX(-50%);
+  right: 0;
+  width: 30px;
+  height: 60px;
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  background: white;
+  opacity: 0.85;
+  transform: translateY(-50%);
+  z-index: 1000;
+  color: black;
+  transition: 0.3s ease;
 }
 
-@media (max-height: 500px)  {
-  .avatar {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-  }
+.right i {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 50%;
+  transform: translateX(100%) translateY(-50%);
+  color: #76797E;
+}
+
+.left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30px;
+  height: 60px;
+  /* http://shpargalkablog.ru/2017/08/semicircle.html */
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  background: white;
+  opacity: 0.85;
+  transform: translateY(-50%);
+  color: black;
+  transition: 0.3s ease;
+}
+
+.left i {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #76797E;
+}
+
+
+.right:hover,
+.left:hover {
+  opacity: 1;
+  color: black;
+}
+
+.pageDots {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 3px solid white;
+  margin: 5px;
+  border-radius: 50%;
 }

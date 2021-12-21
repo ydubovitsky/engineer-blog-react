@@ -1,39 +1,29 @@
-import RecentUpdate from '../recent-update/recent-update.component';
-import SocialLinks from '../../main/social-links/social-links.component';
 import styles from './footer.module.css';
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.footerContent}>
-        <div className={styles.column}>
-          <div className={styles.header}>
-            Lorem, ipsum dolor.
+      <div className={styles.navContainer}>
+        <div className={styles.nav}>
+          <div className={styles.navLink}>
+            home
           </div>
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
-        </div>
-        <div className={styles.column}>
-          <div className={styles.header}>
-            Lorem ipsum dolor sit.
+          <div className={styles.navLink}>
+            about
           </div>
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
-          <RecentUpdate />
+          <div className={styles.navLink}>
+            contact
+          </div>
+          <div className={styles.navLink}>
+            privacy policy
+          </div>
         </div>
       </div>
-      <div className={styles.footerBottom}>
-        <div className={styles.header}>
-          Lorem ipsum dolor sit.
-        </div>
+      <div className={styles.copyright}>
+        COPYRIGHT © 2021 DESIGNED BY ME
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Footer;

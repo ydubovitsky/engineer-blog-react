@@ -1,0 +1,38 @@
+.container {
+  text-align: center;
+  justify-items: center;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.title {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 20px 0;
+}
+
+.info {
+  font-style: italic;
+}
+
+/* TODO  */
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links i {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.hr {
+  width: 30%;
+  background-color: silver;
+  height: 1px;
+}

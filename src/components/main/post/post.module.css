@@ -1,26 +1,39 @@
 .container {
-  box-shadow: 1px 1px 1px 2px silver;
-  padding: 2%;
   display: grid;
-  grid-template-columns: auto 1fr 5fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "date image info";
-  grid-gap: 10px;
-  align-items: center;
+  grid-gap: 20px;
   justify-items: center;
+  line-height: 1.5rem;
+  text-align: center;
 }
 
-.date {
-  grid-area: date;
+.container img {
+  width: 100%;
 }
 
-.image {
-  grid-area: image;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
+.category {
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
 }
 
-.info {
-  grid-area: info;
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.title:hover {
+  color: var(--secondary-text-color);
+}
+
+.description {
+  text-align: left;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-weight: bold;
+  background: none;
+  border: 1px solid var(--secondary-text-color);
+  border-radius: 5px;
 }

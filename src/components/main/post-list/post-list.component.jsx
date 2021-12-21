@@ -1,22 +1,22 @@
+import styles from './post-list.module.css';
 import Post from '../post/post.component';
 
-import styles from './post-list.module.css';
-
-const PostList = (props) => {
+const PostList = () => {
   return (
     <div className={styles.container}>
-      <div class="page-title group">
-        <div class="container">
-          <h2>The Blog. <span>What's new?</span></h2>
-        </div>
+      <div className={styles.latestPost}>
+        <div className={styles.columnTitle}>Latest Post</div>
+        <Post />
       </div>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <div className={styles.postList}>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </div>
     </div>
-  );
+  )
 };
 
 export default PostList;

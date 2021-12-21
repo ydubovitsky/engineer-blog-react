@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  padding: 50px 0;
+  grid-gap: 2%;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, auto);
+}
+
+.box {
+  position: relative;
+  background-image: url("https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+  background-size: contain;
+  width: 100%;
+  height: 250px;
+}
+
+.overlay {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border: 1px solid silver;
+  opacity: 0.3;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px 25px;
+  background-color: white;
+  border: none;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay:hover {
+  opacity: 1;
+}

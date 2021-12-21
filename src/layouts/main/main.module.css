@@ -2,3 +2,7 @@
   display: grid;
   grid-gap: 50px;
 }
+
+.content {
+  padding: 0 100px;
+}
