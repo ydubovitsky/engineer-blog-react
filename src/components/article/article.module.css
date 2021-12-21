@@ -1,0 +1,39 @@
+.container {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.container img {
+  width: 100%;
+}
+
+.category {
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.title:hover {
+  color: var(--secondary-text-color);
+}
+
+.description {
+  text-align: left;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-weight: bold;
+  background: none;
+  border: 1px solid var(--secondary-text-color);
+  border-radius: 5px;
+}
