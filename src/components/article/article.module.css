@@ -1,9 +1,13 @@
 .container {
   display: grid;
-  grid-gap: 20px;
-  justify-items: center;
+  grid-gap: 10px;
   line-height: 1.5rem;
   text-align: center;
+}
+
+p {
+  text-indent: 1.5rem;
+  text-align: left;
 }
 
 .container img {
@@ -17,7 +21,7 @@
 
 .title {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 800;
   transition: 0.2s ease;
 }
 
@@ -25,15 +29,48 @@
   color: var(--secondary-text-color);
 }
 
+.disclosure {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
 .description {
   text-align: left;
 }
 
-.button {
+.nav {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr;
+  justify-content: center;
+}
+
+.nav button {
+  width: auto;
   text-transform: uppercase;
   padding: 15px 30px;
   font-weight: bold;
   background: none;
   border: 1px solid var(--secondary-text-color);
   border-radius: 5px;
+
+  font-family: "Inter",sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  transition: .1s ease all;
+  font-weight: 700;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 10px;
+  font-style: normal;
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.2;
+  background-color: #222;
+  border: none;
+  box-shadow: none;
+  margin-right: 10px;
+  margin-bottom: 15px;
 }
