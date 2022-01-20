@@ -1,0 +1,50 @@
+.container {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.hr {
+  height: 2px;
+  width: 50px;
+  background-color: #E5E5E5;
+}
+
+.linksContainer {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(4, minmax(150px, auto));
+  justify-content: center;
+}
+
+.link {
+  line-height: 1.6;
+  text-align: center;
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 3px;
+  margin: 0 10px 4px;
+  transition: all .3s ease-out;
+  font-weight: 700;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+.tweet {
+  background-color: #3A93D8;
+  padding: 0.8rem 0.5rem;
+  color: white;
+}
+
+.facebook {
+  background-color: white;
+}
+
+.print {
+  background-color: white;
+}

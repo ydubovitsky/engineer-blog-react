@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  top: 10%;
+  left: -203px;
+  transition: 0.5s ease;
+  z-index: 9999;
+}
+
+.isOpen {
+  left: 0;
+}
+
+.button {
+  position: relative;
+  left: 203px;
+  top: 100px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 0 5px 5px 0;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 20px;
+  animation: rotating 1.5s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.menu {
+  width: 200px;
+  height: 250px;
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 0 5px 5px 0;
+}
