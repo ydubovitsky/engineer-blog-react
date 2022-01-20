@@ -7,6 +7,7 @@ const NavPanel = (props) => {
       <div className={styles.link}>Projects</div>
       <div className={styles.link}>Contacts</div>
       <div className={styles.link}>Articles</div>
+      <input type="text" name="" id="" />
       <div className={styles.link}><i class="fas fa-search"></i></div>
     </div>
   )

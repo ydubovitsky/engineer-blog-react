@@ -16,10 +16,12 @@ const Content = (props) => {
   return (
     <Router>
       <div className={styles.container}>
-        <Routes >
-          <Route path="/" element={<PostList />} />
-          <Route path="/article" element={<Article />} />
-        </Routes>
+        <div className={styles.articles}>
+          <Routes >
+            <Route path="/" element={<PostList />} />
+            <Route path="/article" element={<Article />} />
+          </Routes>
+        </div>
         <div className={styles.aside}>
           <div className={styles.about}>
             <AboutMe />
