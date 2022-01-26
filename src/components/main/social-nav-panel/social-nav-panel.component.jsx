@@ -1,6 +1,20 @@
+import { Link } from "react-router-dom";
 import styles from './social-nav-panel.module.css';
+import { authSelector, logout } from '../../../redux/features/auth/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SocialNavPanel = (props) => {
+
+  const dispatch = useDispatch();
+  const { status, authEntity } = useSelector(authSelector);
+
+  const showAuthButton = (status) => {
+    if (status === 'succeeded') {
+      return <Link to="/" onClick={() => dispatch(logout())}><i className="fas fa-sign-out-alt">Hello {authEntity.username}</i></Link>
+    }
+    return <Link to="/login"><i className="fas fa-sign-in-alt"></i></Link>
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
@@ -28,6 +42,7 @@ const SocialNavPanel = (props) => {
           </div>
         </div>
       </div>
+      {showAuthButton(status)}
     </div>
   )
 }

@@ -3,7 +3,7 @@
   display: grid;
   font-weight: 600;
   grid-template-rows: 50px;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 5fr 1fr;
   justify-items: center;
   align-items: center;
   background-color: var(--secondary-bg-color);
@@ -28,4 +28,13 @@
   display: flex;
   justify-content: space-around;
   width: 30%;
+}
+
+.container a:hover {
+  color: red;
+}
+
+.auth {
+  display: flex;
+  justify-content: flex-end;
 }
