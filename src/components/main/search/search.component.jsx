@@ -5,7 +5,7 @@ const Search = () => {
     <div className={styles.container}>
       <div className={styles.title}>Search</div>
       <div className={styles.searchContainer}>
-        <input className={styles.input} type="text" name="" id="" />
+        <input className={styles.input} type="text" name=""/>
         <button className={styles.button} placeholder='Enter your request...'>Search</button>
       </div>
     </div>

@@ -6,7 +6,7 @@ const Comments = () => {
       <div className={styles.title}>Comments</div>
       <div className={styles.author}>
         <div className={styles.avatar}>
-          <img src="https://secure.gravatar.com/avatar/a1e1fa4e9559f47fe8abcb0f1df4357c?s=140&d=mm&r=g" alt="" srcset="" />
+          <img src="https://secure.gravatar.com/avatar/a1e1fa4e9559f47fe8abcb0f1df4357c?s=140&d=mm&r=g" alt=""/>
         </div>
         <div className={styles.author}>
           <div className={styles.name}>Matthey Flowers</div>

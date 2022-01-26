@@ -6,7 +6,7 @@ import {
 const Post = () => {
   return (
     <div className={styles.container}>
-      <img src="https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1" alt="" srcset="" />
+      <img src="https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1" alt="" />
       <div className={styles.category}>Category</div>
       <div className={styles.title}>Lorem ipsum dolor sit amet.</div>
       <div className={styles.date}>October 3, 2020 </div>

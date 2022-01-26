@@ -8,16 +8,16 @@ const CommentForm = () => {
         Your email address will not be published. Required fields are marked *
       </div>
       <label htmlFor="message">MESSAGE</label>
-      <input type="textarea" name="message" id="" />
+      <input type="textarea" name="message"/>
 
       <label htmlFor="name">NAME</label>
-      <input type="text" name="name" id="" />
+      <input type="text" name="name"/>
 
       <label htmlFor="email">EMAIL ADDRESS</label>
-      <input type="textarea" name="email" id="" />
+      <input type="textarea" name="email"/>
 
       <label htmlFor="website">WEBSITE</label>
-      <input type="textarea" name="website" id="" />
+      <input type="textarea" name="website"/>
       <button className={styles.button}>
         Post Comment
       </button>

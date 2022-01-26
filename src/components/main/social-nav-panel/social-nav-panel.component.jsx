@@ -26,19 +26,19 @@ const SocialNavPanel = (props) => {
       <div className={styles.socialContainer}>
         <div className={styles.social}>
           <div className={styles.link}>
-            <i class="fab fa-facebook"></i>
+            <i className="fab fa-facebook"></i>
           </div>
           <div className={styles.link}>
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </div>
           <div className={styles.link}>
-            <i class="fab fa-google"></i>
+            <i className="fab fa-google"></i>
           </div>
           <div className={styles.link}>
-            <i class="fab fa-google"></i>
+            <i className="fab fa-google"></i>
           </div>
           <div className={styles.link}>
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </div>
         </div>
       </div>
