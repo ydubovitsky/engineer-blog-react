@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "sidebar postForm";
+  gap: 10px;
+  background-color: silver;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.postForm {
+  grid-area: postForm;
+}
