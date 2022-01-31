@@ -1,6 +1,6 @@
-import styles from './article-author.module.css';
+import styles from './author.module.css';
 
-const ArticleAuthor = () => {
+const Author = () => {
   return (
     <div className={styles.container}>
       <div className={styles.avatar}>
@@ -16,4 +16,4 @@ const ArticleAuthor = () => {
   )
 }
 
-export default ArticleAuthor;
+export default Author;

@@ -1,19 +1,19 @@
 import styles from './post-list.module.css';
-import Post from '../post/post.component';
+import PostListItem from '../post-list-item/post-list-item.component';
 
 const PostList = () => {
   return (
     <div className={styles.container}>
       <div className={styles.latestPost}>
         <div className={styles.columnTitle}>Latest Post</div>
-        <Post />
+        <PostListItem />
       </div>
       <div className={styles.postList}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <PostListItem />
+        <PostListItem />
+        <PostListItem />
+        <PostListItem />
+        <PostListItem />
       </div>
     </div>
   )

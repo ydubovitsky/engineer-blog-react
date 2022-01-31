@@ -12,7 +12,7 @@ const SocialNavPanel = (props) => {
     if (status === 'succeeded') {
       return <Link to="/" onClick={() => dispatch(logout())}><i className="fas fa-sign-out-alt">Hello {authEntity.username}</i></Link>
     }
-    return <Link to="/login"><i className="fas fa-sign-in-alt"></i></Link>
+    return <Link to="/main/login"><i className="fas fa-sign-in-alt"></i></Link>
   }
 
   return (

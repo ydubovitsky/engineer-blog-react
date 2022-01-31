@@ -25,7 +25,7 @@ const Sidebar = () => {
     }
     return <>
       <h4>Please Login!</h4>
-      <Link to={"/login"}>Login!</Link>
+      <Link to={"/main/login"}>Login!</Link>
     </>
   }
 

@@ -20,7 +20,7 @@ const Main = () => {
       <LogoPanel />
       <NavPanel />
       <Switch>
-        <Route path="/login">
+        <Route path="/main/login">
           <SignIn />
         </Route>
       </Switch>

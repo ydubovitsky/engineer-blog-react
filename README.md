@@ -10,3 +10,9 @@ https://www.npmjs.com/package/react-syntax-highlighter
 https://stylelint.io/user-guide/get-started
 https://github.com/hudochenkov/stylelint-order
 https://blog.csssr.com/ru/article/lint-your-css/
+
+### Eslint
+https://frontend-stuff.com/blog/eslint/
+
+### react-syntax-highlighter
+https://www.npmjs.com/package/react-syntax-highlighter
