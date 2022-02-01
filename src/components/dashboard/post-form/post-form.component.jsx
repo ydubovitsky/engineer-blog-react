@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fillPostMainContent, addPost } from '../../../redux/features/post/postSlice';
 import SubPost from '../subpost-form/subpost-form.component';
 import styles from './post-form.module.css';
+import Input from '../input/input.component';
 
 const PostForm = () => {
 
@@ -28,33 +29,23 @@ const PostForm = () => {
 
   return (
     <div className={styles.container}>
+      <h3>Основная информация</h3>
       <div className={styles.mainInfo}>
-        {/*TODO Сделать загрузку на амазон или типа того, а затем уже ссылку отправлять в БД */}
-        <label htmlFor="imageSource">Image Source</label>
-        <input type="text" name="imageSource" onChange={handlerInputForm} />
-
-        <label htmlFor="category">Category</label>
-        <input type="text" name="category" onChange={handlerInputForm} />
-
-        <label htmlFor="title">Title</label>
-        <input type="text" name="title" onChange={handlerInputForm} />
-
-        <label htmlFor="date">Date</label>
-        <input type="text" name="date" onChange={handlerInputForm} />
-
-        <label htmlFor="author">Author</label>
-        <input type="text" name="author" onChange={handlerInputForm} />
-
-        <label htmlFor="disclosure">Disclosure</label>
-        <input type="text" name="disclosure" onChange={handlerInputForm} />
-
-        <label htmlFor="description">Description</label>
-        <input type="textarea" name="description" onChange={handlerInputForm} />
+        <Input name="imageSource" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="category" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="title" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="date" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="author" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="disclosure" type="text" handler={{ onChange: handlerInputForm }} />
+        <Input name="description" type="textarea" handler={{ onChange: handlerInputForm }} />
+      </div>
+      <h3>Дополнительная информация</h3>
+      <div className={styles.subPosts}>
         {subPosts?.map(subPost => {
           return subPost
         })}
       </div>
-      <button className={styles.button} onClick={() => dispatch(addPost)}>Save Article</button>
+      <button className={styles.button} onClick={() => dispatch(addPost())}>Save Article</button>
       <button className={styles.button} onClick={addSubPostForm}>Add SubPost</button>
     </div>
   )
