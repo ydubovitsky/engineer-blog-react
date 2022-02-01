@@ -15,7 +15,7 @@ const Content = (props) => {
       <div className={styles.articles}>
         <Switch>
           {/* TODO Изменить этот роутинг? */}
-          <Route path="/main/post">
+          <Route path="/main/post/:id">
             <PostCurrent />
           </Route>
           <Route path="/">

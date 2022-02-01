@@ -100,5 +100,6 @@ export const { fillPostMainContent, fillPostSubPostContent } = postSlice.actions
 // ------------------------------------- Selector -------------------------------------
 
 export const postEntitiesSelector = state => state.post.postEntities;
+export const postEntityByIdSelector = (state, id) => state.post.postEntities[id];
 
 export default postSlice.reducer;
