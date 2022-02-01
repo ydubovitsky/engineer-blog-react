@@ -19,6 +19,19 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
   return response;
 });
 
+export const getPostPaging = createAsyncThunk("post/getPaging", async (count) => {
+  const payload = {
+    path: `/api/post?count=${count}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
 // ------------------------------------- Slice -------------------------------------
 
 const initialState = {
@@ -50,7 +63,7 @@ const postSlice = createSlice({
         ...payload
       }
     },
-    fillPostSubPostContent(state, { payload}) {
+    fillPostSubPostContent(state, { payload }) {
       const { index, subPost } = payload;
       state.newPostEntity.subPosts[index] = subPost;
     }
@@ -58,12 +71,24 @@ const postSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(addPost.pending, (state) => {
-        state.status = 'loading';
+        state.newPostEntity.status = 'loading';
       })
       .addCase(addPost.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.newPostEntity.status = 'succeeded';
       })
       .addCase(addPost.rejected, (state, action) => {
+        state.newPostEntity.status = 'failed';
+        state.newPostEntity.error = action.error.message;
+      })
+      //! Fetch paging posts
+      .addCase(getPostPaging.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(getPostPaging.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.postEntities = action.payload;
+      })
+      .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
@@ -73,5 +98,7 @@ const postSlice = createSlice({
 export const { fillPostMainContent, fillPostSubPostContent } = postSlice.actions;
 
 // ------------------------------------- Selector -------------------------------------
+
+export const postEntitiesSelector = state => state.post.postEntities;
 
 export default postSlice.reducer;
