@@ -1,6 +1,11 @@
 import styles from './post-list.module.css';
 import PostListItem from '../post-list-item/post-list-item.component';
-import { getPostPaging, postEntitiesSelector } from '../../../redux/features/post/postSlice';
+import {
+  getPostPaging,
+  postEntitiesSelector,
+  currentPageSelector,
+  postPerPageSelector
+} from '../../../redux/features/post/postSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -8,11 +13,11 @@ const PostList = () => {
 
   const dispatch = useDispatch();
   const postEntities = useSelector(postEntitiesSelector);
+  const currentPage = useSelector(currentPageSelector);
 
   useEffect(() => {
-    dispatch(getPostPaging(10));
-    console.log(postEntities);
-  }, [])
+    dispatch(getPostPaging(currentPage));
+  }, [currentPage])
 
   return (
     <div className={styles.container}>
@@ -22,7 +27,7 @@ const PostList = () => {
         <PostListItem {...postEntities[0]} />
       </div>
       <div className={styles.postList}>
-        {postEntities?.filter(post => post.id !== 1)
+        {postEntities?.filter(post => post.id > currentPage * 5 && post.id < (currentPage * 5) + 5)
           .map(post => {
             return <PostListItem key={post.id} {...post} />
           })}

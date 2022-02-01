@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApi from '../../requests/callApi';
 
+const POST_PER_PAGE = 5;
+
 // ------------------------------------- AsyncThunk -------------------------------------
 
 export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
@@ -19,9 +21,19 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
   return response;
 });
 
-export const getPostPaging = createAsyncThunk("post/getPaging", async (count) => {
+export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
+
+  const { post } = getState();
+
+  // checking if data already loaded 
+  const finded = post.postEntities.find(post => post.id === (page * POST_PER_PAGE) + 1);
+  if (finded) {
+    console.log('Data already loaded!');
+    return null;
+  }
+
   const payload = {
-    path: `/api/post?count=${count}`,
+    path: `/api/post?page=${page}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -49,6 +61,7 @@ const initialState = {
     error: null
   },
   postEntities: [], //! Это массив объектов
+  currentPage: 0,
   status: 'idle',
   error: null
 }
@@ -66,6 +79,9 @@ const postSlice = createSlice({
     fillPostSubPostContent(state, { payload }) {
       const { index, subPost } = payload;
       state.newPostEntity.subPosts[index] = subPost;
+    },
+    changeCurrentPage(state, { payload }) {
+      state.currentPage += payload;
     }
   },
   extraReducers(builder) {
@@ -86,7 +102,8 @@ const postSlice = createSlice({
       })
       .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.postEntities = action.payload;
+        //TODO Обрати внимание, что этот метод не отрабатывает!
+        state.postEntities.push(...action.payload);
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -95,11 +112,12 @@ const postSlice = createSlice({
   }
 });
 
-export const { fillPostMainContent, fillPostSubPostContent } = postSlice.actions;
+export const { fillPostMainContent, fillPostSubPostContent, changeCurrentPage } = postSlice.actions;
 
 // ------------------------------------- Selector -------------------------------------
 
 export const postEntitiesSelector = state => state.post.postEntities;
 export const postEntityByIdSelector = (state, id) => state.post.postEntities[id];
+export const currentPageSelector = state => state.post.currentPage;
 
 export default postSlice.reducer;

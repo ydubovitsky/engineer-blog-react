@@ -8,6 +8,7 @@ import PostList from '../post-list/post-list.component';
 import Search from '../search/search.component';
 import Subscribe from '../subscribe/subscribe.component';
 import styles from './content.module.css';
+import Pagination from "../pagination/pagination.component";
 
 const Content = (props) => {
   return (
@@ -22,6 +23,7 @@ const Content = (props) => {
             <PostList />
           </Route>
         </Switch>
+        <Pagination />
       </div>
       <div className={styles.aside}>
         <div className={styles.about}>
