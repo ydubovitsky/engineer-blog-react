@@ -12,13 +12,13 @@ const Pagination = () => {
     <div className={styles.container}>
       <div
         className={styles.button}
-        onClick={() => dispatch(changeCurrentPage(-1))}
+        onClick={() => dispatch(changeCurrentPage("previous"))}
       >
         <i className="fas fa-arrow-left"></i>
       </div>
       <div
         className={styles.button}
-        onClick={() => dispatch(changeCurrentPage(1))}
+        onClick={() => dispatch(changeCurrentPage("next"))}
       >
         <i className="fas fa-arrow-right"></i>
       </div>

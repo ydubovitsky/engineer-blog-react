@@ -81,7 +81,13 @@ const postSlice = createSlice({
       state.newPostEntity.subPosts[index] = subPost;
     },
     changeCurrentPage(state, { payload }) {
-      state.currentPage += payload;
+      switch (payload) {
+        case 'next': state.currentPage += 1;
+          break;
+        case 'previous': state.currentPage -= 1;
+          break;
+        default: return state.currentPage;
+      }
     }
   },
   extraReducers(builder) {
