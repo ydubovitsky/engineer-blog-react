@@ -117,7 +117,11 @@ export const { fillPostMainContent, fillPostSubPostContent, changeCurrentPage } 
 // ------------------------------------- Selector -------------------------------------
 
 export const postEntitiesSelector = state => state.post.postEntities;
-export const postEntityByIdSelector = (state, id) => state.post.postEntities[id];
+export const postEntityByIdSelector = (state, id) => {
+  const postById = state.post.postEntities.filter(post => post.id == id)[0]; //FIXME НЕ строгое равенство
+
+  return postById;
+};
 export const currentPageSelector = state => state.post.currentPage;
 
 export default postSlice.reducer;

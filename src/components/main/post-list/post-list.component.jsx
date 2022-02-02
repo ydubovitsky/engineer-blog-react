@@ -17,7 +17,17 @@ const PostList = () => {
 
   useEffect(() => {
     dispatch(getPostPaging(currentPage));
-  }, [currentPage])
+  }, [currentPage]);
+
+  const showPosts = (postsList) => {
+    const posts
+      = postsList?.filter(post => post.id > currentPage * 5 && post.id < (currentPage * 5) + 5)
+        .map(post => {
+          return <PostListItem key={post.id} {...post} />
+        });
+
+    return posts;
+  }
 
   return (
     <div className={styles.container}>
@@ -27,10 +37,7 @@ const PostList = () => {
         <PostListItem {...postEntities[0]} />
       </div>
       <div className={styles.postList}>
-        {postEntities?.filter(post => post.id > currentPage * 5 && post.id < (currentPage * 5) + 5)
-          .map(post => {
-            return <PostListItem key={post.id} {...post} />
-          })}
+        {showPosts(postEntities)}
       </div>
     </div>
   )
