@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import style from './sign-in.module.css';
+import styles from './sign-in.module.css';
 import { login, authSelector } from '../../../redux/features/auth/authSlice';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -20,9 +20,9 @@ const SignIn = ({ history }) => {
     })
   }
 
-  const showIsUserExist = (username) => {
-    if (!username) {
-      return <small>User not found!</small>
+  const showIsUserExist = (status) => {
+    if (status === 'failed') {
+      return <h3>User not found!</h3>
     }
   }
 
@@ -32,15 +32,33 @@ const SignIn = ({ history }) => {
 
   return (
     //TODO Переделать валидацию
-    <div className={cn(style.container, status === 'failed' ? style.inValid : '')}>
-      <Link to={"/"}><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
-      <div className={cn(style.form)}>
-        {showIsUserExist(authEntity.username)}
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" onChange={handleFormChange} />
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" onChange={handleFormChange} />
-        <button onClick={() => dispatch(login(form))}>Sign In</button>
+    <div className={cn(styles.container, status === 'failed' ? styles.inValid : '')}>
+      <div className={styles.left}>
+        <h1>Sign In</h1>
+        {showIsUserExist(status)}
+        <div className={cn(styles.form)}>
+          <label htmlFor="username">Username</label>
+          <input type="text" name="username" onChange={handleFormChange} />
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" onChange={handleFormChange} />
+          <div className={styles.buttons}>
+            <button
+              className={styles.button}
+              onClick={() => dispatch(login(form))}
+            >Sign In
+            </button>
+            <Link
+              className={styles.button}
+              to={"/"}>
+              Cancel
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <h1>Hello, Friend!</h1>
+        <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, deserunt.</h4>
+        <button className={styles.button}>Sign Up</button>
       </div>
     </div>
   )

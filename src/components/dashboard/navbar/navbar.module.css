@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  padding: 50px 0;
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 1px silver;
+}
+
+.container i {
+  color: black;
+  font-size: 2rem;
+}

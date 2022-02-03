@@ -24,22 +24,20 @@ const SocialNavPanel = (props) => {
         <div className="">Privacy policy</div>
       </div>
       <div className={styles.socialContainer}>
-        <div className={styles.social}>
-          <div className={styles.link}>
-            <i className="fab fa-facebook"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-twitter"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-google"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-google"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-github"></i>
-          </div>
+        <div className={styles.link}>
+          <i className="fab fa-facebook"></i>
+        </div>
+        <div className={styles.link}>
+          <i className="fab fa-twitter"></i>
+        </div>
+        <div className={styles.link}>
+          <i className="fab fa-google"></i>
+        </div>
+        <div className={styles.link}>
+          <i className="fab fa-google"></i>
+        </div>
+        <div className={styles.link}>
+          <i className="fab fa-github"></i>
         </div>
       </div>
       {showAuthButton(status)}

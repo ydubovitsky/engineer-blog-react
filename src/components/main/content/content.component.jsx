@@ -8,12 +8,11 @@ import PostList from '../post-list/post-list.component';
 import Search from '../search/search.component';
 import Subscribe from '../subscribe/subscribe.component';
 import styles from './content.module.css';
-import Pagination from "../pagination/pagination.component";
 
 const Content = (props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.articles}>
+      <div className={styles.posts}>
         <Switch>
           {/* TODO Изменить этот роутинг? */}
           <Route path="/main/post/:id">
@@ -23,7 +22,6 @@ const Content = (props) => {
             <PostList />
           </Route>
         </Switch>
-        <Pagination />
       </div>
       <div className={styles.aside}>
         <div className={styles.about}>

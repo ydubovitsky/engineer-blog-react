@@ -4,8 +4,9 @@
   --primary-color: rgb(0,178,215);
   --primary-bg-color: white;
   --secondary-bg-color: #FAFAFA;
-  --third-bg-color: #EFF4F7;
+  --third-bg-color: #DFDBE5;
   --secondary-text-color: #C7C7D0;
+  --btn-bg-color: #363940;
 }
 
 * {

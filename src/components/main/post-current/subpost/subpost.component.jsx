@@ -8,8 +8,7 @@ const SubPost = ({ text, sourceCode, image, imageDescription }) => {
     <div className={styles.container}>
       <div className={styles.text}>{text}</div>
       <div className={styles.code}>
-        {/* TODO ЗАменить на другую реализацию из README.md */}
-        {/* <SyntaxHighlighter
+        <SyntaxHighlighter
           language={"html"}
           wrapLongLines={true}
           showLineNumbers={true}
@@ -17,8 +16,7 @@ const SubPost = ({ text, sourceCode, image, imageDescription }) => {
           style={docco}
         >
           {sourceCode}
-        </SyntaxHighlighter> */}
-        <code>{sourceCode}</code>
+        </SyntaxHighlighter>
         <img src={image} alt="" />
         <div className={styles.description}>{imageDescription}</div>
       </div>

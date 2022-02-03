@@ -22,3 +22,10 @@ https://www.npmjs.com/search?ranking=popularity&q=syntax%20highlighting
 
 ### v5.reactrouter.com
 https://v5.reactrouter.com/web/guides/quick-start
+
+### Пробельные символы
+https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+
+
+### SVG Background
+https://heropatterns.com/

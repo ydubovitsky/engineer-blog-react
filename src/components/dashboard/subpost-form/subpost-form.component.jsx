@@ -4,7 +4,6 @@ import styles from './subpost-form.module.css';
 import { useDispatch } from 'react-redux';
 import { fillPostSubPostContent } from '../../../redux/features/post/postSlice';
 import Input from '../input/input.component';
-import getRandomColor from '../../../utils/random-color';
 
 const SubPost = ({ index }) => {
 
@@ -24,7 +23,7 @@ const SubPost = ({ index }) => {
   }, [subPost]);
 
   return (
-    <div className={styles.container} style={{ backgroundColor: getRandomColor() }}>
+    <div className={styles.container}>
       <Input name="text" type="textarea" handler={{ onChange: handlerInputForm }} />
       <Input name="sourceCode" type="textarea" handler={{ onChange: handlerInputForm }} />
       <Input name="image" type="text" handler={{ onChange: handlerInputForm }} />

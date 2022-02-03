@@ -35,5 +35,13 @@
   font-weight: bold;
   background: none;
   border: 1px solid var(--secondary-text-color);
+  box-shadow: 1px 1px 1px silver;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }

@@ -1,13 +1,24 @@
 .container {
   display: grid;
   grid-gap: 30px;
-  grid-template-rows: 1fr;
-  grid-template-columns: 5fr 2fr;
+  grid-template-areas:
+    'posts aside';
+  grid-template-columns: 5fr 1fr;
 }
 
-.articles {
-  
+.posts {
+  grid-area: posts;
 }
 
 .aside {
+  grid-area: aside;
+}
+
+@media (max-width: 767px) {
+  .container {
+    grid-template-areas:
+      'posts'
+      'aside';
+    grid-template-columns: 1fr;
+  }
 }

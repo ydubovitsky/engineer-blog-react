@@ -1,5 +1,7 @@
 import styles from './post-list.module.css';
 import PostListItem from '../post-list-item/post-list-item.component';
+import Pagination from "../pagination/pagination.component";
+
 import {
   getPostPaging,
   postEntitiesSelector,
@@ -31,7 +33,6 @@ const PostList = () => {
 
   return (
     <div className={styles.container}>
-      {console.log(postEntities)}
       <div className={styles.latestPost}>
         <div className={styles.columnTitle}>Latest Post</div>
         <PostListItem {...postEntities[0]} />
@@ -39,6 +40,7 @@ const PostList = () => {
       <div className={styles.postList}>
         {showPosts(postEntities)}
       </div>
+      <Pagination />
     </div>
   )
 };

@@ -8,10 +8,14 @@ const Hero = (props) => {
           <i className="fas fa-chevron-right"></i>
         </div>
         <div className={styles.sideHeader}>
-          <div className={styles.subTitle}>Lorem, ipsum dolor.</div>
+          <div className={styles.subTitle}>Пишу о вещах, которые мне интересны</div>
           <div className={styles.hr}></div>
-          <div className={styles.title}>Lorem, ipsum dolor.</div>
-          <div className={styles.text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, error?</div>
+          <div className={styles.title}>Записки на манжетах</div>
+          <div className={styles.text}>
+            <p>Стараюсь придерживаься принципа:</p>
+            <p>“Если вы что-то не можете объяснить 6-летнему ребёнку, вы сами этого не понимаете.“ - Альберт Эйнштейн.
+            </p>
+          </div>
           <button className={styles.button}>SEE MORE</button>
         </div>
         <div className={styles.left}>

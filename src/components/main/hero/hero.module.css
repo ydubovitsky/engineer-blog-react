@@ -28,8 +28,8 @@
   height: 100%;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 30px 5px 30px 50px auto;
-  grid-gap: 20px;
+  grid-template-rows: 30px 5px auto 50px auto;
+  gap: 20px;
   align-content: center;
   align-items: center;
   justify-items: center;
@@ -45,9 +45,9 @@
 }
 
 .hr {
-  width: 20%;
+  width: 50%;
   height: 1px;
-  background-color: silver;
+  background-color: white;
 }
 
 .button {
@@ -133,4 +133,23 @@
   border: 3px solid white;
   margin: 5px;
   border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .sideHeader {
+    width: 100%;
+  }
+  .title {
+    font-size: 1.9rem;
+  }
+  .subTitle {
+    font-size: 1.2rem;
+  }
+  .right i {
+    font-size: 1rem;
+  }
+  .left, .right {
+    width: 25px;
+    height: 50px;
+  }
 }

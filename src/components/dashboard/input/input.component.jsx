@@ -13,7 +13,12 @@ const Input = (props) => {
         <div className={styles.container}>
           <i className="fa fa-trash" onClick={() => setIsDeleted(true)} aria-hidden="true"></i>
           <label htmlFor={name}>{name}</label>
-          <input type={type} name={name} {...handler} />
+          {type === 'text'
+            ?
+            <input type={type} name={name} {...handler} />
+            :
+            <textarea name={name} {...handler} style={{minHeight: '100px' }}></textarea>
+          }
         </div>
         :
         <></>

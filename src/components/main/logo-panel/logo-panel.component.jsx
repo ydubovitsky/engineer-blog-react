@@ -4,7 +4,7 @@ const LogoPanel = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Engineer Blog</div>
-      <div className={styles.subtitle}>FOOD BLOGGING THEME FOR WORDPRESS</div>
+      <div className={styles.subtitle}>Simple language about difficult things</div>
     </div>
   )
 }

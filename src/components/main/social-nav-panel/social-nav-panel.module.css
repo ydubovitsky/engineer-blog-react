@@ -4,13 +4,15 @@
   font-weight: 600;
   grid-template-rows: 50px;
   grid-template-columns: 2fr 5fr 1fr;
-  justify-items: center;
+  justify-items: end;
   align-items: center;
+  grid-template-areas: "menu socialContainer auth";
   background-color: var(--secondary-bg-color);
   border-bottom: 1px solid var(--secondary-text-color);
 }
 
 .menu {
+  grid-area: menu;
   display: flex;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -19,15 +21,10 @@
 }
 
 .socialContainer {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-}
-
-.social {
-  display: flex;
-  justify-content: space-around;
-  width: 30%;
+  grid-area: socialContainer;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 20px;
 }
 
 .container a:hover {
@@ -35,6 +32,24 @@
 }
 
 .auth {
+  grid-area: auth;
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .container {
+    gap: 20px;
+    grid-template-areas:
+      "menu auth"
+      "socialContainer socialContainer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    padding: 10px 50px;
+  }
+
+  .socialContainer i {
+    font-size: 1.5rem;
+  }
 }

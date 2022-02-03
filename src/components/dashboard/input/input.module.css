@@ -12,7 +12,6 @@
 .container label {
   grid-area: label;
   text-shadow: 1px 1px 1px white;
-  font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
 }

@@ -1,9 +1,10 @@
-import { useState, useEfect, useEffect } from 'react';
+import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fillPostMainContent, addPost } from '../../../redux/features/post/postSlice';
+import { addPost, fillPostMainContent } from '../../../redux/features/post/postSlice';
+import Input from '../input/input.component';
 import SubPost from '../subpost-form/subpost-form.component';
 import styles from './post-form.module.css';
-import Input from '../input/input.component';
 
 const PostForm = () => {
 
@@ -24,12 +25,17 @@ const PostForm = () => {
   }, [post]);
 
   const addSubPostForm = () => {
-    setSubPosts([...subPosts, <SubPost key={subPosts.length} index={subPosts.length} />]);
+    setSubPosts(
+      [...subPosts,
+      <SubPost
+        key={subPosts.length}
+        index={subPosts.length}
+      />]);
   }
 
   return (
-    <div className={styles.container}>
-      <h3>Основная информация</h3>
+    <div className={cn(styles.container, styles.svgBackground)}>
+      {/* <h3>Основная информация</h3> */}
       <div className={styles.mainInfo}>
         <Input name="imageSource" type="text" handler={{ onChange: handlerInputForm }} />
         <Input name="category" type="text" handler={{ onChange: handlerInputForm }} />
@@ -39,14 +45,20 @@ const PostForm = () => {
         <Input name="disclosure" type="text" handler={{ onChange: handlerInputForm }} />
         <Input name="description" type="textarea" handler={{ onChange: handlerInputForm }} />
       </div>
-      <h3>Дополнительная информация</h3>
+      {/* <h3>Дополнительная информация</h3> */}
       <div className={styles.subPosts}>
         {subPosts?.map(subPost => {
           return subPost
         })}
       </div>
-      <button className={styles.button} onClick={() => dispatch(addPost())}>Save Article</button>
-      <button className={styles.button} onClick={addSubPostForm}>Add SubPost</button>
+      <div className={styles.buttons}>
+        <button className={styles.button} onClick={addSubPostForm}>Add SubPost</button>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(addPost())}
+        ><i className="fas fa-save"></i>
+        </button>
+      </div>
     </div>
   )
 }
