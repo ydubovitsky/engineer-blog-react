@@ -1,0 +1,79 @@
+.container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  opacity: 0.95;
+  box-shadow: 2px 2px 2px silver;
+  border-radius: 10px;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s ease-in;
+  border: 2px solid rgb(255, 255, 255);
+  z-index: 1000;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.form * {
+  margin-bottom: 5px;
+}
+
+.form input {
+  outline: none;
+  border: 1px solid silver;
+  transition: 2s ease-in;
+  width: 80%;
+  height: 2rem;
+  border-radius: 10px;
+  padding: 0 1rem;
+}
+
+.form input:focus {
+  border-color: cornflowerblue;
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px silver;
+}
+
+.form button:active {
+  transform: scale(0.98);
+}
+
+.notValid {
+  border-color: red;
+  box-shadow: 2px 2px 2px rgb(250, 63, 63);
+}
+
+.validUser {
+  color: red;
+}
