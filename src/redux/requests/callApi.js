@@ -1,23 +1,21 @@
 const axios = require('axios');
 
-const callApi = async (payload) => {
+const callApi = async ({path, requestBody, headers, method}) => {
 
-const { path, requestBody, headers } = payload;
+  //TODO Нужен ли тут try catch это же асинхронный метод
+  try {
+    const response = await axios({
+      method: method,
+      url: 'http://localhost:8080' + path,
+      data: requestBody,
+      headers: headers
+    });
 
-try { //TODO Нужен ли тут try catch это же асинхронный метод
-  const response = await axios({
-    method: payload.method,
-    //TODO Вынести в константу?
-    url: 'http://localhost:8080' + path,
-    data: JSON.stringify(requestBody),
-    headers: headers
-  });
-
-  return response.data;
-} catch (error) {
-  console.error(error);
-  return error;
-}
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
 }
 
 export default callApi;

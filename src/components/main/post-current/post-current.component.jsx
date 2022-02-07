@@ -18,7 +18,7 @@ const PostCurrent = () => {
     category,
     date,
     description,
-    imageSource,
+    postImage,
     text,
     title,
     disclosure,
@@ -26,7 +26,8 @@ const PostCurrent = () => {
 
   return (
     <div className={styles.container}>
-      <img src={imageSource ? imageSource : 'https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1'} alt="" />
+      {console.log(postImage)}
+      <img src={postImage ? `data:image/png;base64,${postImage}` : 'https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1'} alt="" />
       <div className={styles.category}>{category}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.date}>{date}</div>

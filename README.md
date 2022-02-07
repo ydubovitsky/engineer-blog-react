@@ -29,3 +29,14 @@ https://developer.mozilla.org/ru/docs/Web/CSS/white-space
 
 ### SVG Background
 https://heropatterns.com/
+
+### Image uploading
+https://stackoverflow.com/questions/23533355/spring-controller-requestbody-with-file-upload-is-it-possible
+https://frontbackend.com/spring-boot/spring-boot-upload-file-to-postgresql-database
+https://medium.com/echohub/imageserver-with-spring-boot-postgresql-aec02e5dad9b
+https://flaviocopes.com/file-upload-using-ajax/
+https://blogs.perficient.com/2020/07/27/requestbody-and-multipart-on-spring-boot/
+
+### Map String/JSON to Java Object
+https://stackoverflow.com/questions/45110371/no-string-argument-constructor-factory-method-to-deserialize-from-string-value/56323851
+https://www.baeldung.com/jackson-deserialize-json-unknown-properties

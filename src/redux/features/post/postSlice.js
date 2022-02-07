@@ -25,7 +25,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
 
   const { post } = getState();
 
-  // checking if data already loaded 
+  //FIXME checking if data already loaded 
   const finded = post.postEntities.find(post => post.id === (page * POST_PER_PAGE) + 1);
   if (finded) {
     console.log('Data already loaded!');
@@ -49,7 +49,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
 const initialState = {
   newPostEntity: {
     id: null,
-    imageSource: null,
+    postImage: null,
     category: null,
     title: null,
     date: null,
@@ -129,5 +129,6 @@ export const postEntityByIdSelector = (state, id) => {
   return postById;
 };
 export const currentPageSelector = state => state.post.currentPage;
+export const newPostSelector = state => state.post.newPostEntity;
 
 export default postSlice.reducer;

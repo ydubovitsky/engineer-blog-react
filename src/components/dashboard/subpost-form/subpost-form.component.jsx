@@ -26,7 +26,7 @@ const SubPost = ({ index }) => {
     <div className={styles.container}>
       <Input name="text" type="textarea" handler={{ onChange: handlerInputForm }} />
       <Input name="sourceCode" type="textarea" handler={{ onChange: handlerInputForm }} />
-      <Input name="image" type="text" handler={{ onChange: handlerInputForm }} />
+      <Input name={`image_${index}`} type="image" handler={{ onChange: handlerInputForm }} />
       <Input name="imageDescription" type="text" handler={{ onChange: handlerInputForm }} />
     </div>
   )

@@ -3,11 +3,11 @@ import {
 } from "react-router-dom";
 import styles from './post-list-item.module.css';
 
-const PostListItem = ({ id, imageSource, category, title, date, description }) => {
+const PostListItem = ({ id, postImage, category, title, date, description }) => {
 
   return (
     <div className={styles.container}>
-      <img src={imageSource ? imageSource : "https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1"} alt="" />
+      <img src={postImage ? `data:image/png;base64,${postImage}` : "https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1"} alt="" />
       <div className={styles.category}>{category}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.date}>{date}</div>

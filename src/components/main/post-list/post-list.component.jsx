@@ -1,15 +1,13 @@
-import styles from './post-list.module.css';
-import PostListItem from '../post-list-item/post-list-item.component';
-import Pagination from "../pagination/pagination.component";
-
-import {
-  getPostPaging,
-  postEntitiesSelector,
-  currentPageSelector,
-  postPerPageSelector
-} from '../../../redux/features/post/postSlice';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  currentPageSelector, getPostPaging,
+  postEntitiesSelector
+} from '../../../redux/features/post/postSlice';
+import Pagination from "../pagination/pagination.component";
+import PostListItem from '../post-list-item/post-list-item.component';
+import styles from './post-list.module.css';
+
 
 const PostList = () => {
 
