@@ -1,12 +1,20 @@
 import styles from './pagination.module.css';
-import { useDispatch } from 'react-redux';
+import cn from 'classnames';
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux';
 import {
   changeCurrentPage,
+  currentPageSelector,
+  maxPageCountSelector
 } from '../../../redux/features/post/postSlice';
 
 const Pagination = () => {
 
   const dispatch = useDispatch();
+  const currentPage = useSelector(currentPageSelector);
+  const maxPageCount = useSelector(maxPageCountSelector);
 
   return (
     <div className={styles.container}>
@@ -16,6 +24,30 @@ const Pagination = () => {
       >
         <i className="fas fa-arrow-left"></i>
       </div>
+
+      <div className={styles.center}>
+        <div
+          className={styles.button}
+          onClick={() => dispatch(changeCurrentPage("previous"))}
+        >
+          0
+        </div>
+        <div className={styles.etc}>...</div>
+        <div
+          className={cn(styles.button, styles.active)}
+          onClick={() => dispatch(changeCurrentPage("previous"))}
+        >
+          {currentPage}
+        </div>
+        <div className={styles.etc}>...</div>
+        <div
+          className={styles.button}
+          onClick={() => dispatch(changeCurrentPage("previous"))}
+        >
+          {maxPageCount}
+        </div>
+      </div>
+
       <div
         className={styles.button}
         onClick={() => dispatch(changeCurrentPage("next"))}

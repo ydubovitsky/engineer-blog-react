@@ -22,7 +22,6 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
 });
 
 export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
-
   const { post } = getState();
 
   //FIXME checking if data already loaded 
@@ -62,6 +61,7 @@ const initialState = {
   },
   postEntities: [], //! Это массив объектов
   currentPage: 0,
+  maxPageCount: null,
   status: 'idle',
   error: null
 }
@@ -82,10 +82,16 @@ const postSlice = createSlice({
     },
     changeCurrentPage(state, { payload }) {
       switch (payload) {
-        case 'next': state.currentPage += 1;
+        case 'next': {
+          if (state.currentPage >= state.maxPageCount) break;
+          state.currentPage += 1;
           break;
-        case 'previous': state.currentPage -= 1;
+        }
+        case 'previous': {
+          if (state.currentPage === 0) break;
+          state.currentPage -= 1;
           break;
+        }
         default: return state.currentPage;
       }
     }
@@ -106,10 +112,13 @@ const postSlice = createSlice({
       .addCase(getPostPaging.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(getPostPaging.fulfilled, (state, action) => {
+      .addCase(getPostPaging.fulfilled, (state, action) => { //TODO Обрати внимание, что этот метод не отрабатывает!
         state.status = 'succeeded';
-        //TODO Обрати внимание, что этот метод не отрабатывает!
-        state.postEntities.push(...action.payload);
+        const { allPostsCount, pagingPosts } = action.payload;
+
+        state.postEntities.push(...pagingPosts);
+        state.maxPageCount
+          = Math.ceil(allPostsCount / POST_PER_PAGE);
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -130,5 +139,6 @@ export const postEntityByIdSelector = (state, id) => {
 };
 export const currentPageSelector = state => state.post.currentPage;
 export const newPostSelector = state => state.post.newPostEntity;
+export const maxPageCountSelector = state => state.post.maxPageCount;
 
 export default postSlice.reducer;

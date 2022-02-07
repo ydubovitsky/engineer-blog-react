@@ -1,6 +1,8 @@
 .container {
+  padding: 100px 0 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  grid-template-columns: 1fr 2fr 1fr;
   justify-items: center;
 }
 
@@ -15,10 +17,37 @@
   box-shadow: 2px 1px 1px silver;
 }
 
+.active {
+  background-color: var(--secondary-text-color);
+  color: black;
+  transform: scale(1.05);
+}
+
+.center {
+  color: white;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5%;
+  justify-items: center;
+  align-items: end;
+}
+
+.etc {
+  color: black;
+  font-size: 2rem;
+}
+
 .button:active {
   transform: scale(0.95);
 }
 
 .button i {
   color: white;
+}
+
+@media (max-width: 767px) {
+  .center {
+    visibility: hidden;
+  }
 }
