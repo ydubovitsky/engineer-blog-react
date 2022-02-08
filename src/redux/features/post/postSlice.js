@@ -92,6 +92,10 @@ const postSlice = createSlice({
           state.currentPage -= 1;
           break;
         }
+        case 'init': {
+          state.currentPage = 0;
+          break;
+        }
         default: return state.currentPage;
       }
     }

@@ -4,7 +4,6 @@ import {
   currentPageSelector, getPostPaging,
   postEntitiesSelector
 } from '../../../redux/features/post/postSlice';
-import Pagination from "../pagination/pagination.component";
 import PostListItem from '../post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
 
@@ -38,7 +37,6 @@ const PostList = () => {
       <div className={styles.postList}>
         {showPosts(postEntities)}
       </div>
-      <Pagination />
     </div>
   )
 };

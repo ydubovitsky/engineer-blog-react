@@ -2,16 +2,17 @@
   padding: 100px 0 0;
   display: grid;
   gap: 5px;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: repeat(3, auto);
   justify-items: center;
+  align-items: center;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
   background-color: var(--btn-bg-color);
   box-shadow: 2px 1px 1px silver;
@@ -19,6 +20,7 @@
 
 .active {
   background-color: var(--secondary-text-color);
+  box-shadow: 2px 1px 5px rgb(92, 92, 92);
   color: black;
   transform: scale(1.05);
 }
@@ -30,24 +32,29 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 5%;
   justify-items: center;
-  align-items: end;
+  align-items: center;
 }
 
 .etc {
   color: black;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .button:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
+}
+
+.container a {
+  color: white;
+  text-decoration: none;
 }
 
 .button i {
   color: white;
 }
 
-@media (max-width: 767px) {
-  .center {
-    visibility: hidden;
+/* @media (max-width: 767px) {
+  .container {
+    grid-template-columns: repeat(3, auto)
   }
-}
+} */

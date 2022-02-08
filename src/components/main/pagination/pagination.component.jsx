@@ -1,14 +1,18 @@
-import styles from './pagination.module.css';
 import cn from 'classnames';
 import {
   useDispatch,
   useSelector
 } from 'react-redux';
 import {
+  Link,
+  useHistory
+} from "react-router-dom";
+import {
   changeCurrentPage,
   currentPageSelector,
   maxPageCountSelector
 } from '../../../redux/features/post/postSlice';
+import styles from './pagination.module.css';
 
 const Pagination = () => {
 
@@ -18,42 +22,41 @@ const Pagination = () => {
 
   return (
     <div className={styles.container}>
-      <div
+      {/* //!TODO Вынести эту логику в функцию? */}
+      <Link to={`/main/${currentPage === 0 ? currentPage : currentPage - 1}`}
         className={styles.button}
         onClick={() => dispatch(changeCurrentPage("previous"))}
       >
         <i className="fas fa-arrow-left"></i>
-      </div>
+      </Link>
 
       <div className={styles.center}>
-        <div
+        <Link to={`/main/${currentPage}`}
           className={styles.button}
-          onClick={() => dispatch(changeCurrentPage("previous"))}
+          onClick={() => dispatch(changeCurrentPage("init"))}
         >
           0
-        </div>
+        </Link>
         <div className={styles.etc}>...</div>
         <div
           className={cn(styles.button, styles.active)}
-          onClick={() => dispatch(changeCurrentPage("previous"))}
         >
           {currentPage}
         </div>
         <div className={styles.etc}>...</div>
         <div
           className={styles.button}
-          onClick={() => dispatch(changeCurrentPage("previous"))}
         >
           {maxPageCount}
         </div>
       </div>
 
-      <div
+      <Link to={`/main/${currentPage === maxPageCount ? currentPage : currentPage + 1}`}
         className={styles.button}
         onClick={() => dispatch(changeCurrentPage("next"))}
       >
         <i className="fas fa-arrow-right"></i>
-      </div>
+      </Link>
     </div>
   )
 }
