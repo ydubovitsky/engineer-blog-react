@@ -1,7 +1,6 @@
-import MostPopular from '../most-popular/most-popular.component';
-import Categories from '../categories/categories.component';
+import MostPopular from './most-popular/most-popular.component';
+import Categories from './categories/categories.component';
 import styles from './statistic.module.css';
-
 
 const Statistic = () => {
   return (

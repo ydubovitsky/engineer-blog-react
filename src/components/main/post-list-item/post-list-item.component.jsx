@@ -2,8 +2,14 @@ import {
   Link
 } from "react-router-dom";
 import styles from './post-list-item.module.css';
+import { useContext } from 'react';
+import { LangContext } from '../../../context/LangContext';
 
 const PostListItem = ({ id, postImage, category, title, date, description }) => {
+
+  //Context
+  const { getLangData } = useContext(LangContext);
+  const { postListItem } = getLangData();
 
   return (
     <div className={styles.container}>
@@ -14,7 +20,7 @@ const PostListItem = ({ id, postImage, category, title, date, description }) => 
       <div className={styles.description}>
         <p>{description}</p>
       </div>
-      <button className={styles.button}><Link to={`/main/post/${id}`}>Continue reading</Link></button>
+      <button className={styles.button}><Link to={`/main/post/${id}`}>{postListItem.button}</Link></button>
     </div>
   )
 }

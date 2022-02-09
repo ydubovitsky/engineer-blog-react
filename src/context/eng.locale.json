@@ -1,0 +1,67 @@
+{
+  "socialNavPanel": {
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "contacts": "Contacts",
+      "policy": "Privacy policy"
+    }
+  },
+  "logoPanel": {
+    "title": "Engineer Blog",
+    "subtitle": "In simple terms about complex and not very things"
+  },
+  "navPAnel": {
+    "about": "About",
+    "projects": "Projects",
+    "contacts": "Contacts",
+    "posts": "Posts"
+  },
+  "hero": {
+    "subTitle": "I write about things that interest me",
+    "title": "Notes on cuffs",
+    "text": "If you cannot explain something to a 6-year-old child, you yourself do not understand it. - Albert Einstein.",
+    "button": "See more"
+  },
+  "columnWidgets": {
+    "about": "About Me",
+    "writeMe": "Write Me",
+    "github": "GitHub"
+  },
+  "aboutMe": {
+    "columnTitle": "About Me",
+    "fio": "Dubovitsky Yury",
+    "about": "lorem10",
+    "button": "Read More"
+  },
+  "postList": {
+    "columnTitle": "Latest Post"
+  },
+  "subscribe": {
+    "title": "SUBSCRIBE TO OUR NEWSLETTER",
+    "subTitle": "Subscribe to our newsletter and receive new recipes in your inbox.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "button": "Subscribe"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Enter your request...",
+    "button": "Search"
+  },
+  "postListItem": {
+    "button": "Continue reading"
+  },
+  "statistic": {
+    "categoriesTitle": "Categories",
+    "mostPopularTitle": "Most Popular"
+  },
+  "footer": {
+    "home": "home",
+    "about": "about",
+    "contacts": "contacts",
+    "policy": "policy",
+    "copyright": "COPYRIGHT © 2021 DESIGNED BY ME"
+  }
+}

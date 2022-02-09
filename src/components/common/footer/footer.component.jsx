@@ -1,26 +1,32 @@
+import { useContext } from 'react';
+import { LangContext } from '../../../context/LangContext';
 import styles from './footer.module.css';
 
 const Footer = () => {
+
+  const { getLangData } = useContext(LangContext);
+  const { footer } = getLangData();
+
   return (
     <div className={styles.container}>
       <div className={styles.navContainer}>
         <div className={styles.nav}>
           <div className={styles.navLink}>
-            home
+            {footer.home}
           </div>
           <div className={styles.navLink}>
-            about
+            {footer.about}
           </div>
           <div className={styles.navLink}>
-            contact
+            {footer.contacts}
           </div>
           <div className={styles.navLink}>
-            privacy policy
+            {footer.policy}
           </div>
         </div>
       </div>
       <div className={styles.copyright}>
-        COPYRIGHT © 2021 DESIGNED BY ME
+        {footer.copyright}
       </div>
     </div>
   )

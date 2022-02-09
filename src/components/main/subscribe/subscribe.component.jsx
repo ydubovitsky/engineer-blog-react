@@ -1,14 +1,21 @@
 import styles from './subscribe.module.css';
+import { useContext } from 'react';
+import { LangContext } from '../../../context/LangContext';
 
 const Subscribe = () => {
+
+  //Context
+  const { getLangData } = useContext(LangContext);
+  const { subscribe } = getLangData();
+
   return (
     <div className={styles.container}>
-      <div className={styles.title}>SUBSCRIBE TO OUR NEWSLETTER</div>
-      <div className={styles.subTitle}>Subscribe to our newsletter and receive new recipes in your inbox.</div>
-      <input type="text" name="" placeholder='First Name' />
-      <input type="text" name="" placeholder='Last Name' />
-      <input type="text" name="" placeholder='Email' />
-      <button className={styles.button}>Subscribe</button>
+      <div className={styles.title}>{subscribe.title}</div>
+      <div className={styles.subTitle}>{subscribe.subTitle}</div>
+      <input type="text" name="firstName" placeholder={subscribe.firstName} />
+      <input type="text" name="lastName" placeholder={subscribe.lastName} />
+      <input type="text" name="email" placeholder={subscribe.email} />
+      <button className={styles.button}>{subscribe.button}</button>
     </div>
   )
 };

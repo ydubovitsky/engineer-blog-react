@@ -1,10 +1,16 @@
 import styles from './logo-panel.module.css';
+import { useContext } from 'react';
+import { LangContext } from '../../../context/LangContext';
 
-const LogoPanel = (props) => {
+const LogoPanel = () => {
+
+  const { getLangData } = useContext(LangContext);
+  const { logoPanel } = getLangData();
+
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Engineer Blog</div>
-      <div className={styles.subtitle}>Simple language about difficult things</div>
+      <div className={styles.title}>{logoPanel.title}</div>
+      <div className={styles.subtitle}>{logoPanel.subtitle}</div>
     </div>
   )
 }

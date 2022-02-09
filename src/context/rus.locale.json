@@ -1,0 +1,67 @@
+{
+  "socialNavPanel": {
+    "menu": {
+      "home": "Домой",
+      "about": "О блоге",
+      "contacts": "Контакты",
+      "policy": "Политика кофиденциальности"
+    }
+  },
+  "logoPanel": {
+    "title": "Блог Инженера",
+    "subtitle": "Простым языком о сложных и не очень вещах"
+  },
+  "navPAnel": {
+    "about": "О блоге",
+    "projects": "Проекты",
+    "contacts": "Контакты",
+    "posts": "Посты"
+  },
+  "hero": {
+    "subTitle": "Пишу о вещах, которые мне интересны",
+    "title": "Записки на манжетах",
+    "text": "Если вы что-то не можете объяснить 6-летнему ребёнку, вы сами этого не понимаете. - Альберт Эйнштейн.",
+    "button": "Смотреть далее"
+  },
+  "columnWidgets": {
+    "about": "Обо мне",
+    "writeMe": "Обратная связь",
+    "github": "GitHub"
+  },
+  "aboutMe": {
+    "columnTitle": "Обо мне",
+    "fio": "Дубовицкий Юрий",
+    "about": "lorem10",
+    "button": "Читать больше"
+  },
+  "postList": {
+    "columnTitle": "Последний Пост"
+  },
+  "subscribe": {
+    "title": "Подпишись на моя рассылку",
+    "subTitle": "Subscribe to our newsletter and receive new recipes in your inbox.",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "email": "Почта",
+    "button": "Подписаться"
+  },
+  "search": {
+    "title": "Поиск",
+    "placeholder": "Введите ваш запрос...",
+    "button": "Искать"
+  },
+  "postListItem": {
+    "button": "Читать далее"
+  },
+  "statistic": {
+    "categoriesTitle": "Категории",
+    "mostPopularTitle": "Наиболее популярные"
+  },
+  "footer": {
+    "home": "home",
+    "about": "О блоге",
+    "contacts": "Контакты",
+    "policy": "policy",
+    "copyright": "Все права защищены © 2021"
+  }
+}

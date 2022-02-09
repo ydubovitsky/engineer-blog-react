@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 import styles from './social-nav-panel.module.css';
 import { authSelector, logout } from '../../../redux/features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { useContext } from "react";
+import { LangContext } from '../../../context/LangContext';
+import LangSwitcher from '../lang-switcher/lang-switcher.component';
 
-const SocialNavPanel = (props) => {
+const SocialNavPanel = () => {
 
   const dispatch = useDispatch();
   const { status, authEntity } = useSelector(authSelector);
+  //Context
+  const { getLangData } = useContext(LangContext);
+  const { socialNavPanel } = getLangData();
 
   const showAuthButton = (status) => {
     if (status === 'succeeded') {
@@ -18,10 +24,13 @@ const SocialNavPanel = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
-        <div className="">Home</div>
-        <div className="">About</div>
-        <div className="">Contacts</div>
-        <div className="">Privacy policy</div>
+        <div className="">{socialNavPanel.menu.home}</div>
+        <div className="">{socialNavPanel.menu.about}</div>
+        <div className="">{socialNavPanel.menu.contacts}</div>
+        <div className="">{socialNavPanel.menu.policy}</div>
+      </div>
+      <div className={styles.langSwitcher}>
+        <LangSwitcher />
       </div>
       <div className={styles.socialContainer}>
         <div className={styles.link}>

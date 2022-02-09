@@ -7,12 +7,15 @@ import store from './redux/store';
 import {
   BrowserRouter
 } from "react-router-dom";
+import LangContextProvider from './context/LangContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App/>
+        <LangContextProvider>
+          <App />
+        </LangContextProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

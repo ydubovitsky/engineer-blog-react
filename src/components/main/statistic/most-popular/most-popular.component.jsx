@@ -1,9 +1,16 @@
 import styles from './most-popular.module.css';
 
+import { useContext } from 'react';
+import { LangContext } from '../../../../context/LangContext';
+
 const MostPopular = () => {
+
+  const { getLangData } = useContext(LangContext);
+  const { statistic } = getLangData();
+
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Most Popular</div>
+      <div className={styles.title}>{statistic.mostPopularTitle}</div>
       <div className={styles.articles}>
         <div className={styles.article}>
           <div className={styles.index}>1</div>
