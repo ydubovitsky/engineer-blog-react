@@ -3,10 +3,10 @@ import callApi from '../../requests/callApi';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
-export const login = createAsyncThunk("auth/login", async (form) => {
+export const login = createAsyncThunk("auth/login", async (body) => {
   const payload = {
     path: '/login',
-    requestBody: form,
+    body: body,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

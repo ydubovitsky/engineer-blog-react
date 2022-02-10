@@ -1,20 +1,29 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApi from '../../requests/callApi';
+import { getAllNamedFilesFromForm } from '../../../utils/formData-utils';
 
 const POST_PER_PAGE = 5;
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
 export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
-  const { post } = getState();
+  const { auth } = getState();
+  const { refForm, newPost } = args;
+
+  //FIXME Вынести в отдельный метод
+  const files = getAllNamedFilesFromForm(refForm);
+  const body = new FormData();
+  files.forEach(file => body.append('files', file));
+  body.append('newPost', JSON.stringify(newPost));
 
   const payload = {
     path: '/api/post/add',
-    requestBody: post.newPostEntity,
+    body: body,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
     }
   }
   const response = await callApi(payload);
