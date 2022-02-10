@@ -35,6 +35,10 @@
   align-items: center;
 }
 
+.heart {
+  animation: heart 2s infinite;
+}
+
 .etc {
   color: black;
   font-size: 1.5rem;
@@ -51,6 +55,27 @@
 
 .button i {
   color: white;
+}
+
+@keyframes heart {
+  0% {
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  50% {
+    -moz-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
 }
 
 /* @media (max-width: 767px) {

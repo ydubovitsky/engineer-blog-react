@@ -4,7 +4,7 @@
       "home": "Домой",
       "about": "О блоге",
       "contacts": "Контакты",
-      "policy": "Политика кофиденциальности"
+      "policy": "Авторское право"
     }
   },
   "logoPanel": {
@@ -38,8 +38,8 @@
     "columnTitle": "Последний Пост"
   },
   "subscribe": {
-    "title": "Подпишись на моя рассылку",
-    "subTitle": "Subscribe to our newsletter and receive new recipes in your inbox.",
+    "title": "Подпишись на мою рассылку",
+    "subTitle": "Подпишитесь на мою рассылку и получайте уведомления о новых публикациях на свой почтовый ящик.",
     "firstName": "Имя",
     "lastName": "Фамилия",
     "email": "Почта",
@@ -55,13 +55,30 @@
   },
   "statistic": {
     "categoriesTitle": "Категории",
-    "mostPopularTitle": "Наиболее популярные"
+    "mostPopularTitle": "Наиболее популярные статьи"
   },
   "footer": {
     "home": "home",
     "about": "О блоге",
     "contacts": "Контакты",
-    "policy": "policy",
-    "copyright": "Все права защищены © 2021"
+    "policy": "АВТОРСКОЕ ПРАВО",
+    "copyright": "Все права защищены ©"
+  },
+  "sidebar": {
+    "greetings": "Здравствуй",
+    "dashboard": "Панель управления",
+    "logout": "Выйти",
+    "login": "Пожалуйста, войдите на сайта",
+    "loginBtn": "Войти!"
+  },
+  "signIn": {
+    "error": "Пользователь не найден",
+    "signIn": "Войти",
+    "userName": "Имя пользователя",
+    "password": "Пароль",
+    "cancel": "Закрыть",
+    "hello": "Здравствуй, Гость",
+    "text": "Зарегистрируйтесь, для получения доступа ко всем возможностям сайта",
+    "signUp": "Зарегистрироваться"
   }
 }

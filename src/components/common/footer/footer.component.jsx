@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyright}>
-        {footer.copyright}
+        {`${footer.copyright}` + new Date().getFullYear()} 
       </div>
     </div>
   )

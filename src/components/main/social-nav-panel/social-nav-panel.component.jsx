@@ -24,10 +24,10 @@ const SocialNavPanel = () => {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
-        <div className="">{socialNavPanel.menu.home}</div>
-        <div className="">{socialNavPanel.menu.about}</div>
-        <div className="">{socialNavPanel.menu.contacts}</div>
-        <div className="">{socialNavPanel.menu.policy}</div>
+        <div className={styles.menuItem}><p>{socialNavPanel.menu.home}</p></div>
+        <div className={styles.menuItem}><p>{socialNavPanel.menu.about}</p></div>
+        <div className={styles.menuItem}><p>{socialNavPanel.menu.contacts}</p></div>
+        <div className={styles.menuItem}><p>{socialNavPanel.menu.policy}</p></div>
       </div>
       <div className={styles.langSwitcher}>
         <LangSwitcher />

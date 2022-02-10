@@ -62,6 +62,23 @@
     "about": "about",
     "contacts": "contacts",
     "policy": "policy",
-    "copyright": "COPYRIGHT © 2021 DESIGNED BY ME"
+    "copyright": "COPYRIGHT and DESIGNED BY Y.Dubovitsky ©"
+  },
+  "sidebar": {
+    "greetings": "Hello",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "login": "Please, login",
+    "loginBtn": "Login!"
+  },
+  "signIn": {
+    "error": "User not found!",
+    "signIn": "Sign In",
+    "userName": "Username",
+    "password": "Password",
+    "cancel": "Cancel",
+    "hello": "Hello, Friend!",
+    "text": "Register to gain access to all the features of the blog",
+    "signUp": "Sign Up"
   }
 }

@@ -1,15 +1,19 @@
 import cn from 'classnames';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
 import styles from './sidebar.module.css';
 import { Link } from 'react-router-dom';
 import { authSelector, logout } from '../../../redux/features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { LangContext } from '../../../context/LangContext';
 
 const Sidebar = () => {
 
   const dispatch = useDispatch();
   const sidebarRef = useRef(null);
   const { authEntity } = useSelector(authSelector);
+  //Context
+  const { getLangData } = useContext(LangContext);
+  const { sidebar } = getLangData();
 
   const toggleSidebar = () => {
     sidebarRef.current.classList.toggle(styles.isOpen);
@@ -18,14 +22,14 @@ const Sidebar = () => {
   const showMenu = (user) => {
     if (user) {
       return <>
-        <div className={styles}>Hello, {user}</div>
-        <Link to={"/dashboard"}>Dashboard</Link>
-        <div onClick={() => dispatch(logout())}>Logout</div>
+        <div className={styles.greetings}>{sidebar.greetings}, {user}</div>
+        <Link to={"/dashboard"} className={styles.dashboard}>{sidebar.dashboard}</Link>
+        <div onClick={() => dispatch(logout())} className={styles.logout}>{sidebar.logout}</div>
       </>
     }
     return <>
-      <h4>Please Login!</h4>
-      <Link to={"/main/login"}>Login!</Link>
+      <h4>{sidebar.login}</h4>
+      <Link to={"/main/login"} className={styles.btn}>{sidebar.loginBtn}</Link>
     </>
   }
 

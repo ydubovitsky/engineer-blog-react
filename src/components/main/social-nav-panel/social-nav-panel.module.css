@@ -3,9 +3,9 @@
   display: grid;
   font-weight: 600;
   grid-template-rows: 50px;
-  grid-template-columns: 5fr 2fr 2fr 0.5fr;
+  grid-template-columns: 4fr 2fr 2fr 0.5fr;
   gap: 10px;
-  justify-items: end;
+  justify-items: center;
   align-items: center;
   grid-template-areas: "menu socialContainer langSwitcher auth";
   background-color: var(--secondary-bg-color);
@@ -14,11 +14,18 @@
 
 .menu {
   grid-area: menu;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   font-size: 0.8rem;
   text-transform: uppercase;
   justify-content: space-around;
-  width: 100%;
+}
+
+.menuItem p {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  transition: 0.2s ease;
 }
 
 .socialContainer {
@@ -28,7 +35,8 @@
   gap: 20px;
 }
 
-.container a:hover {
+.container a,
+.menuItem:hover {
   color: red;
 }
 
@@ -44,11 +52,12 @@
 
 @media (max-width: 767px) {
   .container {
+    padding: 10px;
     gap: 20px;
     grid-template-areas:
-      "menu menu"
+      "menu auth"
       "socialContainer socialContainer"
-      "langSwitcher auth";
+      "langSwitcher langSwitcher";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;

@@ -39,7 +39,7 @@ const Pagination = () => {
         </Link>
         <div className={styles.etc}>...</div>
         <div
-          className={cn(styles.button, styles.active)}
+          className={cn(styles.button, styles.active, styles.heart)}
         >
           {currentPage}
         </div>

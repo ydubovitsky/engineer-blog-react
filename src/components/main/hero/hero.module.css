@@ -39,6 +39,10 @@
   font-size: 2rem;
 }
 
+.text p {
+  text-align: center;
+}
+
 .title {
   font-size: 3rem;
   font-weight: bold;
