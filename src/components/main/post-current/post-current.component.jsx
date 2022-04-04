@@ -8,6 +8,7 @@ import Comments from './comments/comments.component';
 import styles from './post-current.module.css';
 import SharedLinks from './shared-links/shared-links';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
+import RecPosts from "./rec-posts/rec-posts.component";
 import { useSelector } from "react-redux";
 import { postEntityByIdSelector } from '../../../redux/features/post/postSlice';
 import SubPost from "./subpost/subpost.component";
@@ -52,6 +53,7 @@ const PostCurrent = () => {
       </div>
       <SharedLinks />
       <Author name={author} />
+      <RecPosts id={id}/>
       <Comments />
       <CommentForm />
     </div>

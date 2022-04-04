@@ -2,7 +2,6 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 1fr;
 }
 
 .avatar img {
@@ -17,6 +16,15 @@
 }
 
 .name {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 25px;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(5, min-content);
+  gap: 5px;
 }
