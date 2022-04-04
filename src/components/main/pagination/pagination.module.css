@@ -1,8 +1,8 @@
 .container {
-  padding: 100px 0 0;
   display: grid;
   gap: 5px;
   grid-template-columns: repeat(3, auto);
+  padding: 100px 0 0;
   justify-items: center;
   align-items: center;
 }
@@ -20,17 +20,17 @@
 
 .active {
   background-color: var(--secondary-text-color);
-  box-shadow: 2px 1px 5px rgb(92, 92, 92);
+  box-shadow: 2px 1px 5px rgb(92 92 92);
   color: black;
   transform: scale(1.05);
 }
 
 .center {
+  display: grid;
+  gap: 5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   color: white;
   font-weight: bold;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 5%;
   justify-items: center;
   align-items: center;
 }
@@ -59,21 +59,23 @@
 
 @keyframes heart {
   0% {
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transform: scale(1, 1);
+    transform: scale(1, 1);
     transform: scale(1, 1);
   }
+
   50% {
-    -moz-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
     transform: scale(1.1, 1.1);
   }
+
   100% {
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transform: scale(1, 1);
+    transform: scale(1, 1);
     transform: scale(1, 1);
   }
 }

@@ -4,8 +4,8 @@
 
 .navContainer {
   display: grid;
-  width: 100%;
   padding: 30px 0;
+  width: 100%;
   justify-items: center;
   background-color: var(--third-bg-color);
 }

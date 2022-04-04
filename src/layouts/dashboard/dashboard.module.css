@@ -1,9 +1,9 @@
 .container {
   display: grid;
+  gap: 10px;
   grid-template-columns: 1fr;
   grid-template-areas: "navbar"
     "postForm";
-  gap: 10px;
 }
 
 .navbar {

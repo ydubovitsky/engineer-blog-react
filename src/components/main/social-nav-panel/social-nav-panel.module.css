@@ -1,10 +1,10 @@
 .container {
-  padding: 0 100px;
   display: grid;
-  font-weight: 600;
-  grid-template-rows: 50px;
-  grid-template-columns: 4fr 2fr 2fr 0.5fr;
   gap: 10px;
+  grid-template-columns: 4fr 2fr 2fr 0.5fr;
+  grid-template-rows: 50px;
+  padding: 0 100px;
+  font-weight: 600;
   justify-items: center;
   align-items: center;
   grid-template-areas: "menu socialContainer langSwitcher auth";
@@ -13,9 +13,9 @@
 }
 
 .menu {
-  grid-area: menu;
   display: grid;
   grid-template-columns: auto auto auto auto;
+  grid-area: menu;
   font-size: 0.8rem;
   text-transform: uppercase;
   justify-content: space-around;
@@ -29,10 +29,10 @@
 }
 
 .socialContainer {
-  grid-area: socialContainer;
   display: grid;
-  grid-template-columns: repeat(5, auto);
   gap: 20px;
+  grid-template-columns: repeat(5, auto);
+  grid-area: socialContainer;
 }
 
 .container a,
@@ -41,8 +41,8 @@
 }
 
 .auth {
-  grid-area: auth;
   display: flex;
+  grid-area: auth;
   justify-content: flex-end;
 }
 
@@ -52,14 +52,14 @@
 
 @media (max-width: 767px) {
   .container {
-    padding: 10px;
     gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 10px;
     grid-template-areas:
       "menu auth"
       "socialContainer socialContainer"
       "langSwitcher langSwitcher";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
     padding: 10px 50px;
   }

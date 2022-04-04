@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Inter:wght@200;300&family=Roboto+Condensed:wght@300;400&display=swap');
 
 :root {
-  --primary-color: rgb(0,178,215);
+  --primary-color: rgb(0 178 215);
   --primary-bg-color: white;
   --secondary-bg-color: #FAFAFA;
   --third-bg-color: #DFDBE5;

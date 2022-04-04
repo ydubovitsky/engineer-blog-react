@@ -1,24 +1,24 @@
 .container {
-  padding: 50px;
   display: grid;
   gap: 50px;
+  padding: 50px;
   grid-template-areas: "mainInfo"
     "subPosts";
 }
 
 .mainInfo {
-  background-color: whitesmoke;
-  grid-area: mainInfo;
-  box-shadow: 2px 2px 2px 2px silver;
-  border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-area: mainInfo;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 2px 2px silver;
+  border-radius: 10px;
 }
 
 .subPosts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  grid-template-columns: 1fr 1fr;
   background-color: whitesmoke;
   grid-area: subPosts;
   box-shadow: 2px 2px 2px 2px silver;

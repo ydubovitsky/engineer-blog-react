@@ -8,9 +8,52 @@
       "custom-properties",
       "declarations"
     ],
-    "order/properties-order": [
-      "width",
-      "height"
+    "order/properties-order": [{
+        "groupName": "basic",
+        "emptyLineBefore": "always",
+        "properties": [
+          "position",
+          "display",
+          "gap",
+          "grid-template",
+          "grid-template-columns",
+          "grid-template-rows",
+          "grid-area",
+          "margin",
+          "padding",
+          "width",
+          "height"
+        ]
+      },
+      {
+        "groupName": "font",
+        "emptyLineBefore": "always",
+        "properties": [
+          "color",
+          "font-size",
+          "font-weight",
+          "font-family",
+          "letter-spacing",
+          "text-align"
+        ]
+      },
+      {
+        "groupName": "background",
+        "emptyLineBefore": "always",
+        "properties": [
+          "background",
+          "background-color",
+          "background-image",
+          "background-repeat",
+          "background-size",
+          "background-position",
+          "background-attachment",
+          "background-blend-mode"
+        ]
+      },
+      {
+        "unspecified": "ignore"
+      }
     ]
   }
 }

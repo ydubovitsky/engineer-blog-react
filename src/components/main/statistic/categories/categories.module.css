@@ -13,22 +13,22 @@
 }
 
 .title {
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: bold;
   font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
 }
 
 .category {
   display: grid;
-  grid-template-rows: 1fr;
   grid-template-columns: 5fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 0.5rem 2rem;
+  width: 50%;
   align-items: center;
   grid-template-areas: "name count";
   border: 1px solid var(--secondary-text-color);
   border-radius: 5px;
-  padding: 0.5rem 2rem;
-  width: 50%;
 }
 
 .name {

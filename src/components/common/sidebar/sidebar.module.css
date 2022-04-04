@@ -33,6 +33,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -59,14 +60,14 @@
 }
 
 .menu {
+  display: grid;
   width: 200px;
   height: 250px;
   border-top: 3px solid black;
   border-right: 3px solid black;
   border-bottom: 3px solid black;
   border-radius: 0 5px 5px 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: grid;
+  background-color: rgb(0 0 0 / 90%);
   justify-items: center;
   align-items: center;
   color: white;
