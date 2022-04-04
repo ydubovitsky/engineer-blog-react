@@ -1,27 +1,55 @@
 .container {
   display: grid;
-  
+  box-shadow: 1px 1px 1px 1px silver;
 }
 
-.author {
+.title {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.commentsContainer {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 1fr;
+  padding: 25px;
+  gap: 25px;
+}
+
+.comment {
+  display: grid;
+  box-shadow: 1px 1px 1px 1px silver;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.even {
+  grid-template-columns: 1fr 1fr 5fr;
+  grid-template-areas: "avatar author text";
+}
+
+.uneven {
+  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-areas: "text author avatar";
 }
 
 .avatar img {
   border-radius: 50%;
 }
 
-.author {
-  display: grid;
-  grid-gap: 20px;
-  text-align: left;
-  align-content: center;
+.avatar {
+  grid-area: avatar;
 }
 
-.name {
-  font-size: 1.5rem;
+.author {
+  grid-area: author;
   font-weight: bold;
+}
+
+.text {
+  grid-area: text;
 }
