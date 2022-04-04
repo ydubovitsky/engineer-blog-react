@@ -7,6 +7,7 @@ import CommentForm from './comment-form/comment-form.component';
 import Comments from './comments/comments.component';
 import styles from './post-current.module.css';
 import SharedLinks from './shared-links/shared-links';
+import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import { useSelector } from "react-redux";
 import { postEntityByIdSelector } from '../../../redux/features/post/postSlice';
 import SubPost from "./subpost/subpost.component";
@@ -24,10 +25,13 @@ const PostCurrent = () => {
     disclosure,
     subPosts } = useSelector(state => postEntityByIdSelector(state, id));
 
+  const showSubPosts = (subPosts) => {
+    return subPosts?.map(subPost => <SubPost key={subPost.id} {...subPost} />)
+  }
+
   return (
     <div className={styles.container}>
-      {console.log(postImage)}
-      <img src={postImage ? `data:image/png;base64,${postImage}` : 'https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1'} alt="" />
+      <ByteImage byteImage={postImage} />
       <div className={styles.category}>{category}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.date}>{date}</div>
@@ -43,9 +47,9 @@ const PostCurrent = () => {
       <div className={styles.text}>
         <p>{text}</p>
       </div>
-
-      {subPosts?.map(subPost => <SubPost key={subPost.id} {...subPost} />)}
-
+      <div className={styles.subPostsContainer}>
+        {showSubPosts(subPosts)}
+      </div>
       <SharedLinks />
       <Author name={author} />
       <Comments />

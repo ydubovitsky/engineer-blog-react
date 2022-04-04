@@ -4,6 +4,7 @@ import {
 import styles from './post-list-item.module.css';
 import { useContext } from 'react';
 import { LangContext } from '../../../context/LangContext';
+import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 
 const PostListItem = ({ id, postImage, category, title, date, description }) => {
 
@@ -13,7 +14,7 @@ const PostListItem = ({ id, postImage, category, title, date, description }) => 
 
   return (
     <div className={styles.container}>
-      <img src={postImage ? `data:image/png;base64,${postImage}` : "https://i1.wp.com/demo.wpzoom.com/foodica/files/2013/01/FOX_7319-e1459676421430.jpg?resize=750%2C515&ssl=1"} alt="" />
+      <ByteImage byteImage={postImage} />
       <div className={styles.category}>{category}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.date}>{date}</div>

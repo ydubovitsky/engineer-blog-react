@@ -1,9 +1,10 @@
 import styles from './subpost.module.css';
+import ByteImage from '../../../common/hoc/byte-image/byte-image-component';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-const SubPost = ({ text, sourceCode, image, imageDescription }) => {
+const SubPost = ({ text, sourceCode, subPostImage, imageDescription }) => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>{text}</div>
@@ -17,7 +18,7 @@ const SubPost = ({ text, sourceCode, image, imageDescription }) => {
         >
           {sourceCode}
         </SyntaxHighlighter>
-        <img src={image} alt="" />
+        <ByteImage byteImage={subPostImage} />
         <div className={styles.description}>{imageDescription}</div>
       </div>
     </div>
