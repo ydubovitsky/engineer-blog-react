@@ -26,17 +26,19 @@ const Content = () => {
         </Switch>
       </div>
       <div className={styles.aside}>
-        <div className={styles.about}>
-          <AboutMe />
-        </div>
-        <div className={styles.follow}>
-          <FollowMe />
-        </div>
-        <div className={styles.subscribe}>
-          <Subscribe />
-        </div>
-        <div className={styles.search}>
-          <Search />
+        <div className={styles.sticky}>
+          <div className={styles.about}>
+            <AboutMe />
+          </div>
+          <div className={styles.follow}>
+            <FollowMe />
+          </div>
+          <div className={styles.subscribe}>
+            <Subscribe />
+          </div>
+          <div className={styles.search}>
+            <Search />
+          </div>
         </div>
       </div>
     </div>
