@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import {
-  Route, useRouteMatch, Switch
+  Route
 } from "react-router-dom";
 import Footer from "../../components/common/footer/footer.component";
+import Sidebar from '../../components/common/sidebar/sidebar.component';
 import ColumnWidgets from "../../components/main/column-widgets/column-widgets.component";
 import Content from "../../components/main/content/content.component";
 import Hero from "../../components/main/hero/hero.component";
@@ -12,17 +12,9 @@ import SignIn from "../../components/main/sign-in/sign-in.component";
 import SocialNavPanel from "../../components/main/social-nav-panel/social-nav-panel.component";
 import Statistic from "../../components/main/statistic/statistic.component";
 import TickerImage from "../../components/main/ticker-image/ticker-image.component";
-import { currentPageSelector } from '../../redux/features/post/postSlice';
-import Sidebar from '../../components/common/sidebar/sidebar.component';
 import styles from './main.module.css';
 
 const Main = () => {
-
-  let match = useRouteMatch();
-  const currentPage = useSelector(currentPageSelector);
-
-
-  console.log(match);
 
   return (
     <div className={styles.container}>

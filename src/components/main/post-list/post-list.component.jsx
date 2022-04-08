@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { LangContext } from '../../../context/LangContext';
 import {
   currentPageSelector, getPostPaging,
   postEntitiesSelector
 } from '../../../redux/features/post/postSlice';
 import PostListItem from '../post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
-import { useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
 
 const PostList = () => {
 
