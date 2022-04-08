@@ -6,6 +6,9 @@ const POST_PER_PAGE = 5;
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
+/**
+ * Add post to remote server
+ */
 export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
   const { auth } = getState();
   const { refForm, newPost } = args;
@@ -30,12 +33,15 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
   return response;
 });
 
+/**
+ * Get list of posts from remote server by page
+ */
 export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
   const { post } = getState();
 
   //FIXME checking if data already loaded 
-  const finded = post.postEntities.find(post => post.id === (page * POST_PER_PAGE) + 1);
-  if (finded) {
+  const found = post.postEntities.find(post => post.id === (page * POST_PER_PAGE) + 1);
+  if (found) {
     console.log('Data already loaded!');
     return null;
   }
@@ -52,8 +58,33 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
   return response;
 });
 
-// ------------------------------------- Slice -------------------------------------
+/**
+ * Get one post by id from remote server
+ */
+export const getPostById = createAsyncThunk("post/getPostById", async (postId, { getState }) => {
+  const { post } = getState();
 
+  //FIXME checking if data already loaded 
+  const found = post.postEntities.find(post => post.id === postId);
+  if (found) {
+    console.log('Data already loaded!');
+    return found;
+  }
+
+  const payload = {
+    path: `/api/post?id=${postId}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
+// ------------------------------------- Slice -------------------------------------
+//TODO Переработать state
 const initialState = {
   newPostEntity: {
     id: null,
@@ -136,6 +167,12 @@ const postSlice = createSlice({
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      //! Fetch post by id
+      //TODO Доработать бекэнд чтобы под именным объектом возвращал все
+      .addCase(getPostById.fulfilled, (state, action) => { 
+        state.postEntities.push(action.payload);
+        state.status = 'succeeded';
       })
   }
 });
