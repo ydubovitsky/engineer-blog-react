@@ -3,6 +3,18 @@
   padding: 50px 0;
   background-color: whitesmoke;
   box-shadow: 1px 1px 1px silver;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.container a {
+  color: black;
+  text-decoration: none;
+  transition: 0.3 ease;
+}
+
+.container a:hover {
+  font-weight: bold;
 }
 
 .container i {
