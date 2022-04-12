@@ -7,7 +7,7 @@ import callApi from '../../requests/callApi';
  * Get list of posts from remote server by page
  */
 //TODO Исправить семантику метода
-export const getPostPaging = createAsyncThunk("post/getPaging", async ({ getState }) => {
+export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getState }) => {
   const { post, pagination } = getState();
 
   //FIXME checking if data already loaded 

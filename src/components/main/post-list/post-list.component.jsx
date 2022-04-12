@@ -21,7 +21,7 @@ const PostList = () => {
   const { postList } = getLangData();
 
   useEffect(() => {
-    dispatch(getPostPaging(currentPage));
+    dispatch(getPostPaging());
   }, [currentPage]);
 
   const showPosts = (postsList) => {
