@@ -2,9 +2,10 @@ import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addPost, fillPostMainContent,
-  newPostSelector
-} from '../../../redux/features/post/postSlice';
+  addPost,
+  fillPostMainContent,
+  postFormEntitySelector
+} from '../../../redux/features/post-form/postFormSlice';
 import Input from '../input/input.component';
 import SubPost from '../subpost-form/subpost-form.component';
 import styles from './post-form.module.css';
@@ -15,7 +16,7 @@ const PostForm = () => {
   const [post, setPost] = useState();
   const [subPosts, setSubPosts] = useState([<SubPost index={0} />]);
   const refForm = useRef(null);
-  const newPost = useSelector(newPostSelector);
+  const newPost = useSelector(postFormEntitySelector);
 
   useEffect(() => {
     dispatch(fillPostMainContent(post));
@@ -64,7 +65,7 @@ const PostForm = () => {
         <button
           type="button"
           className={styles.button}
-          onClick={() => dispatch(addPost({refForm, newPost}))}
+          onClick={() => dispatch(addPost({ refForm, newPost }))}
         >Save Post <i className="fas fa-save"></i>
         </button>
       </div>

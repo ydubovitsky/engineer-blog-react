@@ -1,9 +1,8 @@
-import cn from 'classnames';
-import { useState, useEffect } from 'react';
-import styles from './subpost-form.module.css';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fillPostSubPostContent } from '../../../redux/features/post/postSlice';
+import { fillPostSubPostContent } from '../../../redux/features/post-form/postFormSlice';
 import Input from '../input/input.component';
+import styles from './subpost-form.module.css';
 
 const SubPost = ({ index }) => {
 

@@ -1,41 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApi from '../../requests/callApi';
-import { getAllNamedFilesFromForm } from '../../../utils/formData-utils';
 
 // ------------------------------------- AsyncThunk -------------------------------------
-
-/**
- * Add post to remote server
- */
-export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
-  const { auth } = getState();
-  const { refForm, newPost } = args;
-
-  //FIXME Вынести в отдельный метод
-  const files = getAllNamedFilesFromForm(refForm);
-  const body = new FormData();
-  files.forEach(file => body.append('files', file));
-  body.append('newPost', JSON.stringify(newPost));
-
-  const payload = {
-    path: '/api/post/add',
-    body: body,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': auth.authEntity.jwttoken
-    }
-  }
-  const response = await callApi(payload);
-  return response;
-});
 
 /**
  * Get list of posts from remote server by page
  */
 //TODO Исправить семантику метода
-export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
+export const getPostPaging = createAsyncThunk("post/getPaging", async ({ getState }) => {
   const { post, pagination } = getState();
 
   //FIXME checking if data already loaded 
@@ -86,19 +58,6 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
 // ------------------------------------- Slice -------------------------------------
 //TODO Переработать state
 const initialState = {
-  newPostEntity: {
-    id: null,
-    postImage: null,
-    category: null,
-    title: null,
-    date: null,
-    author: null,
-    disclosure: null,
-    description: null,
-    subPosts: [], //! Это массив объектов
-    status: 'idle',
-    error: null
-  },
   postEntities: [], //! Это массив объектов
   status: 'idle',
   error: null
@@ -107,30 +66,9 @@ const initialState = {
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {
-    fillPostMainContent(state, { payload }) {
-      state.newPostEntity = {
-        ...state.newPostEntity,
-        ...payload
-      }
-    },
-    fillPostSubPostContent(state, { payload }) {
-      const { index, subPost } = payload;
-      state.newPostEntity.subPosts[index] = subPost;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(addPost.pending, (state) => {
-        state.newPostEntity.status = 'loading';
-      })
-      .addCase(addPost.fulfilled, (state, action) => {
-        state.newPostEntity.status = 'succeeded';
-      })
-      .addCase(addPost.rejected, (state, action) => {
-        state.newPostEntity.status = 'failed';
-        state.newPostEntity.error = action.error.message;
-      })
       //! Fetch paging posts
       .addCase(getPostPaging.pending, (state) => {
         state.status = 'loading'
@@ -154,8 +92,6 @@ const postSlice = createSlice({
   }
 });
 
-export const { fillPostMainContent, fillPostSubPostContent } = postSlice.actions;
-
 // ------------------------------------- Selector -------------------------------------
 
 export const postEntitiesSelector = state => state.post.postEntities;
@@ -164,6 +100,5 @@ export const postEntityByIdSelector = (state, id) => {
 
   return postById;
 };
-export const newPostSelector = state => state.post.newPostEntity;
 
 export default postSlice.reducer;
