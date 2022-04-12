@@ -3,6 +3,10 @@
 ### Ошибка
 https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom
 
+# React injecting iframe with max z-index on reload after changes (development)
+https://stackoverflow.com/questions/69051008/react-injecting-iframe-with-max-z-index-on-reload-after-changes-development
+https://stackoverflow.com/questions/70499543/create-react-app-creates-this-iframe-that-prevents-me-from-clicking-or-editing
+
 ### Подсветка кода
 https://www.npmjs.com/package/react-syntax-highlighter
 
