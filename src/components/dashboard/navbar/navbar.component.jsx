@@ -1,13 +1,18 @@
 import styles from './navbar.module.css';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../redux/features/auth/authSlice';
 
 const Navbar = () => {
+
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.container}>
-      <p><i class="fas fa-user-shield"></i> Dashboard</p>
+      <Link to={"/dashboard"}><i class="fas fa-user-shield"></i> Dashboard</Link>
+      <Link to={"/"}>Main</Link>
       <Link to={"/dashboard/post-list"}>Post List</Link>
-      <Link to={"/main"}>Main</Link>
-      <Link to={"/main"}>Logout</Link>
+      <span onClick={() => dispatch(logout())}>Logout</span>
     </div>
   )
 }

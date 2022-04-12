@@ -1,14 +1,15 @@
 import cn from 'classnames';
-import { useState, useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './sign-in.module.css';
-import { login, authSelector } from '../../../redux/features/auth/authSlice';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LangContext } from '../../../context/LangContext';
+import { authSelector, login } from '../../../redux/features/auth/authSlice';
+import styles from './sign-in.module.css';
 
 const SignIn = ({ history }) => {
 
   const [form, setForm] = useState({});
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authEntity, status } = useSelector(authSelector);
   //Context
@@ -31,7 +32,7 @@ const SignIn = ({ history }) => {
   }
 
   if (authEntity.username) {
-    history.push("/");
+    navigate("/");
   }
 
   return (
@@ -40,6 +41,7 @@ const SignIn = ({ history }) => {
       <div className={styles.left}>
         <h1>{signIn.signIn}</h1>
         {showIsUserExist(status)}
+        {/* //TODO Внести в отдельный компонент формы */}
         <div className={cn(styles.form)}>
           <label htmlFor="username">{signIn.userName}</label>
           <input type="text" name="username" onChange={handleFormChange} />
@@ -68,4 +70,4 @@ const SignIn = ({ history }) => {
   )
 }
 
-export default withRouter(SignIn);
+export default SignIn;

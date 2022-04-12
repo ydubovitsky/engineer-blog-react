@@ -1,21 +1,21 @@
-import { authEntitySelector } from '../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
-import { Route } from 'react-router-dom';
-import PageNotFound from '../components/common/page-not-found/page-not-found.component';
+import {
+  Navigate,
+  Outlet,
+  useLocation
+} from 'react-router-dom';
+import { authEntitySelector } from '../redux/features/auth/authSlice';
 
-//TODO Добавить изменение ссылки!
-const ProtectedRoute = ({ path, children }) => {
+const ProtectedRoute = () => {
+
   const { username, jwttoken } = useSelector(authEntitySelector);
+  let location = useLocation();
 
-  if (username && jwttoken) {
-    return (<Route path={path}>
-      {children}
-    </Route>
-    )
+  if (!username && !jwttoken) {
+    return <Navigate to="/sign-in" state={{ from: location }} />;
   }
-  return <Route to={"/page-not-found"}>
-    <PageNotFound message={"You do not have access rights, please log in!"} />
-  </Route>
+
+  return <Outlet />;
 }
 
 export default ProtectedRoute;

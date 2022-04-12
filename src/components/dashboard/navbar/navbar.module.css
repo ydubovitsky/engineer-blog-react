@@ -4,6 +4,7 @@
   background-color: whitesmoke;
   box-shadow: 1px 1px 1px silver;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
   align-items: center;
 }
 
@@ -13,11 +14,11 @@
   transition: 0.3 ease;
 }
 
-.container a:hover {
+.container a:hover,
+.container span:hover {
   font-weight: bold;
 }
 
-.container i {
-  color: black;
-  font-size: 2rem;
+.container span {
+  cursor: pointer;
 }
