@@ -13,11 +13,11 @@ const RecPosts = ({ id }) => {
       <div className={styles.title}>Recommended Posts</div>
       <div className={styles.previousPost}>
         <p>{previousPost?.title}</p>
-        <ByteImage byteImage={previousPost?.postImage} />
+        <ByteImage byteImage={previousPost?.postImage.byteImage} />
       </div>
       <div className={styles.nextPost}>
         <p>{previousPost?.title}</p>
-        <ByteImage byteImage={nextPost?.postImage} />
+        <ByteImage byteImage={nextPost?.postImage.byteImage} />
       </div>
     </div>
   )

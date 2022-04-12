@@ -20,7 +20,7 @@ const PostListItem = ({ id, postImage, category, title, date, description }) => 
 
   return (
     <div className={styles.container}>
-      <ByteImage byteImage={postImage} />
+      <ByteImage byteImage={postImage.byteImage} />
       <div className={styles.category}>{category}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.date}>{date}</div>

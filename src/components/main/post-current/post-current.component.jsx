@@ -37,7 +37,7 @@ const PostCurrent = () => {
 
   return (
     <div className={styles.container}>
-      <ByteImage byteImage={post.postImage} />
+      <ByteImage byteImage={post.postImage.byteImage} />
       <div className={styles.category}>{post.category}</div>
       <div className={styles.title}>{post.title}</div>
       <div className={styles.date}>{post.date}</div>
