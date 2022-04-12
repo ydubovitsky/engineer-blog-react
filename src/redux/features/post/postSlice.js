@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApi from '../../requests/callApi';
 import { getAllNamedFilesFromForm } from '../../../utils/formData-utils';
 
-const POST_PER_PAGE = 5;
-
 // ------------------------------------- AsyncThunk -------------------------------------
 
 /**
@@ -36,18 +34,20 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
 /**
  * Get list of posts from remote server by page
  */
+//TODO Исправить семантику метода
 export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
-  const { post } = getState();
+  const { post, pagination } = getState();
 
   //FIXME checking if data already loaded 
-  const found = post.postEntities.find(post => post.id === (page * POST_PER_PAGE) + 1);
+  const found = post.postEntities.find(post => 
+    post.id === (pagination.currentPage * pagination.postPerPage) + 1);
   if (found) {
     console.log('Data already loaded!');
     return null;
   }
 
   const payload = {
-    path: `/api/post?page=${page}`,
+    path: `/api/post?page=${pagination.currentPage}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -100,8 +100,6 @@ const initialState = {
     error: null
   },
   postEntities: [], //! Это массив объектов
-  currentPage: 0,
-  maxPageCount: null,
   status: 'idle',
   error: null
 }
@@ -120,25 +118,6 @@ const postSlice = createSlice({
       const { index, subPost } = payload;
       state.newPostEntity.subPosts[index] = subPost;
     },
-    changeCurrentPage(state, { payload }) {
-      switch (payload) {
-        case 'next': {
-          if (state.currentPage >= state.maxPageCount) break;
-          state.currentPage += 1;
-          break;
-        }
-        case 'previous': {
-          if (state.currentPage === 0) break;
-          state.currentPage -= 1;
-          break;
-        }
-        case 'init': {
-          state.currentPage = 0;
-          break;
-        }
-        default: return state.currentPage;
-      }
-    }
   },
   extraReducers(builder) {
     builder
@@ -158,11 +137,9 @@ const postSlice = createSlice({
       })
       .addCase(getPostPaging.fulfilled, (state, action) => { //TODO Обрати внимание, что этот метод не отрабатывает!
         state.status = 'succeeded';
-        const { allPostsCount, pagingPosts } = action.payload;
+        const { pagingPosts } = action.payload;
 
         state.postEntities.push(...pagingPosts);
-        state.maxPageCount
-          = Math.ceil(allPostsCount / POST_PER_PAGE);
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -177,7 +154,7 @@ const postSlice = createSlice({
   }
 });
 
-export const { fillPostMainContent, fillPostSubPostContent, changeCurrentPage } = postSlice.actions;
+export const { fillPostMainContent, fillPostSubPostContent } = postSlice.actions;
 
 // ------------------------------------- Selector -------------------------------------
 
@@ -187,8 +164,6 @@ export const postEntityByIdSelector = (state, id) => {
 
   return postById;
 };
-export const currentPageSelector = state => state.post.currentPage;
 export const newPostSelector = state => state.post.newPostEntity;
-export const maxPageCountSelector = state => state.post.maxPageCount;
 
 export default postSlice.reducer;

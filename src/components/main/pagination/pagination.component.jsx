@@ -1,24 +1,37 @@
 import cn from 'classnames';
+import { useEffect } from 'react';
 import {
   useDispatch,
   useSelector
 } from 'react-redux';
 import {
   Link,
-  useHistory
+  useParams
 } from "react-router-dom";
 import {
   changeCurrentPage,
   currentPageSelector,
-  maxPageCountSelector
-} from '../../../redux/features/post/postSlice';
+  maxPageCountSelector,
+  getPostsCount,
+  setCurrentPageNumber
+} from '../../../redux/features/pagination/paginationSlice';
 import styles from './pagination.module.css';
 
 const Pagination = () => {
 
   const dispatch = useDispatch();
+  const params = useParams();
   const currentPage = useSelector(currentPageSelector);
   const maxPageCount = useSelector(maxPageCountSelector);
+
+  //TODO Вынести в отдельную функцию?
+  useEffect(() => {
+    dispatch(getPostsCount());
+    const { page } = params;
+    if (page) {
+      dispatch(setCurrentPageNumber(parseInt(page)));
+    }
+  }, []);
 
   return (
     <div className={styles.container}>

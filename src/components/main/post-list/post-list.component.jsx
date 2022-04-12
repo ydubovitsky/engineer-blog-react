@@ -2,9 +2,12 @@ import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LangContext } from '../../../context/LangContext';
 import {
-  currentPageSelector, getPostPaging,
+  getPostPaging,
   postEntitiesSelector
 } from '../../../redux/features/post/postSlice';
+import {
+  currentPageSelector
+} from '../../../redux/features/pagination/paginationSlice';
 import PostListItem from '../post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
 
