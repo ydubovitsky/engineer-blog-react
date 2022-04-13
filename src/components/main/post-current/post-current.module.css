@@ -5,9 +5,35 @@
   text-align: center;
 }
 
-p {
-  text-indent: 1.5rem;
-  text-align: left;
+.postDescription {
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "author date category"
+    "description description description"
+  ;
+}
+
+.postDescription span {
+  color: silver;
+}
+
+.author {
+  grid-area: author;
+}
+
+.date {
+  grid-area: date;
+}
+
+.description {
+  grid-area: description;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .container img {
@@ -15,13 +41,13 @@ p {
 }
 
 .category {
-  text-transform: uppercase;
   color: var(--secondary-text-color);
 }
 
 .title {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: bold;
+  line-height: 2.2rem;
   transition: 0.2s ease;
 }
 
@@ -40,36 +66,63 @@ p {
 
 .nav {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto auto;
-  grid-template-rows: 1fr;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
   justify-content: center;
 }
 
 .nav button {
-  display: inline-block;
-  padding: 15px 30px;
-  padding: 10px;
-  width: auto;
-  font-size: 12px;
-  font-weight: bold;
-  font-weight: 700;
+  padding: 8px 12px;
+  background: #fff;
+  cursor: pointer;
+  font-family: "Roboto Condensed",sans-serif;
   text-transform: uppercase;
-  background: none;
-  border: 1px solid var(--secondary-text-color);
-  border-radius: 5px;
-  font-family: "Inter",sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  transition: .1s ease all;
-  border-radius: 3px;
-  font-style: normal;
-  text-decoration: none;
-  color: #fff;
-  line-height: 1.2;
-  background-color: #222;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #363940;
   border: none;
-  box-shadow: none;
-  margin-right: 10px;
-  margin-bottom: 15px;
+  color: #fff;
+  border-radius: 2px;
+  transition: .2s ease all;
+  border-color: transparent;
+}
+
+.nav button:hover {
+  color: #222;
+  line-height: 1.2;
+  background-color: rgb(209, 209, 209);
+}
+
+.subPostsContainer {
+  text-align: left;
+}
+
+.text p {
+  text-indent: 1.5em;
+  text-align: left;
+}
+
+.conclusion {
+  display: grid;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 40px 0;
+  border-top: 2px solid #eee;
+}
+
+.conclusion .title {
+  line-height: 1.5rem;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.conclusion p {
+  text-align: left;
 }

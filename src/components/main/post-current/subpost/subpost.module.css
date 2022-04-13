@@ -1,0 +1,10 @@
+.text {
+  text-indent: 3em;
+  text-align: left;
+}
+
+.description {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
+}

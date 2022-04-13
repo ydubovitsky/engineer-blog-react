@@ -4,9 +4,9 @@ import { fillPostSubPostContent } from '../../../redux/features/post-form/postFo
 import Input from '../input/input.component';
 import styles from './subpost-form.module.css';
 
-const SubPost = ({ index }) => {
+const SubPost = ({ index, state }) => {
 
-  const [subPost, setSubPost] = useState();
+  const [subPost, setSubPost] = useState(state);
   const dispatch = useDispatch();
 
   const handlerInputForm = (event) => {
@@ -23,10 +23,11 @@ const SubPost = ({ index }) => {
 
   return (
     <div className={styles.container}>
-      <Input name="text" type="textarea" handler={{ onChange: handlerInputForm }} />
-      <Input name="sourceCode" type="textarea" handler={{ onChange: handlerInputForm }} />
+      <Input name="text" type="textarea" value={subPost?.text} handler={{ onChange: handlerInputForm }} />
+      <Input name="sourceCode" type="textarea" value={subPost?.sourceCode} handler={{ onChange: handlerInputForm }} />
+      {/* //TODO Value я картинки не работает! */}
       <Input name={`image_${index}`} type="image" handler={{ onChange: handlerInputForm }} />
-      <Input name="imageDescription" type="text" handler={{ onChange: handlerInputForm }} />
+      <Input name="imageDescription" type="text" value={subPost?.imageDescription} handler={{ onChange: handlerInputForm }} />
     </div>
   )
 }

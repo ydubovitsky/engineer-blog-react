@@ -45,3 +45,6 @@ https://blogs.perficient.com/2020/07/27/requestbody-and-multipart-on-spring-boot
 ### Map String/JSON to Java Object
 https://stackoverflow.com/questions/45110371/no-string-argument-constructor-factory-method-to-deserialize-from-string-value/56323851
 https://www.baeldung.com/jackson-deserialize-json-unknown-properties
+
+### react-router-dom v6 useNavigate passing value to another component
+https://stackoverflow.com/questions/64566405/react-router-dom-v6-usenavigate-passing-value-to-another-component

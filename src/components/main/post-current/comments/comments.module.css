@@ -1,6 +1,8 @@
 .container {
   display: grid;
-  box-shadow: 1px 1px 1px 1px silver;
+  box-sizing: border-box;
+  padding: 40px 0;
+  border-top: 2px solid #eee;
 }
 
 .title {
@@ -16,15 +18,15 @@
 
 .commentsContainer {
   display: grid;
-  padding: 25px;
   gap: 25px;
 }
 
 .comment {
   display: grid;
-  box-shadow: 1px 1px 1px 1px silver;
   align-items: center;
-  border-radius: 25px;
+  box-sizing: border-box;
+  padding: 40px 0;
+  border-top: 2px solid #eee;
 }
 
 .even {

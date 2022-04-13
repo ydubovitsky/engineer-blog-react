@@ -4,12 +4,6 @@
   justify-items: center;
 }
 
-.hr {
-  width: 50px;
-  height: 2px;
-  background-color: #E5E5E5;
-}
-
 .linksContainer {
   display: grid;
   grid-template-columns: repeat(4, minmax(150px, auto));
@@ -18,20 +12,20 @@
   justify-content: center;
 }
 
-.link {
-  display: inline-block;
-  margin: 0 10px 4px;
-  padding: 6px 15px;
-  font-size: 14px;
-  font-weight: 700;
+.linksContainer a {
   line-height: 1.6;
   text-align: center;
   box-sizing: border-box;
+  display: inline-block;
   text-decoration: none;
+  font-size: 14px;
   color: #fff;
+  padding: 6px 15px;
   border-radius: 3px;
+  margin: 0 10px 4px;
   transition: all .3s ease-out;
-  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  font-family: "Roboto Condensed",sans-serif;
   text-transform: uppercase;
 }
 
@@ -42,9 +36,13 @@
 }
 
 .facebook {
-  background-color: white;
+  background-color: rgb(104, 255, 91);
 }
 
-.print {
-  background-color: white;
+.vk {
+  background-color: rgb(255, 89, 89);
+}
+
+.telegram {
+  background-color: rgb(222, 89, 255);
 }

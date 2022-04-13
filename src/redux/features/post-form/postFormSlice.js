@@ -31,6 +31,33 @@ export const addPost = createAsyncThunk("postForm/add", async (args, { getState 
   return response;
 });
 
+/**
+ * Add post to remote server
+ */
+export const updatePost = createAsyncThunk("postForm/update", async (args, { getState }) => {
+  const { auth } = getState();
+  const { refForm, newPost } = args;
+
+  //FIXME Вынести в отдельный метод
+  const files = getAllNamedFilesFromForm(refForm);
+  const body = new FormData();
+  files.forEach(file => body.append('files', file));
+  body.append('newPost', JSON.stringify(newPost));
+
+  const payload = {
+    path: '/api/post/update',
+    body: body,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
 // ------------------------------------- Slice -------------------------------------
 //TODO Переработать state
 const initialState = {
