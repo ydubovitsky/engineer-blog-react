@@ -16,9 +16,15 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  line-height: 2rem;
   transition: 0.2s ease;
+}
+
+.date {
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .title:hover {
@@ -26,7 +32,7 @@
 }
 
 .description {
-  text-align: left;
+  text-align: center;
 }
 
 .button {
@@ -34,14 +40,19 @@
   padding: 15px 30px;
   font-weight: bold;
   background: none;
-  border: 1px solid var(--secondary-text-color);
-  box-shadow: 1px 1px 1px silver;
+  border: 1px solid rgb(190, 190, 190);
   border-radius: 5px;
   cursor: pointer;
+  transition: .2s ease all;
 }
 
 .button a {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+.button:hover {
+  background-color: #363940;
+  color: #fff;
 }

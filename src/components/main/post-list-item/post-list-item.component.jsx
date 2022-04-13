@@ -7,7 +7,7 @@ import { LangContext } from '../../../context/LangContext';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from '../../common/loader-content/loader-content.component';
 
-const PostListItem = ({ id, postImage, category, title, date, description }) => {
+const PostListItem = ({ id, postImage, category, title, createAt, description }) => {
 
   //Context
   const { getLangData } = useContext(LangContext);
@@ -21,13 +21,13 @@ const PostListItem = ({ id, postImage, category, title, date, description }) => 
   return (
     <div className={styles.container}>
       <ByteImage byteImage={postImage.byteImage} />
-      <div className={styles.category}>{category}</div>
+      <div className={styles.category}><span>Category - </span> {category}</div>
       <div className={styles.title}>{title}</div>
-      <div className={styles.date}>{date}</div>
+      <div className={styles.date}><span>Created at </span>{createAt}</div>
       <div className={styles.description}>
-        <p>{description}</p>
+        {description}
       </div>
-      <button className={styles.button}><Link to={`/main/post/${id}`}>{postListItem.button}</Link></button>
+      <Link to={`/main/post/${id}`}><button className={styles.button}>{postListItem.button}</button></Link>
     </div>
   )
 }

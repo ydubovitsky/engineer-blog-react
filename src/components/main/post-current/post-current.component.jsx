@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {
   useNavigate, useParams
 } from "react-router-dom";
+import { useReactToPrint } from 'react-to-print';
 import { authEntitySelector } from '../../../redux/features/auth/authSlice';
 import { getPostById, postEntityByIdSelector } from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
@@ -19,6 +20,7 @@ const PostCurrent = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const printRef = useRef();
 
   const post = useSelector(state => postEntityByIdSelector(state, id));
   const { username, jwttoken } = useSelector(authEntitySelector);
@@ -44,12 +46,16 @@ const PostCurrent = () => {
     }
   }
 
+  const handlerPrint = useReactToPrint({
+    content: () => printRef.current
+  })
+
   if (post === undefined) {
     return <LoaderContent />
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={printRef}>
       <ByteImage byteImage={post.postImage.byteImage} />
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>
@@ -63,7 +69,7 @@ const PostCurrent = () => {
       <div className={styles.disclosure}>{post.disclosure}</div>
       <div className={styles.nav}>
         <button>Jump to code</button>
-        <button>Print Article</button>
+        <button onClick={handlerPrint}>Print Article</button>
         {showActionPostButtons()}
       </div>
       <div className={styles.text}>

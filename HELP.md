@@ -48,3 +48,6 @@ https://www.baeldung.com/jackson-deserialize-json-unknown-properties
 
 ### react-router-dom v6 useNavigate passing value to another component
 https://stackoverflow.com/questions/64566405/react-router-dom-v6-usenavigate-passing-value-to-another-component
+
+### Print page library
+https://medium.com/nerd-for-tech/react-to-pdf-printing-f469cc99b24a
