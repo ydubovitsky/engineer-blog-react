@@ -7,10 +7,12 @@ import styles from './App.css';
 import Pagination from "./components/main/pagination/pagination.component";
 import PostCurrent from "./components/main/post-current/post-current.component";
 import PostList from "./components/main/post-list/post-list.component";
+import PostListDashBoard from "./components/dashboard/post-list/post-list.component";
 import SignIn from "./components/main/sign-in/sign-in.component";
 import Dashboard from './layouts/dashboard/dashboard.layout.jsx';
 import Main from './layouts/main/main.layout';
 import ProtectedRoute from "./wrapper/protectedRoute";
+import PostForm from "./components/dashboard/post-form/post-form.component";
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="post-list" element={<PostList />}></Route>
+            <Route path="post-form" element={<PostForm/>}/>
+            <Route path="post-list" element={<PostListDashBoard />} />
           </Route>
         </Route>
         {/* //! Default Redirect */}

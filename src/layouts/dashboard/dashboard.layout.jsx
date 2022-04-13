@@ -1,7 +1,7 @@
-import styles from './dashboard.module.css';
-import Navbar from '../../components/dashboard/navbar/navbar.component';
-import PostForm from '../../components/dashboard/post-form/post-form.component';
 import cn from 'classnames';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../../components/dashboard/navbar/navbar.component';
+import styles from './dashboard.module.css';
 
 const Dashboard = () => {
   return (
@@ -10,7 +10,7 @@ const Dashboard = () => {
         <Navbar />
       </div>
       <div className={styles.postForm}>
-        <PostForm />
+        <Outlet/>
       </div>
     </div>
   )

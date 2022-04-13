@@ -11,6 +11,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <Link to={"/dashboard"}><i class="fas fa-user-shield"></i> Dashboard</Link>
       <Link to={"/"}>Main</Link>
+      <Link to={"/dashboard/post-form"}>Post Form</Link>
       <Link to={"/dashboard/post-list"}>Post List</Link>
       <span onClick={() => dispatch(logout())}>Logout</span>
     </div>

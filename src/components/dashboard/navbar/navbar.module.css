@@ -3,7 +3,7 @@
   padding: 50px 0;
   background-color: whitesmoke;
   box-shadow: 1px 1px 1px silver;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
 }
