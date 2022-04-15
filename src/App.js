@@ -15,18 +15,20 @@ import ProtectedRoute from "./wrapper/protectedRoute";
 import PostForm from "./components/dashboard/post-form/post-form.component";
 
 function App() {
+
   return (
     <div className={styles.container}>
       <Routes>
         {/* //TODO Додумать навигацию */}
-        <Route path="main" element={<Main />}>
+        <Route path="/main" element={<Main />}>
+          {/* //TODO Переделать! Объединить в один компонент! */}
           <Route path=":page" element={<><PostList /><Pagination /></>} />
-          <Route path="login" element={<SignIn />} />
           <Route path="post/:id" element={<PostCurrent />} />
+          <Route path="login" element={<SignIn />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="post-form" element={<PostForm/>}/>
+            <Route path="post-form" element={<PostForm />} />
             <Route path="post-list" element={<PostListDashBoard />} />
           </Route>
         </Route>

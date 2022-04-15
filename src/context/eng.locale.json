@@ -80,5 +80,13 @@
     "hello": "Hello, Friend!",
     "text": "Register to gain access to all the features of the blog",
     "signUp": "Sign Up"
+  },
+  "signUp": {
+    "error": "User already exists",
+    "signUp": "Registration",
+    "userName": "Username",
+    "password": "Password",
+    "email": "Email",
+    "cancel": "Cancel"
   }
 }
