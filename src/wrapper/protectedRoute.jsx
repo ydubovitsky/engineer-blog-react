@@ -4,14 +4,14 @@ import {
   Outlet,
   useLocation
 } from 'react-router-dom';
-import { authEntitySelector } from '../redux/features/auth/authSlice';
+import { isAuthEntitySuperAdminSelector } from '../redux/features/auth/authSlice';
 
 const ProtectedRoute = () => {
 
-  const { username, jwttoken } = useSelector(authEntitySelector);
+  const isAuthEntitySuperAdmin = useSelector(isAuthEntitySuperAdminSelector);
   let location = useLocation();
 
-  if (!username && !jwttoken) {
+  if (!isAuthEntitySuperAdmin) {
     return <Navigate to="/sign-in" state={{ from: location }} />;
   }
 

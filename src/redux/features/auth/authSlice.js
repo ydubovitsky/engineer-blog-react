@@ -93,5 +93,6 @@ export const { logout } = authSlice.actions;
 export const authSelector = state => state.auth;
 export const authStatusSelector = state => state.auth.status;
 export const authEntitySelector = state => state.auth.authEntity;
+export const isAuthEntitySuperAdminSelector = state => state.auth.authEntity.roles?.includes('SUPER_ADMIN');
 
 export default authSlice.reducer;
