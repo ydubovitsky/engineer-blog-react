@@ -73,18 +73,15 @@ const postSlice = createSlice({
       .addCase(getPostPaging.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(getPostPaging.fulfilled, (state, action) => { //TODO Обрати внимание, что этот метод не отрабатывает!
+      .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        const { pagingPosts } = action.payload;
-
-        state.postEntities.push(...pagingPosts);
+        state.postEntities.push(...action.payload);
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
       //! Fetch post by id
-      //TODO Доработать бекэнд чтобы под именным объектом возвращал все
       .addCase(getPostById.fulfilled, (state, action) => { 
         state.postEntities.push(action.payload);
         state.status = 'succeeded';
