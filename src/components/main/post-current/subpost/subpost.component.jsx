@@ -18,7 +18,7 @@ const SubPost = ({ text, sourceCode, subPostImage, imageDescription }) => {
         >
           {sourceCode}
         </SyntaxHighlighter>
-        <ByteImage byteImage={subPostImage.byteImage} />
+        <ByteImage byteImage={subPostImage?.byteImage} />
         <div className={styles.description}>{imageDescription}</div>
       </div>
     </div>
