@@ -55,6 +55,25 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
   return response;
 });
 
+/**
+ * Get one post by id from remote server
+ */
+ export const deletePostById = createAsyncThunk("post/getPostById", async (id, { getState }) => {
+  const { auth } = getState();
+
+  const payload = {
+    path: `/api/post/delete/${id}`,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
 // ------------------------------------- Slice -------------------------------------
 //TODO Переработать state
 const initialState = {

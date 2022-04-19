@@ -5,7 +5,11 @@ import {
 } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
 import { authEntitySelector } from '../../../redux/features/auth/authSlice';
-import { getPostById, postEntityByIdSelector } from '../../../redux/features/post/postSlice';
+import {
+  getPostById,
+  postEntityByIdSelector,
+  deletePostById
+} from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from "../../common/loader-content/loader-content.component";
 import Author from './author/author.component';
@@ -40,7 +44,7 @@ const PostCurrent = () => {
       return (
         <>
           <button onClick={() => navigate('/dashboard/post-form', { state: post })}>Edit Article</button>
-          <button>Delete Article</button>
+          <button onClick={() => dispatch(deletePostById(id))}>Delete Article</button>
         </>
       )
     }
