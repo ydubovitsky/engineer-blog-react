@@ -8,6 +8,7 @@ import NavPanel from "../../components/main/nav-panel/nav-panel.component";
 import SocialNavPanel from "../../components/main/social-nav-panel/social-nav-panel.component";
 import Statistic from "../../components/main/statistic/statistic.component";
 import TickerImage from "../../components/main/ticker-image/ticker-image.component";
+import UpButton from "../../components/main/up-button/up-button.component";
 import styles from './main.module.css';
 
 const Main = () => {
@@ -26,6 +27,7 @@ const Main = () => {
       </div>
       <TickerImage />
       <Statistic />
+      <UpButton />
       <Footer />
     </div>
   )
