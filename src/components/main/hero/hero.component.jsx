@@ -21,10 +21,11 @@ const Hero = () => {
 
   const showDotsElements = () => {
     return images.map((_, idx) => {
-      return <div className={cn(styles.dot, idx === currentSlide ? styles.dotActive : '')}></div>
+      return <div key={idx} className={cn(styles.dot, idx === currentSlide ? styles.dotActive : '')}></div>
     })
   }
 
+  //TODO Вынести функцию в утилитный класс!
   // Плавный скролл на основной контент!
   const scrollToContentHandler = () => {
     const anchor = document.getElementById('container');

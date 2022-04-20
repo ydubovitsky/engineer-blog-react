@@ -11,7 +11,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getS
   const { post, pagination } = getState();
 
   //FIXME checking if data already loaded 
-  const found = post.postEntities.find(post => 
+  const found = post.postEntities.find(post =>
     post.id === (pagination.currentPage * pagination.postPerPage) + 1);
   if (found) {
     console.log('Data already loaded!');
@@ -58,12 +58,31 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
 /**
  * Get one post by id from remote server
  */
- export const deletePostById = createAsyncThunk("post/getPostById", async (id, { getState }) => {
+export const deletePostById = createAsyncThunk("post/getPostById", async (id, { getState }) => {
   const { auth } = getState();
 
   const payload = {
     path: `/api/post/delete/${id}`,
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
+/**
+ * Get post list with Text Contains
+ */
+export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", async (title, { getState }) => {
+  const { auth } = getState();
+
+  const payload = {
+    path: `/api/post/search?title=${title}`,
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -101,8 +120,14 @@ const postSlice = createSlice({
         state.error = action.error.message;
       })
       //! Fetch post by id
-      .addCase(getPostById.fulfilled, (state, action) => { 
+      .addCase(getPostById.fulfilled, (state, action) => {
         state.postEntities.push(action.payload);
+        state.status = 'succeeded';
+      })
+      //! Fetch Posts By TextContains
+      .addCase(getPostsByTitle.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.postEntities = action.payload;
         state.status = 'succeeded';
       })
   }
