@@ -11,7 +11,7 @@ import styles from './content.module.css';
 const Content = () => {
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="container">
       <div className={styles.posts}>
         {/* TODO Может переделать как то? Мб семантику изменить */}
         <Outlet />
