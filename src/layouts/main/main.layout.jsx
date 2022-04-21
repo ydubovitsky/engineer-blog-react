@@ -1,3 +1,4 @@
+import CookieAlert from "../../components/common/cookie-alert/cookie-alert.component";
 import Footer from "../../components/common/footer/footer.component";
 import Sidebar from '../../components/common/sidebar/sidebar.component';
 import ColumnWidgets from "../../components/main/column-widgets/column-widgets.component";
@@ -26,6 +27,7 @@ const Main = () => {
         <Content />
       </div>
       <TickerImage />
+      <CookieAlert/>
       <Statistic />
       <UpButton />
       <Footer />

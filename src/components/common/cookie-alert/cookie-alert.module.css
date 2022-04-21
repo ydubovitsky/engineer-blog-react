@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--third-bg-color);
+  text-align: justify;
+  padding: 1%;
+  font-size: 0.9rem;
+  box-shadow: 1px 1px 1px 1px black;
+  opacity: 0.8;
+}
+
+.container i {
+  font-size: 1rem;
+}
+
+.container p {
+  font-style: italic;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(-50%) translateY(-50%);
+}

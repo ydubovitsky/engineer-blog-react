@@ -88,5 +88,8 @@
     "password": "Password",
     "email": "Email",
     "cancel": "Cancel"
+  },
+  "cookieAlert": {
+    "text": "This site uses cookies and similar technologies to provide you with the best user experience. By using this site, you agree to the use of cookies in accordance with this notice in relation to this type of files. If you do not agree to our use of this type of file, then you must set your browser settings accordingly or not use this site."
   }
 }
