@@ -93,6 +93,23 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
   return response;
 });
 
+/**
+ * Get post list with Text Contains
+ */
+ export const increasePostViewById = createAsyncThunk("post/increasePostViewById", async (id) => {
+
+  const payload = {
+    path: `/api/post/view/${id}`,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
 // ------------------------------------- Slice -------------------------------------
 //TODO Переработать state
 const initialState = {

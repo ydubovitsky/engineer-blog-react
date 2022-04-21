@@ -8,7 +8,8 @@ import { authEntitySelector } from '../../../redux/features/auth/authSlice';
 import {
   getPostById,
   postEntityByIdSelector,
-  deletePostById
+  deletePostById,
+  increasePostViewById
 } from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from "../../common/loader-content/loader-content.component";
@@ -29,9 +30,15 @@ const PostCurrent = () => {
   const post = useSelector(state => postEntityByIdSelector(state, id));
   const { username, jwttoken } = useSelector(authEntitySelector);
 
+  /**
+   * Если поста нет в стейте, происходит запрос получения данных с id поста,
+   * в противном случае, делается запрос на изменение количества просмотров
+   */
   useEffect(() => {
     if (post === undefined) {
       dispatch(getPostById(id));
+    } else {
+      dispatch(increasePostViewById(id))
     }
   }, [])
 
