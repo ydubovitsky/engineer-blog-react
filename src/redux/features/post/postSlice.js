@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApi from '../../requests/callApi';
 
+const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
+
 // ------------------------------------- AsyncThunk -------------------------------------
 
 /**
@@ -96,7 +98,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
 /**
  * Get post list with Text Contains
  */
- export const increasePostViewById = createAsyncThunk("post/increasePostViewById", async (id) => {
+export const increasePostViewById = createAsyncThunk("post/increasePostViewById", async (id) => {
 
   const payload = {
     path: `/api/post/view/${id}`,
@@ -166,7 +168,25 @@ export const arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector = state => {
   for (var i = 0; i < arr.length; i++) {
     categoriesWithCount[arr[i]] = 1 + (categoriesWithCount[arr[i]] || 0);
   }
-  return Array.from(new Map(Object.entries(categoriesWithCount)));
+  return Array.from(new Map(Object.entries(categoriesWithCount))).slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+}
+
+/**
+ * !Метод возвращает массив объектов вида {id: ..., title: ..., views: ...}
+ */
+export const mostPopularPostsSelector = state => {
+  return state.post.postEntities
+  .slice()
+  .sort((a, b) => a.views - b.views)
+  .reverse()
+  .map(post => {
+    return {
+      id: post.id,
+      title: post.title,
+      views: post.views
+    }
+  })
+  .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
 }
 
 export default postSlice.reducer;

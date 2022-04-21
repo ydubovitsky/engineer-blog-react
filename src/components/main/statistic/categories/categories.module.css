@@ -23,7 +23,8 @@
   display: grid;
   grid-template-columns: 5fr 1fr;
   grid-template-rows: 1fr;
-  padding: 0.5rem 2rem;
+  padding: 2% 5%;
+  gap: 5%;
   width: 50%;
   align-items: center;
   grid-template-areas: "name count";
