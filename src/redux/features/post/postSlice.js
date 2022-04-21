@@ -137,9 +137,19 @@ const postSlice = createSlice({
 
 export const postEntitiesSelector = state => state.post.postEntities;
 export const postEntityByIdSelector = (state, id) => {
-  const postById = state.post.postEntities.filter(post => post.id == id)[0]; //FIXME НЕ строгое равенство
-
-  return postById;
+  return state.post.postEntities.filter(post => post.id == id)[0]; //FIXME НЕ строгое равенство
 };
+
+/**
+ * !Метод возвращает массив вида [[имя категории: количество постов с данной категорией], [...], ...]
+ */
+export const arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector = state => {
+  const arr = state.post.postEntities.map(post => post.category);
+  const categoriesWithCount = {};
+  for (var i = 0; i < arr.length; i++) {
+    categoriesWithCount[arr[i]] = 1 + (categoriesWithCount[arr[i]] || 0);
+  }
+  return Array.from(new Map(Object.entries(categoriesWithCount)));
+}
 
 export default postSlice.reducer;
