@@ -2,17 +2,8 @@ import { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { LangContext } from '../../../context/LangContext';
 import { getPostsByTitle } from '../../../redux/features/post/postSlice';
+import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
 import styles from './search.module.css';
-
-// Плавный скролл на основной контент!
-const scrollToContentHandler = () => {
-  const anchor = document.getElementById('container');
-
-  anchor.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  })
-}
 
 const Search = ({ isShowTitle, style }) => {
 
@@ -42,7 +33,7 @@ const Search = ({ isShowTitle, style }) => {
           style={{...style?.button}}
           onClick={() => {
             dispatch(getPostsByTitle(searchString));
-            scrollToContentHandler();
+            smoothScrollToElement('container');
           }}
         >{search.button}</button>
       </div>

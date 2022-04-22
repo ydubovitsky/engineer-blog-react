@@ -2,6 +2,7 @@ import cn from 'classnames';
 import styles from './hero.module.css';
 import { useContext, useState } from 'react';
 import { LangContext } from '../../../context/LangContext';
+import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
 import one from '../../../images/slider/1.avif';
 import two from '../../../images/slider/2.jpg';
 import three from '../../../images/slider/3.avif';
@@ -25,17 +26,6 @@ const Hero = () => {
     })
   }
 
-  //TODO Вынести функцию в утилитный класс!
-  // Плавный скролл на основной контент!
-  const scrollToContentHandler = () => {
-    const anchor = document.getElementById('container');
-
-    anchor.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  }
-
   return (
     <div className={styles.container} style={{ backgroundImage: `url(${images[currentSlide]})` }}>
       <div className={styles.overlay}>
@@ -49,7 +39,7 @@ const Hero = () => {
           <div className={styles.text}>
             <p>{hero.text}</p>
           </div>
-          <button className={styles.button} onClick={scrollToContentHandler}>{hero.button}</button>
+          <button className={styles.button} onClick={() => smoothScrollToElement('container')}>{hero.button}</button>
         </div>
         <div className={styles.left} onClick={sliderHandler}>
           <i className="fas fa-chevron-left"></i>

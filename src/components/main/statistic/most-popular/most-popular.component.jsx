@@ -1,9 +1,9 @@
 import styles from './most-popular.module.css';
-
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LangContext } from '../../../../context/LangContext';
 import { mostPopularPostsSelector } from '../../../../redux/features/post/postSlice';
+import { smoothScrollToElement } from '../../../../utils/smoothScrollToElement';
 import { useSelector } from 'react-redux';
 
 const MostPopular = () => {
@@ -15,7 +15,11 @@ const MostPopular = () => {
   const showMostPopularPosts = () => {
     return mostPopularPosts.map((post, idx) => {
       return (
-        <Link key={post.title} to={`/main/post/${post.id}`}>
+        <Link
+          key={post.title}
+          to={`/main/post/${post.id}`}
+          onClick={() => smoothScrollToElement('container')}
+        >
           <div className={styles.article}>
             <div className={styles.index}>{idx + 1}</div>
             <div className={styles.articleTitle}>{post.title}</div>
