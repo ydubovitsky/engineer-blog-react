@@ -4,7 +4,17 @@ import { LangContext } from '../../../context/LangContext';
 import { getPostsByTitle } from '../../../redux/features/post/postSlice';
 import styles from './search.module.css';
 
-const Search = () => {
+// Плавный скролл на основной контент!
+const scrollToContentHandler = () => {
+  const anchor = document.getElementById('container');
+
+  anchor.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  })
+}
+
+const Search = ({ isShowTitle, style }) => {
 
   const dispatch = useDispatch();
   //Context
@@ -16,28 +26,20 @@ const Search = () => {
     setSearchString(event.target.value);
   }
 
-  // Плавный скролл на основной контент!
-  const scrollToContentHandler = () => {
-    const anchor = document.getElementById('container');
-
-    anchor.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  }
-
   return (
-    <div className={styles.container}>
-      <div className={styles.title}>{search.title}</div>
-      <div className={styles.searchContainer}>
+    <div className={styles.container} style={{ ...style?.container }}>
+      {isShowTitle ? <div className={styles.title}>{search.title}</div> : null}
+      <div className={styles.searchContainer} style={{ ...style?.searchContainer }}>
         <input
           onChange={searchStringHandler}
           className={styles.input}
           placeholder={search.placeholder}
+          style={{...style?.input}}
           type="text"
-          />
+        />
         <button
           className={styles.button}
+          style={{...style?.button}}
           onClick={() => {
             dispatch(getPostsByTitle(searchString));
             scrollToContentHandler();
