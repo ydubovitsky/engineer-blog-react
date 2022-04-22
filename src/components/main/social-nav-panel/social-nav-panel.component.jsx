@@ -4,7 +4,7 @@ import styles from './social-nav-panel.module.css';
 import { authSelector, logout } from '../../../redux/features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useContext, useState } from "react";
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import LangSwitcher from '../lang-switcher/lang-switcher.component';
 
 const SocialNavPanel = () => {

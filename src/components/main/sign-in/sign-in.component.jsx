@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './sign-in.module.css';
 import { useNavigate } from 'react-router-dom';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import LoginForm from './login-form/login-form.component';
 import { authStatusSelector } from '../../../redux/features/auth/authSlice';
 import RegistrationForm from './registration-form/registration-form.component';

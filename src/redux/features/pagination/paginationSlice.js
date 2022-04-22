@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import callApi from '../../requests/callApi';
+import callApiService from '../../../services/callApi/callApiService';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -16,7 +16,7 @@ export const getPostsCount = createAsyncThunk("pagination/getPostsCount", async 
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 

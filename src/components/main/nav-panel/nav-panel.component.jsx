@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import Search from '../search/search.component';
 import styles from './nav-panel.module.css';
 

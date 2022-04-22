@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import callApi from '../../requests/callApi';
+import callApiService from '../../../services/callApi/callApiService';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -13,7 +13,7 @@ export const login = createAsyncThunk("auth/login", async (body) => {
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -27,7 +27,7 @@ export const registration = createAsyncThunk("auth/registration", async (body) =
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 

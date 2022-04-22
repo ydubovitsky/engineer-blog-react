@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 import styles from './post-list-item.module.css';
 import { useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from '../../common/loader-content/loader-content.component';
 

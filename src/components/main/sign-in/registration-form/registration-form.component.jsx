@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import styles from './registration-form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { LangContext } from '../../../../context/LangContext';
+import { LangContext } from '../../../../context/lang/LangContext';
 import { authSelector, registration } from '../../../../redux/features/auth/authSlice';
 
 const RegistrationForm = () => {

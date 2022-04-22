@@ -1,6 +1,6 @@
 import styles from './logo-panel.module.css';
 import { useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 
 const LogoPanel = () => {
 

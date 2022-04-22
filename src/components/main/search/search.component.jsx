@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import { getPostsByTitle } from '../../../redux/features/post/postSlice';
 import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
 import styles from './search.module.css';

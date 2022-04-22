@@ -7,6 +7,7 @@
   font-size: 0.9rem;
   box-shadow: 1px 1px 1px 1px black;
   opacity: 0.8;
+  z-index: 1000;
 }
 
 .container i {

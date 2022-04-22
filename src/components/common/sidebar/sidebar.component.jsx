@@ -4,7 +4,7 @@ import styles from './sidebar.module.css';
 import { Link } from 'react-router-dom';
 import { authSelector, logout } from '../../../redux/features/auth/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 
 const Sidebar = () => {
 

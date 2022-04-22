@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import callApi from '../../requests/callApi';
+import callApiService from '../../../services/callApi/callApiService';
 import { getAllNamedFilesFromForm } from '../../../utils/formData-utils';
 
 // ------------------------------------- AsyncThunk -------------------------------------
@@ -27,7 +27,7 @@ export const addPost = createAsyncThunk("postForm/add", async (args, { getState 
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -54,7 +54,7 @@ export const updatePost = createAsyncThunk("postForm/update", async (args, { get
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 

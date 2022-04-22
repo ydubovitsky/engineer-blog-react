@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './login-form.module.css';
 import { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LangContext } from '../../../../context/LangContext';
+import { LangContext } from '../../../../context/lang/LangContext';
 import { authSelector, login } from '../../../../redux/features/auth/authSlice';
 
 const LoginForm = () => {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { LangContext } from '../../../../context/LangContext';
+import { LangContext } from '../../../../context/lang/LangContext';
 import { arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector } from '../../../../redux/features/post/postSlice';
 import styles from './categories.module.css';
 

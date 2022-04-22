@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const callApi = async ({path, body, headers, method}) => {
+const callApiService = async ({path, body, headers, method}) => {
 
   //TODO Нужен ли тут try catch это же асинхронный метод
   try {
@@ -18,4 +18,4 @@ const callApi = async ({path, body, headers, method}) => {
   }
 }
 
-export default callApi;
+export default callApiService;

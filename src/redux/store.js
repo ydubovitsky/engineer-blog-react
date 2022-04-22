@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from '../services/localStorage/localStorageService';
 import authReducer from './features/auth/authSlice';
 import postReducer from './features/post/postSlice';
 import paginationReducer from './features/pagination/paginationSlice';

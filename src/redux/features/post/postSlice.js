@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import callApi from '../../requests/callApi';
+import callApiService from '../../../services/callApi/callApiService';
 
 const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
 
@@ -28,7 +28,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getS
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -53,7 +53,7 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -72,7 +72,7 @@ export const deletePostById = createAsyncThunk("post/getPostById", async (id, { 
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -91,7 +91,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 
@@ -108,7 +108,7 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
       'Accept': 'application/json',
     }
   }
-  const response = await callApi(payload);
+  const response = await callApiService(payload);
   return response;
 });
 

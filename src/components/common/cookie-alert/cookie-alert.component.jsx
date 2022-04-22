@@ -1,23 +1,27 @@
 import cn from 'classnames';
-import { useState, useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { useContext } from 'react';
+import { LangContext } from '../../../context/lang/LangContext';
+import { cookieWrapper } from '../../../context/cookie';
 import styles from './cookie-alert.module.css';
 
-const CookieAlert = () => {
+const CookieAlert = (props) => {
 
-  const [isShow, setIsShow] = useState(true);
   const { getLangData } = useContext(LangContext);
   const { cookieAlert } = getLangData();
+  const { cookies, setCookie } = props;
+
+  if (cookies['agreeCookie'] === 'true') {
+    return null;
+  }
 
   return (
-    isShow ?
       <div className={styles.container}>
         <p>{cookieAlert.text}</p>
-        <i onClick={() => setIsShow(!isShow)} className={cn(styles.closeBtn, "fas fa-times-circle")}></i>
+        <i onClick={() => setCookie('agreeCookie', 'true')}
+          className={cn(styles.closeBtn, "fas fa-times-circle")}
+        ></i>
       </div>
-      :
-      ''
   )
 }
 
-export default CookieAlert;
+export default cookieWrapper(CookieAlert);

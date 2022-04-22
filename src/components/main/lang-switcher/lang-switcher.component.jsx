@@ -1,7 +1,7 @@
 import styles from './lang-switcher.module.css';
 import cn from 'classnames';
 import { useContext } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 
 const LangSwitcher = () => {
 

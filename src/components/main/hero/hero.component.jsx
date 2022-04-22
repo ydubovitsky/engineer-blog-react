@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styles from './hero.module.css';
 import { useContext, useState } from 'react';
-import { LangContext } from '../../../context/LangContext';
+import { LangContext } from '../../../context/lang/LangContext';
 import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
 import one from '../../../images/slider/1.avif';
 import two from '../../../images/slider/2.jpg';
