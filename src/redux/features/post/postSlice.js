@@ -10,15 +10,10 @@ const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
  */
 //TODO Исправить семантику метода
 export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getState }) => {
-  const { post, pagination } = getState();
+  const { pagination } = getState();
 
-  //FIXME checking if data already loaded 
-  const found = post.postEntities.find(post =>
-    post.id === (pagination.currentPage * pagination.postPerPage) + 1);
-  if (found) {
-    console.log('Data already loaded!');
-    return null;
-  }
+  // Checking
+  if (checkIfPostsByPageAlreadyLoadedSelector(getState())) return;
 
   const payload = {
     path: `/api/post?page=${pagination.currentPage}`,
@@ -36,14 +31,9 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getS
  * Get one post by id from remote server
  */
 export const getPostById = createAsyncThunk("post/getPostById", async (postId, { getState }) => {
-  const { post } = getState();
 
-  //FIXME checking if data already loaded 
-  const found = post.postEntities.find(post => post.id === postId);
-  if (found) {
-    console.log('Data already loaded!');
-    return found;
-  }
+  // Checking
+  if (checkIfPostWithIdAlreadyInStateSelector(getState(), postId)) return; //TODO Можно ли просто null?
 
   const payload = {
     path: `/api/post?id=${postId}`,
@@ -132,7 +122,7 @@ const postSlice = createSlice({
       })
       .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.postEntities.push(...action.payload);
+        state.postEntities = action.payload;
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -176,17 +166,32 @@ export const arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector = state => {
  */
 export const mostPopularPostsSelector = state => {
   return state.post.postEntities
-  .slice()
-  .sort((a, b) => a.views - b.views)
-  .reverse()
-  .map(post => {
-    return {
-      id: post.id,
-      title: post.title,
-      views: post.views
-    }
-  })
-  .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+    .slice()
+    .sort((a, b) => a.views - b.views)
+    .reverse()
+    .map(post => {
+      return {
+        id: post.id,
+        title: post.title,
+        views: post.views
+      }
+    })
+    .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+}
+
+/**
+ * If current state already includes posts for this page - true or false against.
+ * @param {*} state 
+ * @returns true / false
+ */
+export const checkIfPostsByPageAlreadyLoadedSelector = state => {
+  const { post, pagination } = state;
+  return post.postEntities.includes(post => post.id === (pagination.currentPage * pagination.postPerPage) + 1);
+}
+
+export const checkIfPostWithIdAlreadyInStateSelector = (state, postId) => {
+  const { post } = state;
+  return post.postEntities.includes(post => post.id === postId);
 }
 
 export default postSlice.reducer;
