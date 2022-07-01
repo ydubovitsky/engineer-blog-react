@@ -35,6 +35,10 @@
   border-color: transparent;
 }
 
+.button:active {
+  transform: scale(0.98);
+}
+
 /* ONLY BACKGROUD PROPERTY BELLOW! */
 
 .svgBackground {

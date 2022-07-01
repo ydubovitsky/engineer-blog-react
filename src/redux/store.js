@@ -4,6 +4,7 @@ import authReducer from './features/auth/authSlice';
 import postReducer from './features/post/postSlice';
 import paginationReducer from './features/pagination/paginationSlice';
 import postFormSlice from './features/post-form/postFormSlice';
+import commentFormSlice from './features/comment-form/commentFormSlice';
 
 const persistedState = loadState('auth');
 
@@ -12,6 +13,7 @@ const store = configureStore({
     auth: authReducer,
     post: postReducer,
     postForm: postFormSlice,
+    commentForm: commentFormSlice,
     pagination: paginationReducer
   },
   preloadedState: {

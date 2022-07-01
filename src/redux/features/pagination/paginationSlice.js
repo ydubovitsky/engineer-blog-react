@@ -9,7 +9,7 @@ import callApiService from '../../../services/callApi/callApiService';
 export const getPostsCount = createAsyncThunk("pagination/getPostsCount", async () => {
 
   const payload = {
-    path: '/api/post/count',
+    path: '/api/v1/post/count',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

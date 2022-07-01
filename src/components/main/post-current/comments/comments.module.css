@@ -8,10 +8,10 @@
 .title {
   text-align: center;
   margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
   padding: 20px 0;
   font-size: 1.2rem;
   font-weight: bolder;
-  font-family: 'Roboto Condensed', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -23,20 +23,23 @@
 
 .comment {
   display: grid;
-  align-items: center;
+  gap: 2.5%;
+  align-items: start;
   box-sizing: border-box;
   padding: 40px 0;
   border-top: 2px solid #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: left;
 }
 
 .even {
-  grid-template-columns: 1fr 1fr 5fr;
-  grid-template-areas: "avatar author text";
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: "avatar author""avatar text";
 }
 
 .uneven {
-  grid-template-columns: 5fr 1fr 1fr;
-  grid-template-areas: "text author avatar";
+  grid-template-columns: 5fr 1fr;
+  grid-template-areas: "author avatar""text avatar";
 }
 
 .avatar img {
@@ -50,8 +53,14 @@
 .author {
   grid-area: author;
   font-weight: bold;
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px;
+  text-align: center;
+  padding: 5% 0;
 }
 
 .text {
+  display: grid;
   grid-area: text;
+  grid-template-rows: 1fr auto;
 }

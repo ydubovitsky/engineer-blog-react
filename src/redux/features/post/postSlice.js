@@ -16,7 +16,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getS
   if (checkIfPostsByPageAlreadyLoadedSelector(getState())) return;
 
   const payload = {
-    path: `/api/post?page=${pagination.currentPage}`,
+    path: `/api/v1/post?page=${pagination.currentPage}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
   if (checkIfPostWithIdAlreadyInStateSelector(getState(), postId)) return; //TODO Можно ли просто null?
 
   const payload = {
-    path: `/api/post?id=${postId}`,
+    path: `/api/v1/post?id=${postId}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export const deletePostById = createAsyncThunk("post/getPostById", async (id, { 
   const { auth } = getState();
 
   const payload = {
-    path: `/api/post/delete/${id}`,
+    path: `/api/v1/post/delete/${id}`,
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
   const { auth } = getState();
 
   const payload = {
-    path: `/api/post/search?title=${title}`,
+    path: `/api/v1/post/search?title=${title}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
 export const increasePostViewById = createAsyncThunk("post/increasePostViewById", async (id) => {
 
   const payload = {
-    path: `/api/post/view/${id}`,
+    path: `/api/v1/post/view/${id}`,
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -177,6 +177,11 @@ export const mostPopularPostsSelector = state => {
       }
     })
     .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+}
+
+export const commentListForPostByPostId = (state, postId) => {
+  //TODO Разобраться с ParseInt
+  return state.post.postEntities.filter(post => post.id === parseInt(postId))?.map(post => post.comments)[0];
 }
 
 /**

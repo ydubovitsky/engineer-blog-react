@@ -18,7 +18,7 @@ export const addPost = createAsyncThunk("postForm/add", async (args, { getState 
   body.append('newPost', JSON.stringify(newPost));
 
   const payload = {
-    path: '/api/post/add',
+    path: '/api/v1/post/add',
     body: body,
     method: 'POST',
     headers: {
@@ -45,7 +45,7 @@ export const updatePost = createAsyncThunk("postForm/update", async (args, { get
   body.append('newPost', JSON.stringify(newPost));
 
   const payload = {
-    path: '/api/post/update',
+    path: '/api/v1/post/update',
     body: body,
     method: 'POST',
     headers: {
