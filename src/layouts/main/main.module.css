@@ -7,6 +7,36 @@
   padding: 0 100px;
 }
 
+.contentContainer {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    'posts aside';
+  grid-template-columns: 5fr 1fr;
+}
+
+.posts {
+  grid-area: posts;
+}
+
+.aside {
+  grid-area: aside;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+@media (max-width: 767px) {
+  .contentContainer {
+    grid-template-areas:
+      'posts'
+      'aside';
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 767px) {
   .content {
     padding: 0 50px;

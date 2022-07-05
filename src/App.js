@@ -9,10 +9,12 @@ import PostCurrent from "./components/main/post-current/post-current.component";
 import PostList from "./components/main/post-list/post-list.component";
 import PostListDashBoard from "./components/dashboard/post-list/post-list.component";
 import SignIn from "./components/main/sign-in/sign-in.component";
-import Dashboard from './layouts/dashboard/dashboard.layout.jsx';
-import Main from './layouts/main/main.layout';
 import ProtectedRoute from "./wrapper/protectedRoute";
 import PostForm from "./components/dashboard/post-form/post-form.component";
+
+//* Layouts!
+import DashboardLayout from './layouts/dashboard/dashboard.layout.jsx';
+import MainLayout from './layouts/main/main.layout';
 
 function App() {
 
@@ -20,14 +22,14 @@ function App() {
     <div className={styles.container}>
       <Routes>
         {/* //TODO Додумать навигацию */}
-        <Route path="/main" element={<Main />}>
+        <Route path="/main" element={<MainLayout />}>
           {/* //TODO Переделать! Объединить в один компонент! */}
           <Route path=":page" element={<><PostList /><Pagination /></>} />
           <Route path="post/:id" element={<PostCurrent />} />
           <Route path="login" element={<SignIn />} />
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="post-form" element={<PostForm />} />
             <Route path="post-list" element={<PostListDashBoard />} />
           </Route>
