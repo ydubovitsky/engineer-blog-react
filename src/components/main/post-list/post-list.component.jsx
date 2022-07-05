@@ -2,12 +2,12 @@ import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LangContext } from '../../../context/lang/LangContext';
 import {
+  useSearchParams
+} from "react-router-dom";
+import {
   getPostPaging,
   postEntitiesSelector
 } from '../../../redux/features/post/postSlice';
-import {
-  currentPageSelector
-} from '../../../redux/features/pagination/paginationSlice';
 import PostListItem from '../post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
 
@@ -15,18 +15,21 @@ const PostList = () => {
 
   const dispatch = useDispatch();
   const postEntities = useSelector(postEntitiesSelector);
-  const currentPage = useSelector(currentPageSelector);
-  //Context
+
+  // Get current page from query params : http://localhost:3000/main/posts?page=2
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get("page"));
+  // Context
   const { getLangData } = useContext(LangContext);
   const { postList } = getLangData();
 
   useEffect(() => {
-    dispatch(getPostPaging());
-  }, [currentPage]);
+    dispatch(getPostPaging(page));
+  }, [page, dispatch]);
 
   const showPosts = (postsList) => {
     const posts
-      = postsList?.filter(post => post.id > currentPage * 5 && post.id < (currentPage * 5) + 5)
+      = postsList?.filter(post => post.id > page * 5 && post.id < (page * 5) + 5)
         .map(post => {
           return <PostListItem key={post.id} {...post} />
         });

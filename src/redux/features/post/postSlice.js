@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
 
 const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
+const MAX_POSTS_COUNT_ON_PAGE = 5;
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -9,14 +10,13 @@ const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
  * Get list of posts from remote server by page
  */
 //TODO Исправить семантику метода
-export const getPostPaging = createAsyncThunk("post/getPaging", async (_, { getState }) => {
-  const { pagination } = getState();
+export const getPostPaging = createAsyncThunk("post/getPaging", async (page) => {
 
   // Checking
-  if (checkIfPostsByPageAlreadyLoadedSelector(getState())) return;
+  // if (checkIfPostsByPageAlreadyLoadedSelector(getState())) return;
 
   const payload = {
-    path: `/api/v1/post?page=${pagination.currentPage}`,
+    path: `/api/v1/post?page=${page}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export const deletePostById = createAsyncThunk("post/getPostById", async (id, { 
 });
 
 /**
- * Get post list with Text Contains
+ * Get post list by Title
  */
 export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", async (title, { getState }) => {
   const { auth } = getState();
@@ -102,10 +102,32 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
   return response;
 });
 
+/**
+ * Get post list with Text Contains
+ */
+ export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => {
+
+  const payload = {
+    path: `/api/v1/post/count`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }
+  const response = await callApiService(payload);
+  return response;
+});
+
 // ------------------------------------- Slice -------------------------------------
 //TODO Переработать state
 const initialState = {
   postEntities: [], //! Это массив объектов
+  postsCount: {
+    count: null,
+    status: 'idle',
+    error: null
+  },
   status: 'idle',
   error: null
 }
@@ -138,6 +160,12 @@ const postSlice = createSlice({
         console.log(action.payload)
         state.postEntities = action.payload;
         state.status = 'succeeded';
+      })
+      //! Get posts count
+      .addCase(getPostsCount.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.postsCount.count = action.payload;
+        state.postsCount.status = 'succeeded';
       })
   }
 });
@@ -182,6 +210,14 @@ export const mostPopularPostsSelector = state => {
 export const commentListForPostByPostId = (state, postId) => {
   //TODO Разобраться с ParseInt
   return state.post.postEntities.filter(post => post.id === parseInt(postId))?.map(post => post.comments)[0];
+}
+
+export const postsCountSelector = (state) => {
+  return state.post.postsCount.count;
+}
+
+export const maxPageCountSelector = (state) => {
+  return Math.ceil(state.post.postsCount.count / MAX_POSTS_COUNT_ON_PAGE);
 }
 
 /**

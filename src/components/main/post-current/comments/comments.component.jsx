@@ -1,14 +1,16 @@
 import cn from 'classnames';
 import { useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { commentListForPostByPostId } from '../../../../redux/features/post/postSlice';
 import avatar from '../../../../images/comment/avatar.jpg';
 import styles from './comments.module.css';
 
 const Comments = () => {
 
-  const { id } = useParams();
-  const comments = useSelector(state => commentListForPostByPostId(state, id));
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const postId = parseInt(searchParams.get("id"));
+  const comments = useSelector(state => commentListForPostByPostId(state, postId));
 
   //TODO Заменить на динамическое получение данных!
   const showAllComments = (comments) => {

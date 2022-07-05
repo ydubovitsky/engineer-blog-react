@@ -1,75 +1,88 @@
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { useEffect } from 'react';
+import { useSearchParams } from "react-router-dom";
 import {
   useDispatch,
   useSelector
 } from 'react-redux';
-import {
-  Link,
-  useParams
-} from "react-router-dom";
-import {
-  changeCurrentPage,
-  currentPageSelector,
-  maxPageCountSelector,
-  getPostsCount,
-  setCurrentPageNumber
-} from '../../../redux/features/pagination/paginationSlice';
+import { getPostsCount } from '../../../redux/features/post/postSlice';
+import PaginationLinkButton from './pagination-link-button/pagination-link-button.component';
+import { maxPageCountSelector } from '../../../redux/features/post/postSlice';
 import styles from './pagination.module.css';
 
 const Pagination = () => {
 
   const dispatch = useDispatch();
-  const params = useParams();
-  const currentPage = useSelector(currentPageSelector);
+  // Read the param from url, for example http://localhost:3000/main/posts?page=3
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get('page'));
+  // Set init param
+  const [currentPage, setCurrentPage] = useState(page);
   const maxPageCount = useSelector(maxPageCountSelector);
 
-  //TODO Вынести в отдельную функцию?
   useEffect(() => {
     dispatch(getPostsCount());
-    const { page } = params;
-    if (page) {
-      dispatch(setCurrentPageNumber(parseInt(page)));
-    }
   }, []);
+
+  //TODO МБ упростить функцию
+  const changePageByDirection = (direction) => {
+    switch (direction) {
+      case 'next': {
+        if (currentPage !== maxPageCount) {
+          setCurrentPage(currentPage => currentPage + 1);
+        }
+        break;
+      }
+      case 'previous': {
+        if (currentPage > 1) setCurrentPage(currentPage => currentPage - 1);
+        break;
+      }
+      case 'init': {
+        setCurrentPage(1);
+        break;
+      }
+      default: {
+        setCurrentPage(currentPage);
+        break;
+      }
+    }
+  }
 
   return (
     <div className={styles.container}>
-      {/* //!TODO Вынести эту логику в функцию? */}
-      <Link to={`/main/${currentPage === 0 ? currentPage : currentPage - 1}`}
-        className={styles.button}
-        onClick={() => dispatch(changeCurrentPage("previous"))}
+      <PaginationLinkButton
+        // Вынести в отдельную функцию?
+        currentPage={currentPage > 1 ? currentPage - 1 : currentPage}
+        handler={() => changePageByDirection("previous")}
       >
         <i className="fas fa-arrow-left"></i>
-      </Link>
-
+      </PaginationLinkButton>
       <div className={styles.center}>
-        <Link to={`/main/${currentPage}`}
-          className={styles.button}
-          onClick={() => dispatch(changeCurrentPage("init"))}
+        <PaginationLinkButton
+          handler={() => changePageByDirection("init")}
+          currentPage={currentPage}
         >
-          0
-        </Link>
+          <p>1</p>
+        </PaginationLinkButton>
         <div className={styles.etc}>...</div>
-        <div
-          className={cn(styles.button, styles.active, styles.heart)}
+        <PaginationLinkButton
+          currentPage={currentPage}
+          style={[styles.heart, styles.active]}
         >
-          {currentPage}
-        </div>
+          <p>{currentPage}</p>
+        </PaginationLinkButton>
         <div className={styles.etc}>...</div>
-        <div
-          className={styles.button}
-        >
-          {maxPageCount}
-        </div>
+        <PaginationLinkButton
+        currentPage={currentPage}>
+          <p>{maxPageCount}</p>
+        </PaginationLinkButton>
       </div>
-
-      <Link to={`/main/${currentPage === maxPageCount ? currentPage : currentPage + 1}`}
-        className={styles.button}
-        onClick={() => dispatch(changeCurrentPage("next"))}
+      <PaginationLinkButton
+        currentPage={maxPageCount > currentPage ? currentPage + 1 : currentPage}
+        handler={() => changePageByDirection("next")}
       >
         <i className="fas fa-arrow-right"></i>
-      </Link>
+      </PaginationLinkButton>
     </div>
   )
 }

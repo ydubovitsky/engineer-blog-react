@@ -1,15 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {
-  useNavigate, useParams
+  useNavigate, useSearchParams
 } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
 import { authEntitySelector } from '../../../redux/features/auth/authSlice';
 import {
-  getPostById,
-  postEntityByIdSelector,
-  deletePostById,
-  increasePostViewById
+  deletePostById, getPostById, increasePostViewById, postEntityByIdSelector
 } from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from "../../common/loader-content/loader-content.component";
@@ -22,12 +19,13 @@ import SubPost from "./subpost/subpost.component";
 
 const PostCurrent = () => {
 
-  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const printRef = useRef();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const post = useSelector(state => postEntityByIdSelector(state, id));
+  const postId = parseInt(searchParams.get("id"));
+  const post = useSelector(state => postEntityByIdSelector(state, postId));
   const { username, jwttoken } = useSelector(authEntitySelector);
 
   /**
@@ -36,9 +34,9 @@ const PostCurrent = () => {
    */
   useEffect(() => {
     if (post === undefined) {
-      dispatch(getPostById(id));
+      dispatch(getPostById(postId));
     } else {
-      dispatch(increasePostViewById(id))
+      dispatch(increasePostViewById(postId))
     }
   }, [])
 
@@ -51,7 +49,7 @@ const PostCurrent = () => {
       return (
         <>
           <button onClick={() => navigate('/dashboard/post-form', { state: post })}>Edit Article</button>
-          <button onClick={() => dispatch(deletePostById(id))}>Delete Article</button>
+          <button onClick={() => dispatch(deletePostById(postId))}>Delete Article</button>
         </>
       )
     }

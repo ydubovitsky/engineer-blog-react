@@ -27,7 +27,7 @@ const PostListItem = ({ id, postImage, category, title, createAt, description })
       <div className={styles.description}>
         {description}
       </div>
-      <Link to={`/main/post/${id}`}><button className={styles.button}>{postListItem.button}</button></Link>
+      <Link to={`/main/posts/post?id=${id}`}><button className={styles.button}>{postListItem.button}</button></Link>
     </div>
   )
 }

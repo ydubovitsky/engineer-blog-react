@@ -21,11 +21,10 @@ function App() {
   return (
     <div className={styles.container}>
       <Routes>
-        {/* //TODO Додумать навигацию */}
         <Route path="/main" element={<MainLayout />}>
           {/* //TODO Переделать! Объединить в один компонент! */}
-          <Route path=":page" element={<><PostList /><Pagination /></>} />
-          <Route path="post/:id" element={<PostCurrent />} />
+          <Route path="posts" element={<><PostList /><Pagination /></>} />
+          <Route path="posts/post" element={<PostCurrent />} />
           <Route path="login" element={<SignIn />} />
         </Route>
         <Route element={<ProtectedRoute />}>
@@ -35,7 +34,7 @@ function App() {
           </Route>
         </Route>
         {/* //! Default Redirect */}
-        <Route path="*" element={<Navigate to="/main/0" replace />} />
+        <Route path="*" element={<Navigate to="/main/posts?page=1" replace />} />
       </Routes>
     </div>
   );

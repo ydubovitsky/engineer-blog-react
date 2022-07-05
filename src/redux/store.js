@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from '../services/localStorage/localStorageService';
 import authReducer from './features/auth/authSlice';
 import postReducer from './features/post/postSlice';
-import paginationReducer from './features/pagination/paginationSlice';
 import postFormSlice from './features/post-form/postFormSlice';
 import commentFormSlice from './features/comment-form/commentFormSlice';
 
@@ -14,7 +13,6 @@ const store = configureStore({
     post: postReducer,
     postForm: postFormSlice,
     commentForm: commentFormSlice,
-    pagination: paginationReducer
   },
   preloadedState: {
     auth: persistedState
