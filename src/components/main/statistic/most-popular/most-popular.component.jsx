@@ -16,7 +16,7 @@ const MostPopular = () => {
     return mostPopularPosts.map((post, idx) => {
       return (
         <Link
-          key={post.title}
+          key={post.id}
           to={`/main/post/${post.id}`}
           onClick={() => smoothScrollToElement('container')}
         >

@@ -9,6 +9,7 @@ import {
   postEntitiesSelector
 } from '../../../redux/features/post/postSlice';
 import PostListItem from '../post-list-item/post-list-item.component';
+import Pagination from '../pagination/pagination.component';
 import styles from './post-list.module.css';
 
 const PostList = () => {
@@ -38,15 +39,18 @@ const PostList = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.latestPost}>
-        <div className={styles.columnTitle}>{postList.columnTitle}</div>
-        <PostListItem {...postEntities[0]} />
+    <>
+      <div className={styles.container}>
+        <div className={styles.latestPost}>
+          <div className={styles.columnTitle}>{postList.columnTitle}</div>
+          <PostListItem {...postEntities[0]} />
+        </div>
+        <div className={styles.postList}>
+          {showPosts(postEntities)}
+        </div>
       </div>
-      <div className={styles.postList}>
-        {showPosts(postEntities)}
-      </div>
-    </div>
+      <Pagination />
+    </>
   )
 };
 

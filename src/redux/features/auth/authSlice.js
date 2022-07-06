@@ -41,7 +41,6 @@ const initialState = {
     firstName: null,
     lastName: null,
     createdDate: null,
-    roles: null,
     about: null,
     contacts: null
   },

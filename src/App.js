@@ -1,16 +1,13 @@
 import {
-  Routes,
-  Route,
-  Navigate
+  Navigate, Route, Routes
 } from "react-router-dom";
 import styles from './App.css';
-import Pagination from "./components/main/pagination/pagination.component";
+import PostForm from "./components/dashboard/post-form/post-form.component";
+import PostListDashBoard from "./components/dashboard/post-list/post-list.component";
 import PostCurrent from "./components/main/post-current/post-current.component";
 import PostList from "./components/main/post-list/post-list.component";
-import PostListDashBoard from "./components/dashboard/post-list/post-list.component";
 import SignIn from "./components/main/sign-in/sign-in.component";
 import ProtectedRoute from "./wrapper/protectedRoute";
-import PostForm from "./components/dashboard/post-form/post-form.component";
 
 //* Layouts!
 import DashboardLayout from './layouts/dashboard/dashboard.layout.jsx';
@@ -22,8 +19,7 @@ function App() {
     <div className={styles.container}>
       <Routes>
         <Route path="/main" element={<MainLayout />}>
-          {/* //TODO Переделать! Объединить в один компонент! */}
-          <Route path="posts" element={<><PostList /><Pagination /></>} />
+          <Route path="posts" element={<PostList />} />
           <Route path="posts/post" element={<PostCurrent />} />
           <Route path="login" element={<SignIn />} />
         </Route>
