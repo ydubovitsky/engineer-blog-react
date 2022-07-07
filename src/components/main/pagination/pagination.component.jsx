@@ -1,28 +1,20 @@
-import { useEffect, useState } from 'react';
-import cn from 'classnames';
-import { useSearchParams } from "react-router-dom";
+import { useState } from 'react';
 import {
-  useDispatch,
   useSelector
 } from 'react-redux';
-import { getPostsCount } from '../../../redux/features/post/postSlice';
-import PaginationLinkButton from './pagination-link-button/pagination-link-button.component';
+import { useSearchParams } from "react-router-dom";
 import { maxPageCountSelector } from '../../../redux/features/post/postSlice';
+import PaginationLinkButton from './pagination-link-button/pagination-link-button.component';
 import styles from './pagination.module.css';
 
 const Pagination = () => {
 
-  const dispatch = useDispatch();
   // Read the param from url, for example http://localhost:3000/main/posts?page=3
   const [searchParams, setSearchParams] = useSearchParams();
   const page = parseInt(searchParams.get('page'));
   // Set init param
   const [currentPage, setCurrentPage] = useState(page);
   const maxPageCount = useSelector(maxPageCountSelector);
-
-  useEffect(() => {
-    dispatch(getPostsCount());
-  }, []);
 
   //TODO МБ упростить функцию
   const changePageByDirection = (direction) => {

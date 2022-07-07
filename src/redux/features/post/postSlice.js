@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
 
 const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
-const MAX_POSTS_COUNT_ON_PAGE = 5;
+const MAX_POSTS_COUNT_ON_PAGE = 5; // Pagination
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -10,13 +10,17 @@ const MAX_POSTS_COUNT_ON_PAGE = 5;
  * Get list of posts from remote server by page
  */
 //TODO Исправить семантику метода
-export const getPostPaging = createAsyncThunk("post/getPaging", async (page) => {
+export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { getState }) => {
+  const { post } = getState();
 
   // Checking
-  // if (checkIfPostsByPageAlreadyLoadedSelector(getState())) return;
+  if (isArrayContainElementWithIndex(post.postEntities, page * MAX_POSTS_COUNT_ON_PAGE - 1)) {
+    console.log(`Post state already contains data for page - ${page}`);
+    return null;
+  };
 
   const payload = {
-    path: `/api/v1/post?page=${page}`,
+    path: `/api/v1/post?page=${page}&size=${MAX_POSTS_COUNT_ON_PAGE}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -31,9 +35,10 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page) => 
  * Get one post by id from remote server
  */
 export const getPostById = createAsyncThunk("post/getPostById", async (postId, { getState }) => {
+  const { post } = getState();
 
   // Checking
-  if (checkIfPostWithIdAlreadyInStateSelector(getState(), postId)) return; //TODO Можно ли просто null?
+  if (isArrayContainObjectWithId(post.postEntities, postId)) return; //TODO Можно ли просто null?
 
   const payload = {
     path: `/api/v1/post?id=${postId}`,
@@ -105,7 +110,7 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
 /**
  * Get post list with Text Contains
  */
- export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => {
+export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => {
 
   const payload = {
     path: `/api/v1/post/count`,
@@ -127,7 +132,7 @@ const initialState = {
     count: null,
     status: 'idle',
     error: null
-  },
+  },  
   status: 'idle',
   error: null
 }
@@ -144,7 +149,12 @@ const postSlice = createSlice({
       })
       .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.postEntities = action.payload;
+        state.postEntities = [...state.postEntities, ...action.payload.posts];
+        state.postsCount = {
+          count: action.payload.totalPostsCount,
+          status: 'succeeded',
+          error: null
+        }
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -160,12 +170,6 @@ const postSlice = createSlice({
         console.log(action.payload)
         state.postEntities = action.payload;
         state.status = 'succeeded';
-      })
-      //! Get posts count
-      .addCase(getPostsCount.fulfilled, (state, action) => {
-        console.log(action.payload)
-        state.postsCount.count = action.payload;
-        state.postsCount.status = 'succeeded';
       })
   }
 });
@@ -207,7 +211,7 @@ export const mostPopularPostsSelector = state => {
     .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
 }
 
-export const commentListForPostByPostId = (state, postId) => {
+export const commentListForPostByPostIdSelector = (state, postId) => {
   //TODO Разобраться с ParseInt
   return state.post.postEntities.filter(post => post.id === parseInt(postId))?.map(post => post.comments)[0];
 }
@@ -220,19 +224,34 @@ export const maxPageCountSelector = (state) => {
   return Math.ceil(state.post.postsCount.count / MAX_POSTS_COUNT_ON_PAGE);
 }
 
-/**
- * If current state already includes posts for this page - true or false against.
- * @param {*} state 
- * @returns true / false
- */
-export const checkIfPostsByPageAlreadyLoadedSelector = state => {
-  const { post, pagination } = state;
-  return post.postEntities.includes(post => post.id === (pagination.currentPage * pagination.postPerPage) + 1);
+// ------------------------------------- Util Functions -------------------------------------
+
+//FIXME Переделать тело метода
+const isArrayContainElementWithIndex = (array, index) => {
+  if (array === undefined) {
+    return false;
+  }
+  if (array[index] === undefined) {
+    return false;
+  }
+  return true;
 }
 
-export const checkIfPostWithIdAlreadyInStateSelector = (state, postId) => {
-  const { post } = state;
-  return post.postEntities.includes(post => post.id === postId);
+const isArrayContainObjectWithId = (array, id) => {
+  if (array !== undefined) {
+    return array.some(element => element.id === id);
+  }
+  return false;
 }
 
+const mapPayloadToObject = (payload) => {
+  return payload.reduce((prev, cur) => {
+    return {
+      ...prev,
+      [cur.id]: cur
+    }
+  }, {});
+}
+
+// ------------------------------------- Reducer Export Default -------------------------------------
 export default postSlice.reducer;
