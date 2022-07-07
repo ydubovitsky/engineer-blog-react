@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LangContext } from '../../../context/lang/LangContext';
 import styles from './footer.module.css';
@@ -7,26 +8,30 @@ const Footer = () => {
   const { getLangData } = useContext(LangContext);
   const { footer } = getLangData();
 
+  const showDate = () => {
+    return new Date().getFullYear();
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.navContainer}>
         <div className={styles.nav}>
           <div className={styles.navLink}>
-            {footer.home}
+            <Link to="/">{footer.home}</Link>
           </div>
           <div className={styles.navLink}>
-            {footer.about}
+            <Link to="/main/about">{footer.about}</Link>
           </div>
           <div className={styles.navLink}>
-            {footer.contacts}
+            <Link to="/main/contacts">{footer.contacts}</Link>
           </div>
           <div className={styles.navLink}>
-            {footer.policy}
+            <Link to="/main/policy">{footer.policy}</Link>
           </div>
         </div>
       </div>
       <div className={styles.copyright}>
-        {`${footer.copyright}` + new Date().getFullYear()} 
+        {`${footer.copyright}` + showDate()}
       </div>
     </div>
   )

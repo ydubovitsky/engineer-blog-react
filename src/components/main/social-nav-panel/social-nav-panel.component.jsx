@@ -30,10 +30,10 @@ const SocialNavPanel = () => {
       </div>
       <div className={cn(styles.navContainer, isSidebarShow ? styles.showSidebar : '')}>
         <div className={styles.menu}>
-          <div className={styles.menuItem}><p>{socialNavPanel.menu.home}</p></div>
-          <div className={styles.menuItem}><p>{socialNavPanel.menu.about}</p></div>
-          <div className={styles.menuItem}><p>{socialNavPanel.menu.contacts}</p></div>
-          <div className={styles.menuItem}><p>{socialNavPanel.menu.policy}</p></div>
+          <div className={styles.menuItem}><Link to="/"><p>{socialNavPanel.menu.home}</p></Link></div>
+          <div className={styles.menuItem}><Link to="/main/about"><p>{socialNavPanel.menu.about}</p></Link></div>
+          <div className={styles.menuItem}><Link to="/main/contacts"><p>{socialNavPanel.menu.contacts}</p></Link></div>
+          <div className={styles.menuItem}><Link to="/main/policy"><p>{socialNavPanel.menu.policy}</p></Link></div>
         </div>
         <div className={styles.langSwitcher}>
           <LangSwitcher />

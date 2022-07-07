@@ -30,11 +30,16 @@
   justify-content: space-around;
 }
 
+.menuItem a {
+  text-decoration: none;
+}
+
 .menuItem p {
   display: flex;
   text-align: center;
   justify-content: center;
   transition: 0.2s ease;
+  color: black;
 }
 
 .socialContainer {
@@ -45,7 +50,7 @@
 }
 
 .container a,
-.menuItem:hover {
+.menuItem p:hover {
   color: red;
 }
 

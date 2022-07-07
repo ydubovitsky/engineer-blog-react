@@ -54,3 +54,6 @@ https://medium.com/nerd-for-tech/react-to-pdf-printing-f469cc99b24a
 
 ### Pagination Js Array
 https://stackoverflow.com/questions/42761068/paginate-javascript-array
+
+### Policy Generator
+https://tilda.cc/ru/privacy-generator/

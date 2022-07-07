@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { LangContext } from '../../../context/lang/LangContext';
 import Search from '../search/search.component';
 import styles from './nav-panel.module.css';
@@ -30,10 +31,10 @@ const NavPanel = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.link}>{navPAnel.about}</div>
-      <div className={styles.link}>{navPAnel.projects}</div>
-      <div className={styles.link}>{navPAnel.contacts}</div>
-      <div className={styles.link}>{navPAnel.posts}</div>
+      <div className={styles.link}><Link to="/main/about">{navPAnel.about}</Link></div>
+      <div className={styles.link}><Link to="/main/projects">{navPAnel.projects}</Link></div>
+      <div className={styles.link}><Link to="/main/contacts">{navPAnel.contacts}</Link></div>
+      <div className={styles.link}><Link to="/">{navPAnel.posts}</Link></div>
       <Search isShowTitle={false} style={searchStyle}/>
     </div>
   )

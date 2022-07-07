@@ -11,11 +11,17 @@
 }
 
 /* TODO Вынести */
-.link {
+.link a {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 18px;
   color: #818592;
   font-weight: 400;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.link a:hover {
+  color: red;
 }
 
 input {

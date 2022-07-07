@@ -22,6 +22,16 @@
   text-align: center;
 }
 
+.navLink a {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+
+.navLink a:hover {
+  color: red;
+}
+
 .copyright {
   display: flex;
   padding: 20px 0;
