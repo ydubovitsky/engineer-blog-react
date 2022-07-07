@@ -1,9 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
 
-const MAX_COUNT_OF_STATISTIC_FIELDS = 5;
-const MAX_POSTS_COUNT_ON_PAGE = 5; // Pagination
-
 // ------------------------------------- AsyncThunk -------------------------------------
 
 /**
@@ -14,13 +11,13 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
   const { post } = getState();
 
   // Checking
-  if (isArrayContainElementWithIndex(post.postEntities, page * MAX_POSTS_COUNT_ON_PAGE - 1)) {
+  if (isArrayContainElementWithIndex(post.postEntities, page * post.size - 1)) {
     console.log(`Post state already contains data for page - ${page}`);
     return null;
   };
 
   const payload = {
-    path: `/api/v1/post?page=${page}&size=${MAX_POSTS_COUNT_ON_PAGE}`,
+    path: `/api/v1/post?page=${page}&size=${post.size}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -132,7 +129,9 @@ const initialState = {
     count: null,
     status: 'idle',
     error: null
-  },  
+  },
+  size: 4, // 0 is also considered... [0, 1, 2, 3, 4]
+  sizeOfStatField: 4, //MOST POPULAR, CATEGORIES
   status: 'idle',
   error: null
 }
@@ -190,7 +189,7 @@ export const arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector = state => {
   for (var i = 0; i < arr.length; i++) {
     categoriesWithCount[arr[i]] = 1 + (categoriesWithCount[arr[i]] || 0);
   }
-  return Array.from(new Map(Object.entries(categoriesWithCount))).slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+  return Array.from(new Map(Object.entries(categoriesWithCount))).slice(0, state.post.sizeOfStatField);
 }
 
 /**
@@ -208,7 +207,7 @@ export const mostPopularPostsSelector = state => {
         views: post.views
       }
     })
-    .slice(0, MAX_COUNT_OF_STATISTIC_FIELDS);
+    .slice(0, state.post.sizeOfStatField);
 }
 
 export const commentListForPostByPostIdSelector = (state, postId) => {
@@ -221,7 +220,11 @@ export const postsCountSelector = (state) => {
 }
 
 export const maxPageCountSelector = (state) => {
-  return Math.ceil(state.post.postsCount.count / MAX_POSTS_COUNT_ON_PAGE);
+  return Math.ceil(state.post.postsCount.count / state.post.size);
+}
+
+export const pageSizeSelector = state => {
+  return state.post.size;
 }
 
 // ------------------------------------- Util Functions -------------------------------------

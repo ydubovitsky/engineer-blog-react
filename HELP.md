@@ -51,3 +51,6 @@ https://stackoverflow.com/questions/64566405/react-router-dom-v6-usenavigate-pas
 
 ### Print page library
 https://medium.com/nerd-for-tech/react-to-pdf-printing-f469cc99b24a
+
+### Pagination Js Array
+https://stackoverflow.com/questions/42761068/paginate-javascript-array

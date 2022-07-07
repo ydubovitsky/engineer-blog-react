@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LangContext } from '../../../context/lang/LangContext';
 import {
@@ -6,16 +6,19 @@ import {
 } from "react-router-dom";
 import {
   getPostPaging,
-  postEntitiesSelector
+  postEntitiesSelector,
+  pageSizeSelector
 } from '../../../redux/features/post/postSlice';
 import PostListItem from '../post-list-item/post-list-item.component';
 import Pagination from '../pagination/pagination.component';
 import styles from './post-list.module.css';
+import LoaderContent from '../../common/loader-content/loader-content.component';
 
 const PostList = () => {
 
   const dispatch = useDispatch();
   const postEntities = useSelector(postEntitiesSelector);
+  const pageSize = useSelector(pageSizeSelector);
 
   // Get current page from query params : http://localhost:3000/main/posts?page=2
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,16 +29,31 @@ const PostList = () => {
 
   useEffect(() => {
     dispatch(getPostPaging(page));
-  }, [page, dispatch]);
+  }, [page]);
 
   const showPosts = (postsList) => {
     const posts
-      = postsList?.filter(post => post.id > page * 5 && post.id < (page * 5) + 5)
+      = postsList?.slice((page - 1) * pageSize, page * pageSize)
         .map(post => {
           return <PostListItem key={post.id} {...post} />
         });
-
     return posts;
+  }
+
+  if (postEntities.length === 0) {
+    return (
+      <>
+        <div className={styles.container}>
+          <div className={styles.latestPost}>
+            <LoaderContent />
+          </div>
+          <div className={styles.postList}>
+            {new Array(4).fill(null).map((_, idx) => <LoaderContent key={idx} />)}
+          </div>
+        </div>
+        <Pagination />
+      </>
+    )
   }
 
   return (
