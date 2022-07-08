@@ -9,7 +9,7 @@ const Footer = () => {
   const { footer } = getLangData();
 
   const showDate = () => {
-    return new Date().getFullYear();
+    return " 2021 -" +  new Date().getFullYear();
   }
 
   return (
