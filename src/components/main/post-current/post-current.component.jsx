@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {
   useNavigate, useSearchParams
@@ -10,12 +10,15 @@ import {
 } from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from "../../common/loader-content/loader-content.component";
+import PopUpAlert from '../../common/pop-up-alert/pop-up-alert.component';
 import Author from './author/author.component';
 import CommentForm from './comment-form/comment-form.component';
 import Comments from './comments/comments.component';
 import styles from './post-current.module.css';
 import SharedLinks from './shared-links/shared-links';
 import SubPost from "./subpost/subpost.component";
+
+const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
 
 const PostCurrent = () => {
 
@@ -27,6 +30,9 @@ const PostCurrent = () => {
   const postId = parseInt(searchParams.get("id"));
   const post = useSelector(state => postEntityByIdSelector(state, postId));
   const { username, jwttoken } = useSelector(authEntitySelector);
+
+  //PopUp
+  const [isShowPopUp, setIsShowPopUp] = useState(false);
 
   /**
    * Если поста нет в стейте, происходит запрос получения данных с id поста,
@@ -48,8 +54,10 @@ const PostCurrent = () => {
     if (username && jwttoken) {
       return (
         <>
+          <button onClick={handlerPrint}>Print Article</button>
+          <button>Jump to code</button>
           <button onClick={() => navigate('/dashboard/post-form', { state: post })}>Edit Article</button>
-          <button onClick={() => dispatch(deletePostById(postId))}>Delete Article</button>
+          <button onClick={deletePostHandler}>Delete Article</button>
         </>
       )
     }
@@ -59,12 +67,32 @@ const PostCurrent = () => {
     content: () => printRef.current
   })
 
+  /**
+   * This method Deletes post by id and if response === OK shows PopUp and redirected to /main after some time
+   */
+  const deletePostHandler = () => {
+    dispatch(deletePostById(postId)).then(data => {
+      if (data.payload === 'OK') {
+        setIsShowPopUp(true);
+        setTimeout(() => {
+          navigate("/");
+        }, REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING)
+      }
+    })
+  }
+
+  // Loader
   if (post === undefined) {
     return <LoaderContent />
   }
 
   return (
     <div className={styles.container} ref={printRef}>
+      <PopUpAlert
+        isShowPopUp={isShowPopUp}
+        message={`Post with id: ${postId} deleted`}
+        backGroundColor="#f66459"
+      />
       <ByteImage byteImage={post.postImage.byteImage} />
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>
@@ -77,8 +105,6 @@ const PostCurrent = () => {
       </div>
       <div className={styles.disclosure}>{post.disclosure}</div>
       <div className={styles.nav}>
-        <button>Jump to code</button>
-        <button onClick={handlerPrint}>Print Article</button>
         {showActionPostButtons()}
       </div>
       <div className={styles.text}>

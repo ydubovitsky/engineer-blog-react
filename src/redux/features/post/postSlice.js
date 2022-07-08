@@ -52,7 +52,7 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
 /**
  * Get one post by id from remote server
  */
-export const deletePostById = createAsyncThunk("post/getPostById", async (id, { getState }) => {
+export const deletePostById = createAsyncThunk("post/deletePostById", async (id, { getState }) => {
   const { auth } = getState();
 
   const payload = {
@@ -130,6 +130,7 @@ const initialState = {
     status: 'idle',
     error: null
   },
+  isPostDeleted: 'idle',
   size: 4, // 0 is also considered... [0, 1, 2, 3, 4]
   sizeOfStatField: 4, //MOST POPULAR, CATEGORIES
   status: 'idle',
