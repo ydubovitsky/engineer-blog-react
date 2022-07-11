@@ -1,12 +1,12 @@
 const axios = require('axios');
 
-const callApiService = async ({path, body, headers, method}) => {
+const callApiService = async ({url, body, headers, method}) => {
 
   //TODO Нужен ли тут try catch это же асинхронный метод
   try {
     const response = await axios({
       method: method,
-      url: 'http://localhost:8080' + path,
+      url: url,
       data: body,
       headers: headers
     });

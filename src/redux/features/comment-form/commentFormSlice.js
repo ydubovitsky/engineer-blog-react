@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
+import { GITHUB_URL } from '../../url-const/url-const.const';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
 export const addComment = createAsyncThunk("comment/add", async (body) => {
   const payload = {
-    path: `/api/v1/post/${body.postId}/comments/add`,
+    path: `${GITHUB_URL}/api/v1/post/${body.postId}/comments/add`,
     body: body,
     method: 'POST',
     headers: {

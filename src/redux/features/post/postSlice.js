@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
+import { BASE_URL } from '../../url-const/url-const.const';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -17,7 +18,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
   };
 
   const payload = {
-    path: `/api/v1/post?page=${page}&size=${post.size}`,
+    url: `${BASE_URL}/api/v1/post?page=${page}&size=${post.size}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
   if (isArrayContainObjectWithId(post.postEntities, postId)) return; //TODO Можно ли просто null?
 
   const payload = {
-    path: `/api/v1/post?id=${postId}`,
+    url: `${BASE_URL}/api/v1/post?id=${postId}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ export const deletePostById = createAsyncThunk("post/deletePostById", async (id,
   const { auth } = getState();
 
   const payload = {
-    path: `/api/v1/post/delete/${id}`,
+    url: `${BASE_URL}/api/v1/post/delete/${id}`,
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
   const { auth } = getState();
 
   const payload = {
-    path: `/api/v1/post/search?title=${title}`,
+    url: `${BASE_URL}/api/v1/post/search?title=${title}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
 export const increasePostViewById = createAsyncThunk("post/increasePostViewById", async (id) => {
 
   const payload = {
-    path: `/api/v1/post/view/${id}`,
+    url: `${BASE_URL}/api/v1/post/view/${id}`,
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -110,7 +111,7 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
 export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => {
 
   const payload = {
-    path: `/api/v1/post/count`,
+    url: `${BASE_URL}/api/v1/post/count`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

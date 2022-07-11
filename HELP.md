@@ -57,3 +57,6 @@ https://stackoverflow.com/questions/42761068/paginate-javascript-array
 
 ### Policy Generator
 https://tilda.cc/ru/privacy-generator/
+
+### 10 современных раскладок в одну строку CSS-кода
+https://habr.com/ru/post/522880/

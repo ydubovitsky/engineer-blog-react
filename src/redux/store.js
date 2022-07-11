@@ -4,6 +4,7 @@ import authReducer from './features/auth/authSlice';
 import postReducer from './features/post/postSlice';
 import postFormSlice from './features/post-form/postFormSlice';
 import commentFormSlice from './features/comment-form/commentFormSlice';
+import projectsSlice from './features/projects/projectsSlice';
 
 const persistedState = loadState('auth');
 
@@ -13,6 +14,7 @@ const store = configureStore({
     post: postReducer,
     postForm: postFormSlice,
     commentForm: commentFormSlice,
+    projects: projectsSlice
   },
   preloadedState: {
     auth: persistedState

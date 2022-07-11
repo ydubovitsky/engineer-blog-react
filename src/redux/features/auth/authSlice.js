@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
+import { BASE_URL } from '../../url-const/url-const.const';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
 export const login = createAsyncThunk("auth/login", async (body) => {
   const payload = {
-    path: '/login',
+    url: `${BASE_URL}/login`,
     body: body,
     method: 'POST',
     headers: {
@@ -19,7 +20,7 @@ export const login = createAsyncThunk("auth/login", async (body) => {
 
 export const registration = createAsyncThunk("auth/registration", async (body) => {
   const payload = {
-    path: `/api/v1/user/registration`,
+    url: `${BASE_URL}/api/v1/user/registration`,
     body: body,
     method: 'POST',
     headers: {
