@@ -1,11 +1,16 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { LangContext } from '../../../../context/lang/LangContext';
 import { useSearchParams } from "react-router-dom";
 import { addComment } from '../../../../redux/features/comment-form/commentFormSlice';
 import styles from './comment-form.module.css';
 
 const CommentForm = () => {
+
+  // Context
+  const { getLangData } = useContext(LangContext);
+  const { comment_form } = getLangData();
 
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
@@ -24,29 +29,29 @@ const CommentForm = () => {
   return (
     <div className={cn(styles.container, styles.svgBackground)}>
       <div className={styles.title}>
-        LEAVE A COMMENT
+        {comment_form.comments}
       </div>
       <div className={styles.subtitle}>
-        Your email address will not be published. Required fields are marked *
+        {comment_form.required_fields}
       </div>
       <div className={styles.inputWithLabel}>
-        <label htmlFor="name">NAME</label>
+        <label htmlFor="name">{comment_form.name}</label>
         <input type="text" name="name" onChange={handlerInputForm} />
       </div>
       <div className={styles.inputWithLabel}>
-        <label htmlFor="message">MESSAGE</label>
+        <label htmlFor="message">{comment_form.message}</label>
         <textarea name="message" onChange={handlerInputForm}></textarea>
       </div>
       <div className={styles.inputWithLabel}>
-        <label htmlFor="email">EMAIL ADDRESS</label>
+        <label htmlFor="email">{comment_form.email_address}</label>
         <input type="text" name="email" onChange={handlerInputForm} />
       </div>
       <div className={styles.inputWithLabel}>
-        <label htmlFor="website">WEBSITE</label>
+        <label htmlFor="website">{comment_form.website}</label>
         <input type="text" name="website" onChange={handlerInputForm} />
       </div>
       <button className={styles.button} onClick={() => dispatch(addComment(commentForm))}>
-        Post Comment
+        {comment_form.post_button}
       </button>
     </div>
   )

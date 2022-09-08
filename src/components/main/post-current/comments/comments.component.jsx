@@ -1,11 +1,17 @@
 import cn from 'classnames';
+import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from "react-router-dom";
-import { commentListForPostByPostIdSelector } from '../../../../redux/features/post/postSlice';
+import { LangContext } from '../../../../context/lang/LangContext';
 import avatar from '../../../../images/comment/avatar.jpg';
+import { commentListForPostByPostIdSelector } from '../../../../redux/features/post/postSlice';
 import styles from './comments.module.css';
 
 const Comments = () => {
+
+  // Context
+  const { getLangData } = useContext(LangContext);
+  const { comment_form } = getLangData();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -21,11 +27,11 @@ const Comments = () => {
             <img src={avatar} alt="" />
           </div>
           <div className={styles.author}>
-            <h2>Author: </h2>
+            <h2>{comment_form.author}: </h2>
             <p>{el.name}</p>
           </div>
           <div className={styles.text}>
-            <h3>Comment:</h3>
+            <h3>{comment_form.message}:</h3>
             <p>{el.message}</p>
           </div>
         </div>
@@ -35,7 +41,7 @@ const Comments = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}><h3>Comments</h3></div>
+      <div className={styles.title}><h3>{comment_form.comments}</h3></div>
       <div className={styles.commentsContainer}>
         {showAllComments(comments)}
       </div>

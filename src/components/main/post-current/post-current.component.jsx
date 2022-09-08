@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import { LangContext } from '../../../context/lang/LangContext';
 import { useDispatch, useSelector } from "react-redux";
 import {
   useNavigate, useSearchParams
@@ -21,6 +22,10 @@ import SubPost from "./subpost/subpost.component";
 const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
 
 const PostCurrent = () => {
+
+  // Context
+  const { getLangData } = useContext(LangContext);
+  const { post_current } = getLangData();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,10 +59,10 @@ const PostCurrent = () => {
     if (username && jwttoken) {
       return (
         <>
-          <button onClick={handlerPrint}>Print Article</button>
-          <button>Jump to code</button>
-          <button onClick={() => navigate('/dashboard/post-form', { state: post })}>Edit Article</button>
-          <button onClick={deletePostHandler}>Delete Article</button>
+          <button onClick={handlerPrint}>{post_current.printArticle}</button>
+          <button>{post_current.jumpToCode}</button>
+          <button onClick={() => navigate('/dashboard/post-form', { state: post })}>{post_current.editArticle}</button>
+          <button onClick={deletePostHandler}>{post_current.deleteArticle}</button>
         </>
       )
     }
@@ -96,9 +101,9 @@ const PostCurrent = () => {
       <ByteImage byteImage={post.postImage.byteImage} />
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>
-        <div className={styles.author}><span>Written by </span> {post.author}</div>
-        <div className={styles.date}><span>Updated on </span>{post.updatedAt}</div>
-        <div className={styles.category}><span>Category - </span> {post.category}</div>
+        <div className={styles.author}><span>{post_current.writtenBy} </span> {post.author}</div>
+        <div className={styles.date}><span>{post_current.updatedOn} </span>{post.updatedAt}</div>
+        <div className={styles.category}><span>{post_current.category} </span> {post.category}</div>
         <div className={styles.description}>
           {post.description}
         </div>
@@ -114,7 +119,7 @@ const PostCurrent = () => {
         {showSubPosts(post.subPosts)}
       </div>
       <div className={styles.conclusion}>
-        <div className={styles.title}>Conclusion</div>
+        <div className={styles.title}>{post_current.conclusion}</div>
         <p>{post.conclusion}</p>
       </div>
       <SharedLinks />
