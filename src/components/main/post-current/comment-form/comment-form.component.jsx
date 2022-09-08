@@ -1,16 +1,17 @@
-import styles from './comment-form.module.css';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { addComment } from '../../../../redux/features/comment-form/commentFormSlice';
-import { useParams } from "react-router-dom";
 import cn from 'classnames';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSearchParams } from "react-router-dom";
+import { addComment } from '../../../../redux/features/comment-form/commentFormSlice';
+import styles from './comment-form.module.css';
 
 const CommentForm = () => {
 
   const dispatch = useDispatch();
-  const params = useParams();
+  const [searchParams] = useSearchParams();
+  const postId = searchParams.get("id");
   // По умолчанию в качестве параметра задается id поста
-  const [commentForm, setCommentForm] = useState({postId: params.id});
+  const [commentForm, setCommentForm] = useState({ postId: postId });
 
   const handlerInputForm = (event) => {
     const { name, value } = event.target;
