@@ -28,6 +28,14 @@
   "resolutions": {
     "react-error-overlay": "6.0.9"
   },
+  "jest": {
+    "transform": {
+      "\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -47,6 +55,8 @@
     ]
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "enzyme": "^3.11.0",
     "stylelint": "^14.3.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^24.0.0",

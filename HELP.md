@@ -60,3 +60,8 @@ https://tilda.cc/ru/privacy-generator/
 
 ### 10 современных раскладок в одну строку CSS-кода
 https://habr.com/ru/post/522880/
+
+### Tests with Enzyme and Jest
+https://enzymejs.github.io/enzyme/
+https://github.com/wojtekmaj/enzyme-adapter-react-17
+https://stackoverflow.com/questions/49263429/jest-gives-an-error-syntaxerror-unexpected-token-export

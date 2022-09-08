@@ -20,7 +20,7 @@ import MainLayout from './layouts/main/main.layout';
 function App() {
 
   return (
-    <div className={styles.container}>
+    <div data-id="app" className={styles.container}>
       <Routes>
         <Route path="/main" element={<MainLayout />}>
           <Route path="posts" element={<PostList />} />
