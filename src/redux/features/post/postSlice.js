@@ -150,7 +150,7 @@ const postSlice = createSlice({
       })
       .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.postEntities = [...state.postEntities, ...action.payload.posts];
+        state.postEntities = [...action.payload.posts];
         state.postsCount = {
           count: action.payload.totalPostsCount,
           status: 'succeeded',
@@ -163,7 +163,11 @@ const postSlice = createSlice({
       })
       //! Fetch post by id
       .addCase(getPostById.fulfilled, (state, action) => {
-        state.postEntities.push(action.payload);
+        const { id } = action.payload;
+        const isExist = state.postEntities.find(post => post.id === id);
+        if (!isExist) {
+          state.postEntities.push(action.payload);
+        }
         state.status = 'succeeded';
       })
       //! Fetch Posts By TextContains
