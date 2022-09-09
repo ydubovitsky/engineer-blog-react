@@ -113,5 +113,10 @@
     "email_address": "EMAIL ADDRESS",
     "website": "Website",
     "post_button": "Post Comment"
+  },
+  "about_blog": {
+    "about": "About blog",
+    "paragraph_1": "This blog is dedicated to various areas of computing and information technology. Recordings and news articles are posted directly on the site. In addition, this blog contains links to other sources that may be useful to a novice programmer.",
+    "paragraph_2": "Unlike academic journals and articles, blog posts are written in an accessible language and understandable to a wide audience of readers."
   }
 }
