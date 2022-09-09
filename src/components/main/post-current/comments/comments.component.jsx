@@ -22,7 +22,7 @@ const Comments = () => {
   const showAllComments = (comments) => {
     return (
       comments.map((el, idx) => (
-        <div className={(cn(styles.comment, idx % 2 === 0 ? styles.even : styles.uneven))}>
+        <div key={el.id} className={(cn(styles.comment, idx % 2 === 0 ? styles.even : styles.uneven))}>
           <div className={styles.avatar}>
             <img src={avatar} alt="" />
           </div>
