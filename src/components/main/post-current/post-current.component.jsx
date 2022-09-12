@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState, useContext } from 'react';
-import { LangContext } from '../../../context/lang/LangContext';
+import { useContext, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {
   useNavigate, useSearchParams
 } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
+import { LangContext } from '../../../context/lang/LangContext';
 import { authEntitySelector } from '../../../redux/features/auth/authSlice';
 import {
   deletePostById, getPostById, increasePostViewById, postEntityByIdSelector
 } from '../../../redux/features/post/postSlice';
 import ByteImage from "../../common/hoc/byte-image/byte-image-component";
 import LoaderContent from "../../common/loader-content/loader-content.component";
-import PopUpAlert from '../../common/pop-up-alert/pop-up-alert.component';
 import Author from './author/author.component';
 import CommentForm from './comment-form/comment-form.component';
 import Comments from './comments/comments.component';
@@ -35,9 +34,6 @@ const PostCurrent = () => {
   const postId = parseInt(searchParams.get("id"));
   const post = useSelector(state => postEntityByIdSelector(state, postId));
   const { username, jwttoken } = useSelector(authEntitySelector);
-
-  //PopUp
-  const [isShowPopUp, setIsShowPopUp] = useState(false);
 
   /**
    * Если поста нет в стейте, происходит запрос получения данных с id поста,
@@ -78,7 +74,6 @@ const PostCurrent = () => {
   const deletePostHandler = () => {
     dispatch(deletePostById(postId)).then(data => {
       if (data.payload === 'OK') {
-        setIsShowPopUp(true);
         setTimeout(() => {
           navigate("/");
         }, REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING)
@@ -93,11 +88,6 @@ const PostCurrent = () => {
 
   return (
     <div className={styles.container} ref={printRef}>
-      <PopUpAlert
-        isShowPopUp={isShowPopUp}
-        message={`Post with id: ${postId} deleted`}
-        backGroundColor="#f66459"
-      />
       <ByteImage byteImage={post.postImage.byteImage} />
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>

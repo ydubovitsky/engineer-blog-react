@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { CookiesProvider } from './context/cookie';
 import LangContextProvider from './context/lang/LangContext';
+import Popup from './components/common/popup/popup.component';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
       <BrowserRouter>
         <CookiesProvider>
           <LangContextProvider>
+            <Popup />
             <App />
           </LangContextProvider>
         </CookiesProvider>

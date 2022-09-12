@@ -5,6 +5,8 @@ import postReducer from './features/post/postSlice';
 import postFormSlice from './features/post-form/postFormSlice';
 import commentFormSlice from './features/comment-form/commentFormSlice';
 import projectsSlice from './features/projects/projectsSlice';
+import popupSlice from './features/popup/popup.slice';
+import PopupMiddleware from './middleware/popup.middleware';
 
 const persistedState = loadState('auth');
 
@@ -14,11 +16,13 @@ const store = configureStore({
     post: postReducer,
     postForm: postFormSlice,
     commentForm: commentFormSlice,
-    projects: projectsSlice
+    projects: projectsSlice,
+    popup: popupSlice
   },
   preloadedState: {
     auth: persistedState
-  }
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(PopupMiddleware)
 });
 
 //TODO Доработать, чтобы можно было передавать объект с множеством полей!
