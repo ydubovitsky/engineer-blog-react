@@ -6,6 +6,7 @@ import postFormSlice from './features/post-form/postFormSlice';
 import commentFormSlice from './features/comment-form/commentFormSlice';
 import projectsSlice from './features/projects/projectsSlice';
 import popupSlice from './features/popup/popup.slice';
+import feedbackSlice from './features/feedback/feedback.slice';
 import PopupMiddleware from './middleware/popup.middleware';
 
 const persistedState = loadState('auth');
@@ -17,7 +18,8 @@ const store = configureStore({
     postForm: postFormSlice,
     commentForm: commentFormSlice,
     projects: projectsSlice,
-    popup: popupSlice
+    popup: popupSlice,
+    feedback: feedbackSlice
   },
   preloadedState: {
     auth: persistedState

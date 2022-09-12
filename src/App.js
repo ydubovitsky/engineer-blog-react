@@ -11,7 +11,7 @@ import ProtectedRoute from "./wrapper/protectedRoute";
 import AboutPage from "./components/page/about/about.page";
 import PolicyPage from "./components/page/policy/policy.page";
 import ProjectsPage from "./components/page/projects/projects.page";
-import ContactsPage from "./components/page/contacts/contacts.page";
+import FeedbackPage from "./components/page/feedback/feedback.page";
 
 //* Layouts!
 import DashboardLayout from './layouts/dashboard/dashboard.layout.jsx';
@@ -28,7 +28,7 @@ function App() {
           <Route path="login" element={<SignIn />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="policy" element={<PolicyPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
+          <Route path="contacts" element={<FeedbackPage />} />
           <Route path="projects" element={<ProjectsPage />} />
         </Route>
         <Route element={<ProtectedRoute />}>

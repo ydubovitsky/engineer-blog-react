@@ -114,6 +114,17 @@
     "website": "Website",
     "post_button": "Post Comment"
   },
+  "feedback": {
+    "title": "Feedback",
+    "author": "Author",
+    "subtitle": " If you have any questions, you can send message or suggestions through the feedback form or my social media.",
+    "leave_a_comment": "Оставьте коментарий",
+    "required_fields": "Your email address will not be published. Required fields are marked *",
+    "name": "Name",
+    "message": "Message",
+    "email_address": "Email Address",
+    "post_button": "Send Message"
+  },
   "about_blog": {
     "about": "About blog",
     "paragraph_1": "This blog is dedicated to various areas of computing and information technology. Recordings and news articles are posted directly on the site. In addition, this blog contains links to other sources that may be useful to a novice programmer.",
