@@ -2,16 +2,16 @@ import {
   Navigate, Route, Routes
 } from "react-router-dom";
 import styles from './App.css';
-import PostForm from "./components/dashboard/post-form/post-form.component";
-import PostListDashBoard from "./components/dashboard/post-list/post-list.component";
-import PostCurrent from "./components/main/post-current/post-current.component";
-import PostList from "./components/main/post-list/post-list.component";
-import SignIn from "./components/main/sign-in/sign-in.component";
-import ProtectedRoute from "./wrapper/protectedRoute";
-import AboutPage from "./components/page/about/about.page";
-import PolicyPage from "./components/page/policy/policy.page";
-import ProjectsPage from "./components/page/projects/projects.page";
-import FeedbackPage from "./components/page/feedback/feedback.page";
+import PostForm from "./pages/dashboard/post-form/post-form.component";
+import PostListDashBoard from "./pages/dashboard/post-list/post-list.component";
+import PostCurrent from "./pages/main/posts-post/post-current/post-current.component";
+import PostList from "./pages/main/posts/components/post-list/post-list.component";
+import SignIn from "./pages/main/login/sign-in/sign-in.component";
+import ProtectedRoute from "./hoc/protected-route/protectedRoute";
+import AboutPage from "./pages/main/about/about.page";
+import PolicyPage from "./pages/main/policy/policy.page";
+import ProjectsPage from "./pages/main/projects/projects.page";
+import FeedbackPage from "./pages/main/feedback/feedback.page";
 
 //* Layouts!
 import DashboardLayout from './layouts/dashboard/dashboard.layout.jsx';
@@ -28,7 +28,7 @@ function App() {
           <Route path="login" element={<SignIn />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="policy" element={<PolicyPage />} />
-          <Route path="contacts" element={<FeedbackPage />} />
+          <Route path="feedback" element={<FeedbackPage />} />
           <Route path="projects" element={<ProjectsPage />} />
         </Route>
         <Route element={<ProtectedRoute />}>

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from '../services/localStorage/localStorageService';
-import authReducer from './features/auth/authSlice';
-import postReducer from './features/post/postSlice';
-import postFormSlice from './features/post-form/postFormSlice';
-import commentFormSlice from './features/comment-form/commentFormSlice';
-import projectsSlice from './features/projects/projectsSlice';
+import authReducer from './features/auth/auth.slice';
+import postReducer from './features/post/post.slice';
+import postFormSlice from './features/post-form/post-form.slice';
+import commentFormSlice from './features/comment-form/comment-form.slice';
+import projectsSlice from './features/projects/projects.slice';
 import popupSlice from './features/popup/popup.slice';
 import feedbackSlice from './features/feedback/feedback.slice';
 import PopupMiddleware from './middleware/popup.middleware';

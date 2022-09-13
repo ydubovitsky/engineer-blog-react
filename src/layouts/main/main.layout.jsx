@@ -1,21 +1,21 @@
 import {
   Outlet
 } from "react-router-dom";
-import CookieAlert from "../../components/common/cookie-alert/cookie-alert.component";
-import Footer from "../../components/common/footer/footer.component";
-import Sidebar from '../../components/common/sidebar/sidebar.component';
-import AboutMe from '../../components/main/about-me/about-me.component';
-import ColumnWidgets from "../../components/main/column-widgets/column-widgets.component";
-import FollowMe from '../../components/main/follow-me/follow-me.component';
-import Hero from "../../components/main/hero/hero.component";
-import LogoPanel from "../../components/main/logo-panel/logo-panel.component";
-import NavPanel from "../../components/main/nav-panel/nav-panel.component";
-import Search from '../../components/main/search/search.component';
-import SocialNavPanel from "../../components/main/social-nav-panel/social-nav-panel.component";
-import Statistic from "../../components/main/statistic/statistic.component";
-import Subscribe from '../../components/main/subscribe/subscribe.component';
-import TickerImage from "../../components/main/ticker-image/ticker-image.component";
-import UpButton from "../../components/main/up-button/up-button.component";
+import CookieAlert from "../../common/components/cookie-alert/cookie-alert.component";
+import Footer from "../../common/components/footer/footer.component";
+import Sidebar from '../../common/components/sidebar/sidebar.component';
+import AboutMe from './components/about-me/about-me.component';
+import ColumnWidgets from "./components/column-widgets/column-widgets.component";
+import FollowMe from './components/follow-me/follow-me.component';
+import Hero from "./components/hero/hero.component";
+import LogoPanel from "./components/logo-panel/logo-panel.component";
+import NavPanel from "./components/nav-panel/nav-panel.component";
+import Search from './components/search/search.component';
+import SocialNavPanel from "./components/social-nav-panel/social-nav-panel.component";
+import Statistic from "./components/statistic/statistic.component";
+import Subscribe from './components/subscribe/subscribe.component';
+import TickerImage from "./components/ticker-image/ticker-image.component";
+import UpButton from "./components/up-button/up-button.component";
 import styles from './main.module.css';
 
 const Main = () => {
