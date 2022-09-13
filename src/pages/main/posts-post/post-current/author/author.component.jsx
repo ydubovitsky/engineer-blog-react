@@ -1,7 +1,7 @@
 import styles from './author.module.css';
 import SocialIconsListComponent from '../../../../../common/components/social-icons-list/social-icons-list.component';
 
-const Author = ({ name }) => {
+const Author = ({ name, aboutAuthor = "" }) => {
   return (
     <div className={styles.container}>
       <div className={styles.avatar}>
@@ -13,7 +13,7 @@ const Author = ({ name }) => {
           <SocialIconsListComponent />
         </div>
         <div className={styles.info}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti similique odit dicta, sapiente accusantium enim dolore voluptas reiciendis sequi alias saepe molestias debitis quam laboriosam incidunt vel nisi laudantium voluptatum?
+          <p>{aboutAuthor.length !== 0 ? aboutAuthor : "Привет 👋, меня зовут Юрий и я автор этого блога. Я увлекаюсь программированием и всем, что с этим связано, если у вас есть замечания или предложения, оставьте коментарий или свяжитесь со мной в одной из соцсетей."}</p>
         </div>
       </div>
     </div>

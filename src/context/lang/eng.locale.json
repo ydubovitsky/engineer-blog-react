@@ -9,7 +9,7 @@
   },
   "logoPanel": {
     "title": "Engineer Blog",
-    "subtitle": "In simple terms about complex and not very things"
+    "subtitle": "Concise and simple explanation of difficult issues"
   },
   "navPAnel": {
     "about": "About",
@@ -31,8 +31,9 @@
   "aboutMe": {
     "columnTitle": "About Me",
     "fio": "Dubovitsky Yury",
-    "about": "lorem10",
-    "button": "Read More"
+    "about": "Engineer/Developer",
+    "button": "Read More",
+    "paragraph": "<p>Hi there! This is my personal blog, where i write about programming and other closest technology.</p><p>I love programming, especially - JavaScript, React ❤️ Redux, React Native, Java and related technologies.</p><p><b>Buy the way, this blog has written via React/Redux on frontend and Java/Spring on backend.</b></p>"
   },
   "postList": {
     "columnTitle": "Latest Post"

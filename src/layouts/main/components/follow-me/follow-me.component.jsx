@@ -1,14 +1,19 @@
 import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
+import parse from 'html-react-parser';
+import { useContext } from 'react';
+import { LangContext } from '../../../../context/lang/LangContext';
 import styles from './follow-me.module.css';
 
 const FollowMe = () => {
+
+  const { getLangData } = useContext(LangContext);
+  const { aboutMe } = getLangData();
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>Follow Me</div>
       <div className={styles.info}>
-        <p>Hi there! This is my personal blog, where i write about programming and other closest technology.</p>
-        <p>I love programming, especially - JavaScript, React ❤️ Redux, React Native, Java and related technologies.</p>
-        <p>Buy the way, this blog has written via React/Redux on frontend and Java/Spring on backend.</p>
+        {parse(aboutMe.paragraph)}
       </div>
       <div className={styles.socialIcons}>
         <SocialIconsListComponent iconSize="2rem" />

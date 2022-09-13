@@ -64,3 +64,7 @@ https://habr.com/ru/post/522880/
 https://enzymejs.github.io/enzyme/
 https://github.com/wojtekmaj/enzyme-adapter-react-17
 https://stackoverflow.com/questions/49263429/jest-gives-an-error-syntaxerror-unexpected-token-export
+
+### Insert html into components safety
+https://stackoverflow.com/questions/23616226/insert-html-with-react-variable-statements-jsx
+https://www.npmjs.com/package/html-react-parser

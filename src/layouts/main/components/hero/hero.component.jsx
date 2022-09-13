@@ -3,13 +3,16 @@ import styles from './hero.module.css';
 import { useContext, useState } from 'react';
 import { LangContext } from '../../../../context/lang/LangContext';
 import { smoothScrollToElement } from '../../../../utils/smoothScrollToElement';
-import one from './images/1.avif';
-import two from './images/2.jpg';
-import three from './images/3.avif';
+//TODO! Сделать так, чтобы сразу массив импортировался!
+import {
+  FirstSlideImage,
+  SecondSlideImage,
+  ThirdSlideImage
+} from "./images";
 
 const Hero = () => {
 
-  const images = [one, two, three]; // Массив изображений
+  const images = [FirstSlideImage, SecondSlideImage, ThirdSlideImage];
   const { getLangData } = useContext(LangContext);
   const { hero } = getLangData();
   const [currentSlide, setCurrentSlide] = useState(0);
