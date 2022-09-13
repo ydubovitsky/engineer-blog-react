@@ -20,7 +20,7 @@
 
 .name {
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: min-content auto;
   gap: 25px;
   font-size: 1.5rem;
   font-weight: bold;

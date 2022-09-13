@@ -4,18 +4,18 @@ import {
   useNavigate, useSearchParams
 } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
+import LoaderContent from "../../../../common/components/loader-content/loader-content.component";
+import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
 import { LangContext } from '../../../../context/lang/LangContext';
+import ByteImage from "../../../../hoc/byte-image/byte-image-component";
 import { authEntitySelector } from '../../../../redux/features/auth/auth.slice';
 import {
   deletePostById, getPostById, increasePostViewById, postEntityByIdSelector
 } from '../../../../redux/features/post/post.slice';
-import ByteImage from "../../../../hoc/byte-image/byte-image-component";
-import LoaderContent from "../../../../common/components/loader-content/loader-content.component";
 import Author from './author/author.component';
 import CommentForm from './comment-form/comment-form.component';
 import Comments from './comments/comments.component';
 import styles from './post-current.module.css';
-import SharedLinks from './shared-links/shared-links';
 import SubPost from "./subpost/subpost.component";
 
 const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
@@ -112,7 +112,7 @@ const PostCurrent = () => {
         <div className={styles.title}>{post_current.conclusion}</div>
         <p>{post.conclusion}</p>
       </div>
-      <SharedLinks />
+      <SocialIconsListComponent iconSize="2rem" />
       <Author name={post.author} />
       <Comments />
       <CommentForm />

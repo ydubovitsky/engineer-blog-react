@@ -1,25 +1,21 @@
+import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
 import styles from './follow-me.module.css';
-import getRandomColor from '../../../../utils/random-color';
 
 const FollowMe = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Follow Me</div>
-      <div className={styles.info}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo nesciunt adipisci odio tenetur vero architecto est, corporis, aperiam atque consequatur quod, reprehenderit delectus ad quis fugiat. Quia maxime error totam?</div>
-      <div className={styles.links}>
-        <i className="fab fa-github"></i>
-        <i className="far fa-envelope-open"></i>
-        <i className="fab fa-telegram"></i>
-        <i className="fab fa-skype"></i>
-        <i className="fab fa-twitter"></i>
+      <div className={styles.info}>
+        <p>Hi there! This is my personal blog, where i write about programming and other closest technology.</p>
+        <p>I love programming, especially - JavaScript, React ❤️ Redux, React Native, Java and related technologies.</p>
+        <p>Buy the way, this blog has written via React/Redux on frontend and Java/Spring on backend.</p>
+      </div>
+      <div className={styles.socialIcons}>
+        <SocialIconsListComponent iconSize="2rem" />
       </div>
       <div className={styles.hr}></div>
-      <div className={styles.links}>
-        <i className="fab fa-github" style={{ color: getRandomColor() }}></i>
-        <i className="far fa-envelope-open" style={{ color: getRandomColor() }}></i>
-        <i className="fab fa-telegram" style={{ color: getRandomColor() }}></i>
-        <i className="fab fa-skype" style={{ color: getRandomColor() }}></i>
-        <i className="fab fa-twitter" style={{ color: getRandomColor() }}></i>
+      <div className={styles.socialIcons}>
+        <SocialIconsListComponent iconSize="2rem" />
       </div>
     </div>
   )

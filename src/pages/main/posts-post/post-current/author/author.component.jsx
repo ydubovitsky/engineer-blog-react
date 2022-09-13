@@ -1,5 +1,5 @@
 import styles from './author.module.css';
-import getRandomColor from '../../../../../utils/random-color';
+import SocialIconsListComponent from '../../../../../common/components/social-icons-list/social-icons-list.component';
 
 const Author = ({ name }) => {
   return (
@@ -9,14 +9,8 @@ const Author = ({ name }) => {
       </div>
       <div className={styles.author}>
         <div className={styles.name}>
-          {name ? name : 'Nobody'}
-          <div className={styles.links}>
-            <i className="fab fa-github" style={{ color: getRandomColor() }}></i>
-            <i className="far fa-envelope-open" style={{ color: getRandomColor() }}></i>
-            <i className="fab fa-telegram" style={{ color: getRandomColor() }}></i>
-            <i className="fab fa-skype" style={{ color: getRandomColor() }}></i>
-            <i className="fab fa-twitter" style={{ color: getRandomColor() }}></i>
-          </div>
+          <p>{name ? name : 'Nobody'}</p>
+          <SocialIconsListComponent />
         </div>
         <div className={styles.info}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti similique odit dicta, sapiente accusantium enim dolore voluptas reiciendis sequi alias saepe molestias debitis quam laboriosam incidunt vel nisi laudantium voluptatum?

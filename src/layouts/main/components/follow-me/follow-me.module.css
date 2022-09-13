@@ -18,17 +18,9 @@
   font-style: italic;
 }
 
-/* TODO  */
-
-.links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.links i {
-  padding: 0.5rem;
-  font-size: 2rem;
+.socialIcons {
+  width: 100%;
+  padding: 5%;
 }
 
 .hr {

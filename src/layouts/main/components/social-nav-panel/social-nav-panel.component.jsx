@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useContext, useState } from "react";
 import { LangContext } from '../../../../context/lang/LangContext';
 import LangSwitcher from '../lang-switcher/lang-switcher.component';
+import SocialIconsListComponent from "../../../../common/components/social-icons-list/social-icons-list.component";
 
 const SocialNavPanel = () => {
 
@@ -39,18 +40,7 @@ const SocialNavPanel = () => {
           <LangSwitcher />
         </div>
         <div className={styles.socialContainer}>
-          <div className={styles.link}>
-            <i className="fab fa-facebook"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-twitter"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-google"></i>
-          </div>
-          <div className={styles.link}>
-            <i className="fab fa-github"></i>
-          </div>
+          <SocialIconsListComponent />
         </div>
         {showAuthButton(status)}
       </div>
