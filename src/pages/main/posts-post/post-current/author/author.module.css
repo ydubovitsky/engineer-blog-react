@@ -1,8 +1,8 @@
 .container {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 1fr 5fr;
   box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 20px;
   padding: 40px 0;
   border-top: 2px solid #eee;
 }
@@ -14,8 +14,8 @@
 .author {
   display: grid;
   grid-gap: 20px;
-  text-align: left;
   align-content: center;
+  text-align: left;
 }
 
 .name {

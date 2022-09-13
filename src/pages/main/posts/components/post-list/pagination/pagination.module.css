@@ -1,10 +1,10 @@
 .container {
   display: grid;
-  gap: 5px;
   grid-template-columns: repeat(3, auto);
-  padding: 100px 0 0;
-  justify-items: center;
+  gap: 5px;
   align-items: center;
+  justify-items: center;
+  padding: 100px 0 0;
 }
 
 .button {
@@ -13,26 +13,26 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 5px;
   background-color: var(--btn-bg-color);
+  border-radius: 5px;
   box-shadow: 2px 1px 1px silver;
 }
 
 .active {
+  color: black !important;
   background-color: var(--secondary-text-color);
   box-shadow: 2px 1px 5px rgb(92 92 92);
-  color: black !important;
   transform: scale(1.05);
 }
 
 .center {
   display: grid;
-  gap: 5%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  color: white;
-  font-weight: bold;
-  justify-items: center;
+  gap: 5%;
   align-items: center;
+  justify-items: center;
+  font-weight: bold;
+  color: white;
 }
 
 .heart {
@@ -40,13 +40,13 @@
 }
 
 .etc {
-  color: black;
   font-size: 1.5rem;
+  color: black;
 }
 
 .button:active {
-  transform: scale(0.98);
   color: black;
+  transform: scale(0.98);
 }
 
 .container a {

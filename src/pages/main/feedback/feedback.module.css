@@ -5,40 +5,40 @@
 
 .form {
   display: grid;
-  gap: 20px;
   grid-template-rows: repeat(10, auto);
+  gap: 20px;
   padding: 5%;
   font-weight: bold;
   text-align: left;
 }
 
 .inputWithLabel input {
-  box-shadow: 1px 1px 1px silver;
   background-color: white;
+  box-shadow: 1px 1px 1px silver;
 }
 
 .inputWithLabel textarea {
-  border: none;
   width: 100%;
   min-height: 100px;
+  border: none;
 }
 
 .button {
-  margin: 0;
-  padding: 8px 12px;
   width: 100% !important;
+  padding: 8px 12px;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  background: #fff;
-  cursor: pointer;
-  font-family: "Roboto Condensed", sans-serif;
+  color: #fff;
   text-transform: uppercase;
+  cursor: pointer;
+  background: #fff;
   background-color: #363940;
   border: none;
-  color: #fff;
+  border-color: transparent;
   border-radius: 2px;
   transition: .2s ease all;
-  border-color: transparent;
 }
 
 .button:active {

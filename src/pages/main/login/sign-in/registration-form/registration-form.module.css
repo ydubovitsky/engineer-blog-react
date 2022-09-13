@@ -1,37 +1,37 @@
 .buttons {
   display: grid;
-  gap: 5%;
   grid-template-columns: 1fr 1fr;
+  gap: 5%;
 }
 
 input {
-  margin: 8px 0;
-  padding: 12px 15px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
   background-color: #eee;
   border: none;
 }
 
 .right {
-  border-radius: 0 30px 10px 0;
-  color: white;
-  background-color: #E75148;
   display: grid;
-  justify-items: center;
   align-items: center;
+  justify-items: center;
+  color: white;
   text-align: center;
+  background-color: #E75148;
+  border-radius: 0 30px 10px 0;
 }
 
 .button {
-  margin: 0;
   padding: 5% 10%;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 1rem;
   font-weight: 800;
+  color: rgb(231 81 72 / 100%);
   text-decoration: none;
   background-color: white;
-  font-family: "Roboto Condensed", sans-serif;
-  color: rgb(231 81 72 / 100%);
   border: none;
   border-radius: 5px;
   transition: 0.3s ease;

@@ -68,3 +68,6 @@ https://stackoverflow.com/questions/49263429/jest-gives-an-error-syntaxerror-une
 ### Insert html into components safety
 https://stackoverflow.com/questions/23616226/insert-html-with-react-variable-statements-jsx
 https://www.npmjs.com/package/html-react-parser
+
+### Stylelint config (npx stylelint "**/*.{css,scss}" --fix)
+https://www.npmjs.com/package/stylelint-config-recess-order

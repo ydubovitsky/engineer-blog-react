@@ -1,17 +1,17 @@
 .container {
-  display: grid;
   box-sizing: border-box;
+  display: grid;
   padding: 40px 0;
   border-top: 2px solid #eee;
 }
 
 .title {
-  text-align: center;
+  padding: 20px 0;
   margin: 0;
   font-family: 'Roboto Condensed', sans-serif;
-  padding: 20px 0;
   font-size: 1.2rem;
   font-weight: bolder;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -22,24 +22,24 @@
 }
 
 .comment {
+  box-sizing: border-box;
   display: grid;
   gap: 2.5%;
   align-items: start;
-  box-sizing: border-box;
   padding: 40px 0;
-  border-top: 2px solid #eee;
   font-family: 'Roboto Condensed', sans-serif;
   text-align: left;
+  border-top: 2px solid #eee;
 }
 
 .even {
-  grid-template-columns: 1fr 5fr;
   grid-template-areas: "avatar author""avatar text";
+  grid-template-columns: 1fr 5fr;
 }
 
 .uneven {
-  grid-template-columns: 5fr 1fr;
   grid-template-areas: "author avatar""text avatar";
+  grid-template-columns: 5fr 1fr;
 }
 
 .avatar img {
@@ -52,11 +52,11 @@
 
 .author {
   grid-area: author;
+  padding: 5% 0;
   font-weight: bold;
+  text-align: center;
   background-color: var(--secondary-bg-color);
   border-radius: 10px;
-  text-align: center;
-  padding: 5% 0;
 }
 
 .text {

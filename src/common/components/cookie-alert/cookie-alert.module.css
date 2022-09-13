@@ -1,13 +1,13 @@
 .container {
   position: fixed;
   bottom: 0;
-  background-color: var(--third-bg-color);
-  text-align: justify;
+  z-index: 1000;
   padding: 1%;
   font-size: 0.9rem;
+  text-align: justify;
+  background-color: var(--third-bg-color);
   box-shadow: 1px 1px 1px 1px black;
   opacity: 0.8;
-  z-index: 1000;
 }
 
 .container i {

@@ -1,9 +1,9 @@
 .container {
   position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
   width: 100%;
   height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .box img {
@@ -12,33 +12,33 @@
 }
 
 .overlay {
-  display: flex;
-  width: 90%;
-  height: 90%;
   position: absolute;
   top: 5%;
   left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
   border: 1px solid silver;
   opacity: 0.3;
   transition: 0.3s ease;
-  align-items: center;
-  justify-content: center;
 }
 
 .button {
-  text-decoration: none;
-  color: black;
-  padding: 10px 25px;
-  font-weight: 600;
-  font-family: 'Roboto Condensed', sans-serif;
-  letter-spacing: 0.3rem;
   position: absolute;
   top: 50%;
   left: 50%;
+  padding: 10px 25px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+  letter-spacing: 0.3rem;
+  cursor: pointer;
   background-color: white;
   border: none;
   transform: translateX(-50%) translateY(-50%);
-  cursor: pointer;
 }
 
 .overlay:hover {

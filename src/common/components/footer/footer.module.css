@@ -4,9 +4,9 @@
 
 .navContainer {
   display: grid;
-  padding: 30px 0;
-  width: 100%;
   justify-items: center;
+  width: 100%;
+  padding: 30px 0;
   background-color: var(--third-bg-color);
 }
 
@@ -23,8 +23,8 @@
 }
 
 .navLink a {
-  text-decoration: none;
   color: black;
+  text-decoration: none;
   transition: 0.3s;
 }
 
@@ -34,6 +34,6 @@
 
 .copyright {
   display: flex;
-  padding: 20px 0;
   justify-content: center;
+  padding: 20px 0;
 }

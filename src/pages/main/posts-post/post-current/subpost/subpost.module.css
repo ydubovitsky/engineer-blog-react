@@ -1,10 +1,10 @@
 .text {
-  text-indent: 3em;
   text-align: left;
+  text-indent: 3em;
 }
 
 .description {
-  text-align: center;
-  font-style: italic;
   font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
 }

@@ -9,10 +9,10 @@
 
 .contentContainer {
   display: grid;
-  grid-gap: 30px;
   grid-template-areas:
     'posts aside';
   grid-template-columns: 5fr 1fr;
+  grid-gap: 30px;
 }
 
 .posts {

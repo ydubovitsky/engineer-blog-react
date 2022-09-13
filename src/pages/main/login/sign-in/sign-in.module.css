@@ -1,64 +1,64 @@
 .container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10000;
   display: grid;
+  grid-template-areas: "left right";
   grid-template-columns: 1.5fr 1fr;
   width: 50%;
   height: 70%;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  border-radius: 10%;
   background-color: white;
-  transform: translateX(-50%) translateY(-50%);
-  transition: 0.3s ease;
-  z-index: 10000;
-  grid-template-areas: "left right";
   border: 1px solid rgb(221 221 221);
+  border-radius: 10%;
+  transition: 0.3s ease;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .left {
   display: grid;
-  justify-items: center;
-  align-items: center;
-  text-align: center;
   grid-area: left;
+  align-items: center;
+  justify-items: center;
   padding: 5%;
+  text-align: center;
 }
 
 .buttons {
   display: grid;
-  gap: 5%;
   grid-template-columns: 1fr 1fr;
+  gap: 5%;
 }
 
 input {
-  margin: 8px 0;
-  padding: 12px 15px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
   background-color: #eee;
   border: none;
 }
 
 .right {
-  grid-area: right;
-  border-radius: 0 30px 10px 0;
-  color: white;
-  background-color: #E75148;
   display: grid;
-  justify-items: center;
+  grid-area: right;
   align-items: center;
+  justify-items: center;
+  color: white;
   text-align: center;
+  background-color: #E75148;
+  border-radius: 0 30px 10px 0;
 }
 
 .button {
-  margin: 0;
   padding: 5% 10%;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 1rem;
   font-weight: 800;
+  color: rgb(231 81 72 / 100%);
   text-decoration: none;
   background-color: white;
-  font-family: "Roboto Condensed", sans-serif;
-  color: rgb(231 81 72 / 100%);
   border: none;
   border-radius: 5px;
   transition: 0.3s ease;

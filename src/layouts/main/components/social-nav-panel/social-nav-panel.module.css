@@ -9,25 +9,25 @@
 
 .navContainer {
   display: grid;
-  gap: 10px;
-  grid-template-columns: 4fr 2fr 2fr 0.5fr;
+  grid-template-areas: "menu socialContainer langSwitcher auth";
   grid-template-rows: 50px;
+  grid-template-columns: 4fr 2fr 2fr 0.5fr;
+  gap: 10px;
+  align-items: center;
+  justify-items: center;
   padding: 0 100px;
   font-weight: 600;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas: "menu socialContainer langSwitcher auth";
   transition: 0.3s ease;
 }
 
 .menu {
   display: grid;
-  grid-template-columns: auto auto auto auto;
   grid-area: menu;
-  font-size: 0.8rem;
-  width: 100%;
-  text-transform: uppercase;
+  grid-template-columns: auto auto auto auto;
   justify-content: space-around;
+  width: 100%;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 .menuItem a {
@@ -36,15 +36,15 @@
 
 .menuItem p {
   display: flex;
-  text-align: center;
   justify-content: center;
-  transition: 0.2s ease;
   color: black;
+  text-align: center;
+  transition: 0.2s ease;
 }
 
 .socialContainer {
-  width: 100%;
   grid-area: socialContainer;
+  width: 100%;
 }
 
 .container a,
@@ -71,19 +71,19 @@
   .navContainer {
     position: absolute;
     left: -100%;
-    background-color: var(--secondary-bg-color);
-    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr min-content max-content;
-    padding: 5%;
-    justify-items: center;
-    align-items: center;
     grid-template-areas:
       "menu"
       "langSwitcher"
       "auth";
+    grid-template-rows: 1fr min-content max-content;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
     justify-items: start;
+    height: 100vh;
+    padding: 5%;
+    background-color: var(--secondary-bg-color);
   }
 
   .socialContainer {
@@ -91,12 +91,12 @@
   }
 
   .menu {
-    justify-items: start;
-    height: 100%;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr;
-    align-items: center;
     gap: 1rem;
+    align-items: center;
+    justify-items: start;
+    height: 100%;
   }
 }
 

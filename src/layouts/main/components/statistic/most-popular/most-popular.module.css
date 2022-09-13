@@ -5,9 +5,9 @@
 }
 
 .title {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
-  font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
 }
 
@@ -17,30 +17,30 @@
 }
 
 .articles a {
-  text-decoration: none;
   color: black;
+  text-decoration: none;
 }
 
 .article {
   display: grid;
-  align-items: center;
-  grid-gap: 10px;
-  justify-items: left;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 1fr 1fr;
   grid-template-areas: 
   "index articleTitle"
   "index view";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 7fr;
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: left;
 }
 
 .index {
   display: flex;
   grid-area: index;
-  padding: 5px;
-  width: 2rem;
-  height: 2rem;
   align-items: center;
   justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
   border: 1px solid var(--secondary-text-color);
   border-radius: 50%;
 }
