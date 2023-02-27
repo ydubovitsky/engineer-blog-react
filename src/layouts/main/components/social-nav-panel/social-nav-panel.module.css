@@ -81,7 +81,6 @@
     align-items: center;
     justify-items: center;
     justify-items: start;
-    height: 100vh;
     padding: 5%;
     background-color: var(--secondary-bg-color);
   }
