@@ -1,0 +1,4 @@
+[submodule "engineer-blog-spring"]
+	path = engineer-blog-spring
+	url = https://github.com/ydubovitsky/engineer-blog-spring.git
+	branch = master
