@@ -1,0 +1,70 @@
+# How to use it?
+# docker compose -f docker-compose-prod.yml up
+
+version: '3'
+services:
+  # You can rename this service special for docker-hub like: ydubovitsky/engineer-blog
+  engineer-blog-spring:
+    build:
+      context: ./engineer-blog-spring
+      dockerfile: ./docker/production/Dockerfile
+    environment:
+      PROFILE_ACTIVE: postgres
+      ADMIN_NAME: admin
+      ADMIN_PASSWORD: password
+      POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DDL_AUTO: update
+    depends_on:
+      - engineer-blog-db
+      - engineer-blog-pgadmin
+    networks:
+      - engineer-blog
+
+  engineer-blog-react:
+    build:
+      context: .
+      dockerfile: ./docker/production/Dockerfile
+      args:
+        # Change me!
+        - REACT_APP_BACKEND_URL=http://api.engineer-blog.ru
+    networks:
+     - engineer-blog
+
+  engineer-blog-db:
+    image: postgres:alpine3.17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      PGDATA: /data/postgres
+    volumes:
+      - engineer-blog-db:/data/postgres
+    networks:
+      - engineer-blog
+    restart: unless-stopped
+
+  engineer-blog-pgadmin:
+    container_name: engineer-blog-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: y.dubovitsky@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: jKu018%LYRB3
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - engineer-blog-pgadmin:/var/lib/pgadmin
+    depends_on:
+      - engineer-blog-db
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - engineer-blog
+    restart: unless-stopped
+
+networks:
+  engineer-blog:
+    driver: bridge
+
+volumes:
+  engineer-blog-db:
+  engineer-blog-pgadmin:
