@@ -1,21 +1,4 @@
 .container {
-  font-family: "Roboto Condensed", sans-serif;
-  text-align: justify;
-}
-
-.policy {
-  padding: 2rem 0;
-}
-
-.col {
-  line-height: 2rem;
-}
-
-.ol {
-  margin-left: 3rem;
-  line-height: 2rem;
-}
-
-.li {
-  line-height: 2rem;
+  display: grid;
+  gap: 20px;
 }
