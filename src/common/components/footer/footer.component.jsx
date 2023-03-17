@@ -28,6 +28,9 @@ const Footer = () => {
           <div className={styles.navLink}>
             <Link to="/main/policy">{footer.policy}</Link>
           </div>
+          <div className={styles.navLink}>
+            <Link to="/main/term-of-use">{footer.termOfUse}</Link>
+          </div>
         </div>
       </div>
       <div className={styles.copyright}>
