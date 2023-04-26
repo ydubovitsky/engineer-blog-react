@@ -1,14 +1,14 @@
 import cn from 'classnames';
 import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './sign-in.module.css';
+import styles from './auth.module.css';
 import { useNavigate } from 'react-router-dom';
-import { LangContext } from '../../../../context/lang/LangContext';
-import LoginForm from './login-form/login-form.component';
-import { authStatusSelector } from '../../../../redux/features/auth/auth.slice';
-import RegistrationForm from './registration-form/registration-form.component';
+import { LangContext } from '../../../context/lang/LangContext';
+import LoginForm from './components/login-form/login-form.component';
+import { authStatusSelector } from '../../../redux/features/auth/auth.slice';
+import RegistrationForm from './components/registration-form/registration-form.component';
 
-const SignIn = () => {
+const AuthPage = () => {
 
   const navigate = useNavigate();
   const status = useSelector(authStatusSelector);
@@ -20,8 +20,6 @@ const SignIn = () => {
   const registrationHandler = () => {
     setIsLogin(!isLogin);
   }
-
-  console.log(status);
 
   if (status === 'succeeded' || status === 'created') {
     navigate("/");
@@ -46,4 +44,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default AuthPage;

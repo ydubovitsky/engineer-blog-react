@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   useSearchParams
 } from "react-router-dom";
-import LoaderContent from '../../../../../common/components/loader-content/loader-content.component';
-import { LangContext } from '../../../../../context/lang/LangContext';
+import LoaderContent from '../../../../common/components/loader-content/loader-content.component';
+import { LangContext } from '../../../../context/lang/LangContext';
 import {
   getPostPaging,
   postEntitiesSelector
-} from '../../../../../redux/features/post/post.slice';
-import Pagination from './pagination/pagination.component';
-import PostListItem from './post-list-item/post-list-item.component';
+} from '../../../../redux/features/post/post.slice';
+import Pagination from './components/pagination/pagination.component';
+import PostListItem from './components/post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
 
-const PostList = () => {
+const PostListPage = () => {
 
   const dispatch = useDispatch();
   const postEntities = useSelector(postEntitiesSelector);
@@ -66,4 +66,4 @@ const PostList = () => {
   )
 };
 
-export default PostList;
+export default PostListPage;

@@ -40,8 +40,8 @@ const RegistrationForm = () => {
           <input type="text" name="username" onChange={handleFormChange} />
           <label htmlFor="password">{signUp.password}</label>
           <input type="password" name="password" onChange={handleFormChange} />
-          <label htmlFor="email">{signUp.email}</label>
-          <input type="text" name="email" onChange={handleFormChange} />
+          <label htmlFor="password2">{signUp.password}</label>
+          <input type="password" name="password2" onChange={handleFormChange} />
           <div className={styles.buttons}>
             <button
               className={styles.button}

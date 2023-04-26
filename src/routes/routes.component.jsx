@@ -2,9 +2,9 @@ import {
   Navigate, Route, Routes
 } from "react-router-dom";
 import PostForm from "../pages/dashboard/post-form/post-form.component";
-import PostCurrent from "../pages/main/posts-post/post-current/post-current.component";
-import PostList from "../pages/main/posts/components/post-list/post-list.component";
-import SignIn from "../pages/main/login/sign-in/sign-in.component";
+import PostCurrentPage from "../pages/main/posts/current/post-current.page";
+import PostListPage from "../pages/main/posts/list/post-list.page";
+import AuthPage from "../pages/main/auth/auth.page";
 import ProtectedRoute from "../hoc/protected-route/protectedRoute";
 import AboutPage from "../pages/main/about/about.page";
 import PolicyPage from "../pages/main/policy/policy.page";
@@ -19,9 +19,9 @@ import TermOfUsePage from "../pages/main/term-of-use/term-of-use.page";
 const RoutesComponent = () => (
   <Routes>
     <Route path="/main" element={<MainLayout />}>
-      <Route path="posts" element={<PostList />} />
-      <Route path="posts/post" element={<PostCurrent />} />
-      <Route path="login" element={<SignIn />} />
+      <Route path="posts" element={<PostListPage />} />
+      <Route path="posts/post" element={<PostCurrentPage />} />
+      <Route path="auth" element={<AuthPage />} />
       <Route path="about" element={<AboutPage />} />
       <Route path="policy" element={<PolicyPage />} />
       <Route path="term-of-use" element={<TermOfUsePage />} />

@@ -1,5 +1,5 @@
 import styles from './author.module.css';
-import SocialIconsListComponent from '../../../../../common/components/social-icons-list/social-icons-list.component';
+import SocialIconsListComponent from '../../../../../../common/components/social-icons-list/social-icons-list.component';
 
 const Author = ({ name, aboutAuthor = "" }) => {
   return (

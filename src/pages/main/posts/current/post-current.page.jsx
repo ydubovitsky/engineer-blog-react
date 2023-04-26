@@ -12,14 +12,14 @@ import { authEntitySelector } from '../../../../redux/features/auth/auth.slice';
 import {
   deletePostById, getPostById, increasePostViewById, postEntityByIdSelector
 } from '../../../../redux/features/post/post.slice';
-import Author from './author/author.component';
-import CommentForm from './comment-form/comment-form.component';
-import Comments from './comments/comments.component';
+import Author from './components/author/author.component';
+import CommentForm from './components/comment-form/comment-form.component';
+import Comments from './components/comments/comments.component';
 import styles from './post-current.module.css';
 
 const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
 
-const PostCurrent = () => {
+const PostCurrentPage = () => {
 
   // Context
   const { getLangData } = useContext(LangContext);
@@ -110,4 +110,4 @@ const PostCurrent = () => {
   )
 }
 
-export default PostCurrent;
+export default PostCurrentPage;

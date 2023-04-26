@@ -77,7 +77,7 @@ const PopupMiddleware = ({ dispatch, getState }) => next => action => {
   const { type } = action;
 
   switch (type) {
-    case 'auth/login/rejected': {
+    case 'auth/auth/rejected': {
       dispatch(showPopup(POPUP_PROPERTIES.loginRejected));
       break;
     }

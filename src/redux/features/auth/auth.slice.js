@@ -4,7 +4,7 @@ import { BASE_URL } from '../../url-const/url-const.const';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
-export const login = createAsyncThunk("auth/login", async (body) => {
+export const login = createAsyncThunk("auth/auth", async (body) => {
   const payload = {
     url: `${BASE_URL}/login`,
     body: body,

@@ -29,7 +29,7 @@ const Sidebar = () => {
     }
     return <>
       <h4>{sidebar.login}</h4>
-      <Link to={"/main/login"} className={styles.btn}>{sidebar.loginBtn}</Link>
+      <Link to={"/main/auth"} className={styles.btn}>{sidebar.loginBtn}</Link>
     </>
   }
 
