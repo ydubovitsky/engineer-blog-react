@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
 import { BASE_URL } from '../../url-const/url-const.const';
 import { getNamedFileFromForm } from '../../../utils/formData-utils';
@@ -30,8 +30,7 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApiService(payload);
-  return response;
+  return await callApiService(payload);
 });
 
 /**
@@ -59,8 +58,7 @@ export const updatePost = createAsyncThunk("post/update", async (args, { getStat
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  const response = await callApiService(payload);
-  return response;
+  return await callApiService(payload);
 });
 
 /**
@@ -74,18 +72,17 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
   if (isArrayContainElementWithIndex(post.postEntities, page * post.size - 1)) {
     console.log(`Post state already contains data for page - ${page}`);
     return null;
-  };
+  }
 
   const payload = {
-    url: `${BASE_URL}/api/v1/post?page=${page}&size=${post.size}`,
+    url: `${BASE_URL}/api/v1/post?page=${page}&size=${post.postPerPage}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 /**
@@ -104,9 +101,8 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 /**
@@ -123,9 +119,8 @@ export const deletePostById = createAsyncThunk("post/deletePostById", async (id,
       'Accept': 'application/json',
       'Authorization': auth.authEntity.jwttoken
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 /**
@@ -142,9 +137,8 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
       'Accept': 'application/json',
       'Authorization': auth.authEntity.jwttoken
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 /**
@@ -159,9 +153,8 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 /**
@@ -176,9 +169,8 @@ export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => 
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
-  }
-  const response = await callApiService(payload);
-  return response;
+  };
+  return await callApiService(payload);
 });
 
 // ------------------------------------- State -------------------------------------
@@ -186,13 +178,9 @@ export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => 
 //TODO Переработать state
 const initialState = {
   postEntities: [], //! Это массив объектов
-  postsCount: {
-    count: null,
-    status: 'idle',
-    error: null
-  },
-  size: 4, // 0 is also considered... [0, 1, 2, 3, 4]
-  sizeOfStatField: 4, //MOST POPULAR, CATEGORIES
+  totalPostsCount: 0,
+  postPerPage: 4, // 0 is also considered... [0, 1, 2, 3, 4]
+  listSizeOfPopularPosts: 4, //MOST POPULAR, CATEGORIES
   status: 'idle',
   error: null
 }
@@ -212,11 +200,8 @@ const postSlice = createSlice({
       .addCase(getPostPaging.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.postEntities = [...action.payload.posts];
-        state.postsCount = {
-          count: action.payload.totalPostsCount,
-          status: 'succeeded',
-          error: null
-        }
+        state.totalPostsCount = action.payload.totalPostsCount;
+        state.status = 'succeeded';
       })
       .addCase(getPostPaging.rejected, (state, action) => {
         state.status = 'failed';
@@ -233,7 +218,6 @@ const postSlice = createSlice({
       })
       //! Fetch Posts By TextContains
       .addCase(getPostsByTitle.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.postEntities = action.payload;
         state.status = 'succeeded';
       })
@@ -257,7 +241,7 @@ export const arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector = state => {
     categoriesWithCount[arr[i]] = 1 + (categoriesWithCount[arr[i]] || 0);
   }
   return Array.from(new Map(Object.entries(categoriesWithCount))).slice(0, state.post.sizeOfStatField);
-}
+};
 
 /**
  * !Метод возвращает массив объектов вида {id: ..., title: ..., views: ...}
@@ -275,44 +259,41 @@ export const mostPopularPostsSelector = state => {
       }
     })
     .slice(0, state.post.sizeOfStatField);
-}
+};
 
 export const commentListForPostByPostIdSelector = (state, postId) => {
   //TODO Разобраться с ParseInt
   return state.post.postEntities.filter(post => post.id === parseInt(postId))?.map(post => post.comments)[0];
-}
+};
 
 export const postsCountSelector = (state) => {
-  return state.post.postsCount.count;
-}
+  return state.post.totalPostsCount;
+};
 
 export const maxPageCountSelector = (state) => {
-  return Math.ceil(state.post.postsCount.count / state.post.size);
-}
+  return Math.ceil(state.post.totalPostsCount / state.post.postPerPage);
+};
 
 export const pageSizeSelector = state => {
-  return state.post.size;
-}
+  return state.post.postPerPage;
+};
 
 // ------------------------------------- Util Functions -------------------------------------
 
 //FIXME Переделать тело метода
 const isArrayContainElementWithIndex = (array, index) => {
-  if (array === undefined) {
-    return false;
-  }
-  if (array[index] === undefined) {
+  if (array === undefined || array[index] === undefined) {
     return false;
   }
   return true;
-}
+};
 
 const isArrayContainObjectWithId = (array, id) => {
   if (array !== undefined) {
     return array.some(element => element.id === id);
   }
   return false;
-}
+};
 
 const mapPayloadToObject = (payload) => {
   return payload.reduce((prev, cur) => {
@@ -321,7 +302,7 @@ const mapPayloadToObject = (payload) => {
       [cur.id]: cur
     }
   }, {});
-}
+};
 
 // ------------------------------------- Reducer Export Default -------------------------------------
 export default postSlice.reducer;
