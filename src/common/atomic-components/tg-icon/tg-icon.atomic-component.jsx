@@ -3,7 +3,7 @@ import styles from './tg-icon.module.css';
 const TgIconAtomicComponent = ({ color, size }) => {
   return (
     <div className={styles.container}>
-      <a href="https://github.com/y-dubovitsky"
+      <a href="https://github.com/ydubovitsky"
         target="_blank"
         rel="noreferrer"
       >

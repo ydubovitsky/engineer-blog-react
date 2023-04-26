@@ -3,7 +3,7 @@ import styles from './email-icon.module.css';
 const EmailIconAtomicComponent = ({ color, size }) => {
   return (
     <div className={styles.container}>
-      <a href="https://github.com/y-dubovitsky"
+      <a href="https://github.com/ydubovitsky"
         target="_blank"
         rel="noreferrer"
       >

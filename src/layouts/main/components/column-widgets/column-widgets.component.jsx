@@ -11,9 +11,9 @@ const ColumnWidgets = (props) => {
 
   const showWidgetsList = () => {
     const widgets = [
-      { imageSrc: AboutMeImage, text: columnWidgets.about, href: "https://github.com/y-dubovitsky" },
-      { imageSrc: FeedbackImage, text: columnWidgets.writeMe, href: "https://github.com/y-dubovitsky" },
-      { imageSrc: GithubImage, text: columnWidgets.github, href: "https://github.com/y-dubovitsky" }
+      { imageSrc: AboutMeImage, text: columnWidgets.about, href: "https://github.com/ydubovitsky" },
+      { imageSrc: FeedbackImage, text: columnWidgets.writeMe, href: "https://github.com/ydubovitsky" },
+      { imageSrc: GithubImage, text: columnWidgets.github, href: "https://github.com/ydubovitsky" }
     ].map(props => (
       <Widget imageSrc={props.imageSrc} text={props.text} href={props.href} />
     ));

@@ -6,7 +6,7 @@ import { GITHUB_URL } from '../../url-const/url-const.const';
 
 export const getGitProfileInfo = createAsyncThunk("projects/getGitProfileInfo", async () => {
   const payload = {
-    url: `${GITHUB_URL}/users/y-dubovitsky/repos`,
+    url: `${GITHUB_URL}/users/ydubovitsky/repos`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
