@@ -16,7 +16,6 @@ import Author from './author/author.component';
 import CommentForm from './comment-form/comment-form.component';
 import Comments from './comments/comments.component';
 import styles from './post-current.module.css';
-import SubPost from "./subpost/subpost.component";
 
 const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
 
@@ -47,19 +46,15 @@ const PostCurrent = () => {
     }
   }, [])
 
-  const showSubPosts = (subPosts) => {
-    return subPosts?.map(subPost => <SubPost key={subPost.id} {...subPost} />)
-  }
-
   const showActionPostButtons = () => {
     if (username && jwttoken) {
       return (
-        <>
+        <div className={styles.nav}>
           <button onClick={handlerPrint}>{post_current.printArticle}</button>
           <button>{post_current.jumpToCode}</button>
-          <button onClick={() => navigate('/dashboard/post-form', { state: post })}>{post_current.editArticle}</button>
+          <button onClick={() => navigate(`/dashboard/post-form?id=${postId}`,)}>{post_current.editArticle}</button>
           <button onClick={deletePostHandler}>{post_current.deleteArticle}</button>
-        </>
+        </div>
       )
     }
   }
@@ -102,12 +97,7 @@ const PostCurrent = () => {
       <div className={styles.nav}>
         {showActionPostButtons()}
       </div>
-      <div className={styles.text}>
-        <p>{post.text}</p>
-      </div>
-      <div className={styles.subPostsContainer}>
-        {showSubPosts(post.subPosts)}
-      </div>
+      <div className={styles.text} dangerouslySetInnerHTML={{ __html: post.text }} />
       <div className={styles.conclusion}>
         <div className={styles.title}>{post_current.conclusion}</div>
         <p>{post.conclusion}</p>

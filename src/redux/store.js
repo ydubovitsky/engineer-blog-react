@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from '../services/localStorage/localStorageService';
 import authReducer from './features/auth/auth.slice';
 import postReducer from './features/post/post.slice';
-import postFormSlice from './features/post-form/post-form.slice';
 import commentFormSlice from './features/comment-form/comment-form.slice';
 import projectsSlice from './features/projects/projects.slice';
 import popupSlice from './features/popup/popup.slice';
@@ -15,7 +14,6 @@ const store = configureStore({
   reducer: {
     auth: authReducer,
     post: postReducer,
-    postForm: postFormSlice,
     commentForm: commentFormSlice,
     projects: projectsSlice,
     popup: popupSlice,

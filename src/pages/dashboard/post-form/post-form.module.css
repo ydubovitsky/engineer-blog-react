@@ -1,57 +1,31 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+.postContainer {
   display: grid;
-  grid-template-areas: "mainInfo"
-    "subPosts";
   gap: 50px;
-  padding: 50px;
 }
 
-.mainInfo {
+.postHeader {
   display: grid;
-  grid-area: mainInfo;
-  grid-template-columns: 1fr 1fr;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px silver;
-}
-
-.subPosts {
-  display: grid;
-  grid-area: subPosts;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px silver;
 }
 
-.button {
-  padding: 8px 12px;
-  margin: 0;
-  font-family: "Roboto Condensed",sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  cursor: pointer;
-  background: #fff;
-  background-color: #363940;
-  border: none;
-  border-color: transparent;
-  border-radius: 2px;
-  transition: .2s ease all;
+.postContainer textarea {
+  min-height: 500px;
 }
 
-.buttons {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
+textarea[name="conclusion"] {
+  min-height: 100px;
 }
 
-.button:active {
-  transform: scale(0.95);
-}
-
-.button i {
-  font-size: 1.5rem;
+.inputField {
+  display: flex;
+  flex-direction: column;
 }

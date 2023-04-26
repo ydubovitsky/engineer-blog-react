@@ -1,24 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LangContext } from '../../../../../context/lang/LangContext';
 import {
   useSearchParams
 } from "react-router-dom";
+import LoaderContent from '../../../../../common/components/loader-content/loader-content.component';
+import { LangContext } from '../../../../../context/lang/LangContext';
 import {
   getPostPaging,
-  postEntitiesSelector,
-  pageSizeSelector
+  postEntitiesSelector
 } from '../../../../../redux/features/post/post.slice';
-import PostListItem from './post-list-item/post-list-item.component';
 import Pagination from './pagination/pagination.component';
+import PostListItem from './post-list-item/post-list-item.component';
 import styles from './post-list.module.css';
-import LoaderContent from '../../../../../common/components/loader-content/loader-content.component';
 
 const PostList = () => {
 
   const dispatch = useDispatch();
   const postEntities = useSelector(postEntitiesSelector);
-  const pageSize = useSelector(pageSizeSelector);
 
   // Get current page from query params : http://localhost:3000/main/posts?page=2
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,14 +29,10 @@ const PostList = () => {
     dispatch(getPostPaging(page));
   }, [page]);
 
-  const showPosts = (postsList) => {
-    const posts
-      = postsList?.slice((page - 1) * pageSize, page * pageSize)
-        .map(post => {
-          return <PostListItem key={post.id} {...post} />
-        });
-    return posts;
-  }
+  const showPosts = (postsList) => (
+    postsList?.map(post => <PostListItem key={post.id} {...post} />)
+  )
+
 
   if (postEntities.length === 0) {
     return (

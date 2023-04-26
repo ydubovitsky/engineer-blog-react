@@ -3,17 +3,13 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './components/navbar/navbar.component';
 import styles from './dashboard.module.css';
 
-const Dashboard = () => {
+const DashboardLayout = () => {
   return (
-    <div className={cn(styles.container, styles.svgBackground)}>
-      <div className={styles.navbar}>
-        <Navbar />
-      </div>
-      <div className={styles.postForm}>
-        <Outlet/>
-      </div>
+    <div className={cn(styles.container)}>
+      <Navbar />
+      <Outlet />
     </div>
   )
 }
 
-export default Dashboard;
+export default DashboardLayout;

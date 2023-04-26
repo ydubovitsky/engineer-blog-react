@@ -1,46 +1,30 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import ButtonComponent from '../../../common/atomic-components/button/button.component';
 import {
+  postEntityByIdSelector,
   addPost,
-  updatePost,
-  fillPostMainContent,
-  postFormEntitySelector
-} from '../../../redux/features/post-form/post-form.slice';
-import { useLocation } from 'react-router-dom';
-import Input from './input/input.component';
-import SubPost from './subpost-form/subpost-form.component';
+  updatePost
+} from '../../../redux/features/post/post.slice';
 import styles from './post-form.module.css';
 
 const PostForm = () => {
 
   const dispatch = useDispatch();
   //! Загружаем state, т.е. данные для редактирования поста!
-  const { state } = useLocation();
-  const [post, setPost] = useState(state);
-  const [subPosts, setSubPosts] = useState(setInitStateForSubPosts());
+  let [searchParams, setSearchParams] = useSearchParams();
+  let id = searchParams.get("id");
+  const [post, setPost] = useState({});
   const refForm = useRef(null);
-  const newPost = useSelector(postFormEntitySelector);
+  const postEntityById = useSelector(state => postEntityByIdSelector(state, id));
 
   useEffect(() => {
-    dispatch(fillPostMainContent(post));
-  }, [post]);
-
-  const addSubPostFormElement = () => {
-    setSubPosts(
-      [...subPosts,
-      <SubPost
-        key={subPosts.length}
-        index={subPosts.length}
-      />]);
-  }
-
-  function setInitStateForSubPosts() {
-    if (post) {
-      return post.subPosts?.map((subPost, idx) => <SubPost index={idx} state={subPost} />)
+    if (id != undefined) {
+      setPost(postEntityById)
     }
-    return [<SubPost key={0} index={0} />]
-  }
+  }, [id]);
 
   const handlerDataPost = (event) => {
     const { name, value } = event.target;
@@ -50,53 +34,61 @@ const PostForm = () => {
     });
   }
 
-  // Если мы в режиме редактирования поста, то работает одна кнопка в противном случае - другая!
-  const showActionButtons = () => {
-    if (state) {
-      return (
-        <button
-          type="button"
-          className={styles.button}
-          onClick={() => dispatch(updatePost({ refForm, newPost }))}
-        >Edit Post <i className="fas fa-save"></i>
-        </button>
-      )
-    }
-    return (
-      <button
-        type="button"
-        className={styles.button}
-        onClick={() => dispatch(addPost({ refForm, newPost }))}
-      >Save Post <i className="fas fa-save"></i>
-      </button>
-    )
+  const updatePostHandler = () => {
+    dispatch(updatePost({ refForm, post }))
+  }
+
+  const savePostHandler = () => {
+    dispatch(addPost({ refForm, post }))
   }
 
   return (
     <form ref={refForm} className={cn(styles.container, styles.svgBackground)}>
-      <div className={styles.mainInfo}>
-        <Input name="postImage" type="image" value={post?.postImage} handler={{ onChange: handlerDataPost }} />
-        <Input name="category" type="text" value={post?.category} handler={{ onChange: handlerDataPost }} />
-        <Input name="title" type="text" value={post?.title} handler={{ onChange: handlerDataPost }} />
-        <Input name="date" type="text" value={post?.date} handler={{ onChange: handlerDataPost }} />
-        <Input name="author" type="text" value={post?.author} handler={{ onChange: handlerDataPost }} />
-        <Input name="disclosure" type="text" value={post?.disclosure} handler={{ onChange: handlerDataPost }} />
-        <Input name="description" type="textarea" value={post?.description} handler={{ onChange: handlerDataPost }} />
-        <Input name="conclusion" type="textarea" value={post?.conclusion} handler={{ onChange: handlerDataPost }} />
-      </div>
-      <div className={styles.subPosts}>
-        {subPosts?.map(subPost => {
-          return subPost
-        })}
+      <div className={styles.postContainer}>
+        <div className={styles.postHeader}>
+          <div className={styles.inputField}>
+            <label htmlFor="postImage">Главное изображение поста</label>
+            <input type='file' alt='' name="postImage"/>
+          </div>
+          <div className={styles.inputField}>
+            <label htmlFor="category">Категория</label>
+            <input name="category" type="text" value={post?.category} onChange={handlerDataPost} />
+          </div>
+          <div className={styles.inputField}>
+            <label htmlFor="title">Название поста</label>
+            <input name="title" type="text" value={post?.title} onChange={handlerDataPost} />
+          </div>
+          <div className={styles.inputField}>
+            <label htmlFor="date">Дата</label>
+            <input name="date" type="text" value={post?.date} onChange={handlerDataPost} />
+          </div>
+          <div className={styles.inputField}>
+            <label htmlFor="author">Автор</label>
+            <input name="author" type="text" value={post?.author} onChange={handlerDataPost} />
+          </div>
+          <div className={styles.inputField}>
+            <label htmlFor="disclosure">Краткое описание</label>
+            <input name="disclosure" type="text" value={post?.disclosure} onChange={handlerDataPost} />
+          </div>
+        </div>
+        <div className={styles.inputField}>
+          <label htmlFor="text">Текст поста</label>
+          <textarea name="text" value={post?.text} onChange={handlerDataPost} />
+        </div>
+        <div className={styles.inputField}>
+          <label htmlFor="conclusion">Заключение</label>
+          <textarea name="conclusion" value={post?.conclusion} onChange={handlerDataPost} />
+        </div>
       </div>
       <div className={styles.buttons}>
-        <button
-          type="button"
-          className={styles.button}
-          onClick={addSubPostFormElement}
-        >Add SubPost
-        </button>
-        {showActionButtons()}
+        {id ?
+          <ButtonComponent
+            name="Edit post"
+            clickFunction={updatePostHandler} />
+          :
+          <ButtonComponent
+            name="Save post"
+            clickFunction={savePostHandler} />}
       </div>
     </form>
   )

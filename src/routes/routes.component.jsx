@@ -2,7 +2,6 @@ import {
   Navigate, Route, Routes
 } from "react-router-dom";
 import PostForm from "../pages/dashboard/post-form/post-form.component";
-import PostListDashBoard from "../pages/dashboard/post-list/post-list.component";
 import PostCurrent from "../pages/main/posts-post/post-current/post-current.component";
 import PostList from "../pages/main/posts/components/post-list/post-list.component";
 import SignIn from "../pages/main/login/sign-in/sign-in.component";
@@ -31,8 +30,8 @@ const RoutesComponent = () => (
     </Route>
     <Route element={<ProtectedRoute />}>
       <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<PostForm />} />
         <Route path="post-form" element={<PostForm />} />
-        <Route path="post-list" element={<PostListDashBoard />} />
       </Route>
     </Route>
     {/* //! Default Redirect */}

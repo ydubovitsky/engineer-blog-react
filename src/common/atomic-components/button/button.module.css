@@ -1,0 +1,24 @@
+.container {
+  padding: 8px 12px;
+  margin: 0;
+  font-family: "Roboto Condensed",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #fff;
+  background-color: #363940;
+  border: none;
+  border-color: transparent;
+  border-radius: 2px;
+  transition: .2s ease all;
+}
+
+.container:active {
+  transform: scale(0.95);
+}
+
+.container i {
+  font-size: 1.5rem;
+}

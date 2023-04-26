@@ -2,7 +2,25 @@
   display: grid;
   grid-gap: 25px;
   line-height: 1.5rem;
-  text-align: center;
+  text-align: left;
+}
+
+.container pre {
+  text-align: left;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #f36d33;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
 }
 
 .postDescription {
@@ -74,7 +92,7 @@
 
 .nav button {
   padding: 8px 12px;
-  font-family: "Roboto Condensed",sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
@@ -92,10 +110,6 @@
   line-height: 1.2;
   color: #222;
   background-color: rgb(209 209 209);
-}
-
-.subPostsContainer {
-  text-align: left;
 }
 
 .text p {

@@ -1,8 +1,67 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
 import { BASE_URL } from '../../url-const/url-const.const';
+import { getNamedFileFromForm } from '../../../utils/formData-utils';
 
 // ------------------------------------- AsyncThunk -------------------------------------
+
+/**
+ * Add post to remote server
+ */
+export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
+  const { auth } = getState();
+  const { refForm, post } = args;
+
+  const body = new FormData();
+  //FIXME Вынести в отдельный метод
+  const file = getNamedFileFromForm(refForm);
+  if (file != null) {
+    body.append('file', file);
+  }
+  body.append('newPost', JSON.stringify(post));
+
+  const payload = {
+    url: `${BASE_URL}/api/v1/post/add`,
+    body: body,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
+    }
+  }
+  const response = await callApiService(payload);
+  return response;
+});
+
+/**
+ * Add post to remote server
+ */
+export const updatePost = createAsyncThunk("post/update", async (args, { getState }) => {
+  const { auth } = getState();
+  const { refForm, post } = args;
+
+  const body = new FormData();
+  //FIXME Вынести в отдельный метод
+  const file = getNamedFileFromForm(refForm);
+  if (file != null) {
+    body.append('file', file);
+  }
+  body.append('newPost', JSON.stringify(post));
+
+  const payload = {
+    url: `${BASE_URL}/api/v1/post/update`,
+    body: body,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': auth.authEntity.jwttoken
+    }
+  }
+  const response = await callApiService(payload);
+  return response;
+});
 
 /**
  * Get list of posts from remote server by page
@@ -122,7 +181,8 @@ export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => 
   return response;
 });
 
-// ------------------------------------- Slice -------------------------------------
+// ------------------------------------- State -------------------------------------
+
 //TODO Переработать state
 const initialState = {
   postEntities: [], //! Это массив объектов
@@ -131,12 +191,13 @@ const initialState = {
     status: 'idle',
     error: null
   },
-  isPostDeleted: 'idle',
   size: 4, // 0 is also considered... [0, 1, 2, 3, 4]
   sizeOfStatField: 4, //MOST POPULAR, CATEGORIES
   status: 'idle',
   error: null
 }
+
+// ------------------------------------- Slice -------------------------------------
 
 const postSlice = createSlice({
   name: 'post',
