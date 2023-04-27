@@ -25,10 +25,10 @@ services:
   engineer-blog-react:
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile
+      dockerfile: ./docker/static-server/Dockerfile
       args:
         # Change me!
-        - REACT_APP_BACKEND_URL=http://api.engineer-blog.ru
+        - REACT_APP_BACKEND_URL=https://api.ydubovitsky.ru
     networks:
      - engineer-blog
 

@@ -16,6 +16,16 @@ COPY package-lock.json .
 # The RUN command is only executed while the build image
 RUN npm install
 COPY . .
+
+ARG REACT_APP_BACKEND_URL
+ENV REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}
+
+# This command create .env file with environment variable
+# RUN echo 'REACT_APP_BACKEND_URL=http://engineer-blog-spring:8080' > .env
+
+# that will be empty
+RUN echo "DEBUG": $REACT_APP_BACKEND_URL
+
 # The RUN command is only executed while the build image
 RUN npm run build
 RUN npm install -g serve
