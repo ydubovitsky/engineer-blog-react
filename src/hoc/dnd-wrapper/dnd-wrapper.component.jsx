@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import cn from 'classnames';
 import styles from './dnd-wrapper.module.css';
 
-const DndWrapper = ({ handleDropFn, children }) => {
+const DndWrapper = ({ dropFunction, children }) => {
   const dndRef = useRef();
   const [dragging, setDragging] = useState(false);
   const [dragCount, setDragCount] = useState(0);
@@ -50,42 +51,14 @@ const DndWrapper = ({ handleDropFn, children }) => {
     e.stopPropagation()
     setDragging(false);
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      handleDropFn(e.dataTransfer.files)
+      dropFunction(e.dataTransfer.files)
       e.dataTransfer.clearData()
       setDragCount(0);
     }
   }
 
   return (
-    <div ref={dndRef} className={styles.container}>
-      {dragging &&
-        <div
-          style={{
-            border: 'dashed grey 4px',
-            backgroundColor: 'rgba(255,255,255,.8)',
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 9999
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              right: 0,
-              left: 0,
-              textAlign: 'center',
-              color: 'grey',
-              fontSize: 36
-            }}
-          >
-            <div>drop here :)</div>
-          </div>
-        </div>
-      }
+    <div ref={dndRef} className={cn(styles.container, dragging ? styles.active : null)}>
       {children}
     </div>
   )

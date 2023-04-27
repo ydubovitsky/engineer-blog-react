@@ -21,6 +21,7 @@ const PostForm = () => {
   let id = searchParams.get("id");
   const [post, setPost] = useState({});
   const refForm = useRef(null);
+  const refTextPost = useRef(null);
   const postEntityById = useSelector(state => postEntityByIdSelector(state, id));
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const PostForm = () => {
     dispatch(addPost({ refForm, post }))
   }
 
-  const logFn = async (file) => {
+  const dropFunction = async (file) => {
     var formData = new FormData();
     formData.append('file', file[0])
     const payload = {
@@ -54,17 +55,13 @@ const PostForm = () => {
       body: formData
     };
     await callApiService(payload).then(result => {
-      console.log(result);
-      refForm.current.innerHTML = result;
+      refTextPost.current.value = refTextPost.current.value + result;
     });
   }
 
   return (
     <form ref={refForm} className={cn(styles.container, styles.svgBackground)}>
       <div className={styles.postContainer}>
-        <DndWrapper handleDropFn={logFn}>
-          <h1>DRAG AND DROP</h1>
-        </DndWrapper>
         <div className={styles.postHeader}>
           <div className={styles.inputField}>
             <label htmlFor="postImage">Главное изображение поста</label>
@@ -91,10 +88,12 @@ const PostForm = () => {
             <input name="disclosure" type="text" value={post?.disclosure} onChange={handlerDataPost} />
           </div>
         </div>
-        <div className={styles.inputField}>
-          <label htmlFor="text">Текст поста</label>
-          <textarea name="text" value={post?.text} onChange={handlerDataPost} />
-        </div>
+        <DndWrapper dropFunction={dropFunction}>
+          <div className={styles.inputField}>
+            <label htmlFor="text">Текст поста</label>
+            <textarea name="text" ref={refTextPost} value={post?.text} onChange={handlerDataPost} />
+          </div>
+        </DndWrapper>
         <div className={styles.inputField}>
           <label htmlFor="conclusion">Заключение</label>
           <textarea name="conclusion" value={post?.conclusion} onChange={handlerDataPost} />
