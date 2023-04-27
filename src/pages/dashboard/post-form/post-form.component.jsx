@@ -11,7 +11,7 @@ import {
 import styles from './post-form.module.css';
 import DndWrapper from '../../../hoc/dnd-wrapper/dnd-wrapper.component';
 import callApiService from '../../../services/callApi/callApiService';
-import { BASE_URL } from '../../../redux/url-const/url-const.const';
+import { BASE_URL } from '../../../constants/constants';
 
 const PostForm = () => {
 

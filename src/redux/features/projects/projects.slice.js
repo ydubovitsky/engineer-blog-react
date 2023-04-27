@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
-import { GITHUB_URL } from '../../url-const/url-const.const';
+import { GITHUB_URL } from '../../../constants/constants';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 

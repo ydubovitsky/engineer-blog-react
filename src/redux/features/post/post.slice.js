@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import callApiService from '../../../services/callApi/callApiService';
-import { BASE_URL } from '../../url-const/url-const.const';
+import { BASE_URL } from '../../../constants/constants';
 import { getNamedFileFromForm } from '../../../utils/formData-utils';
 
 // ------------------------------------- AsyncThunk -------------------------------------
