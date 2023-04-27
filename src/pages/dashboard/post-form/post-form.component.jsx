@@ -9,6 +9,9 @@ import {
   updatePost
 } from '../../../redux/features/post/post.slice';
 import styles from './post-form.module.css';
+import DndWrapper from '../../../hoc/dnd-wrapper/dnd-wrapper.component';
+import callApiService from '../../../services/callApi/callApiService';
+import { BASE_URL } from '../../../redux/url-const/url-const.const';
 
 const PostForm = () => {
 
@@ -42,13 +45,30 @@ const PostForm = () => {
     dispatch(addPost({ refForm, post }))
   }
 
+  const logFn = async (file) => {
+    var formData = new FormData();
+    formData.append('file', file[0])
+    const payload = {
+      url: `${BASE_URL}/api/v1/image`,
+      method: 'POST',
+      body: formData
+    };
+    await callApiService(payload).then(result => {
+      console.log(result);
+      refForm.current.innerHTML = result;
+    });
+  }
+
   return (
     <form ref={refForm} className={cn(styles.container, styles.svgBackground)}>
       <div className={styles.postContainer}>
+        <DndWrapper handleDropFn={logFn}>
+          <h1>DRAG AND DROP</h1>
+        </DndWrapper>
         <div className={styles.postHeader}>
           <div className={styles.inputField}>
             <label htmlFor="postImage">Главное изображение поста</label>
-            <input type='file' alt='' name="postImage"/>
+            <input type='file' alt='' name="postImage" />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="category">Категория</label>
