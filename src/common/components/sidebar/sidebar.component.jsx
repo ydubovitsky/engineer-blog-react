@@ -39,7 +39,7 @@ const Sidebar = () => {
         <i className={cn("fas", "fa-cog", styles.icon)}></i>
       </div>
       <div className={styles.menu}>
-        {showMenu(authEntity.username)}
+        {showMenu(authEntity?.username)}
       </div>
     </div>
   )

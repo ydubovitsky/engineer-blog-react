@@ -3,15 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import ButtonComponent from '../../../common/atomic-components/button/button.component';
+import { BASE_URL } from '../../../constants/constants';
+import DndWrapper from '../../../hoc/dnd-wrapper/dnd-wrapper.component';
 import {
-  postEntityByIdSelector,
   addPost,
+  postEntityByIdSelector,
   updatePost
 } from '../../../redux/features/post/post.slice';
-import styles from './post-form.module.css';
-import DndWrapper from '../../../hoc/dnd-wrapper/dnd-wrapper.component';
 import callApiService from '../../../services/callApi/callApiService';
-import { BASE_URL } from '../../../constants/constants';
+import styles from './post-form.module.css';
 
 const PostForm = () => {
 
@@ -46,17 +46,24 @@ const PostForm = () => {
     dispatch(addPost({ refForm, post }))
   }
 
+  // Получаем файл, формируем полезную нагрузку, отправляем на сервер и ответ 
+  // в виде адреса сохраненного ресурса
+  // вставляем в текст поста
   const dropFunction = async (file) => {
     var formData = new FormData();
     formData.append('file', file[0])
     const payload = {
-      url: `${BASE_URL}/api/v1/image`,
+      url: `${BASE_URL}/api/v1/file`,
       method: 'POST',
       body: formData
     };
-    await callApiService(payload).then(result => {
-      refTextPost.current.value = refTextPost.current.value + result;
-    });
+    await callApiService(payload).then(imgSrc => addImgTagToPostText(imgSrc));
+  }
+
+  const addImgTagToPostText = (imgSrc) => {
+    refTextPost.current.value
+      = refTextPost.current.value
+      + `<img src=${BASE_URL}/api/v1/file/${imgSrc} alt="Ooops, there is no image"/>`;
   }
 
   return (
