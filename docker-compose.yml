@@ -11,16 +11,15 @@ services:
     environment:
       PROFILE_ACTIVE: postgres
       ADMIN_NAME: admin
-      ADMIN_PASSWORD: password
+      ADMIN_PASSWORD: pXmJ5M9dvP
       POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: changeme
       POSTGRES_DDL_AUTO: update
     depends_on:
       - engineer-blog-db
-      - engineer-blog-pgadmin
     networks:
-      - engineer-blog
+      - nginx-proxy-manager_default
 
   engineer-blog-react:
     build:
@@ -30,7 +29,7 @@ services:
         # Change me!
         - REACT_APP_BACKEND_URL=https://api.ydubovitsky.ru
     networks:
-     - engineer-blog
+     - nginx-proxy-manager_default
 
   engineer-blog-db:
     image: postgres:alpine3.17
@@ -41,30 +40,12 @@ services:
     volumes:
       - engineer-blog-db:/data/postgres
     networks:
-      - engineer-blog
-    restart: unless-stopped
-
-  engineer-blog-pgadmin:
-    container_name: engineer-blog-pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: y.dubovitsky@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: jKu018%LYRB3
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - engineer-blog-pgadmin:/var/lib/pgadmin
-    depends_on:
-      - engineer-blog-db
-    ports:
-      - "${PGADMIN_PORT:-5050}:80"
-    networks:
-      - engineer-blog
+      - nginx-proxy-manager_default
     restart: unless-stopped
 
 networks:
-  engineer-blog:
-    driver: bridge
+  nginx-proxy-manager_default:
+    external: true
 
 volumes:
   engineer-blog-db:
-  engineer-blog-pgadmin:
