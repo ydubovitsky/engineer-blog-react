@@ -1,5 +1,9 @@
+# How to init submodule
+# git submodule update --init --recursive
+# git submodule update --remote --merge
+
 # How to use it?
-# docker compose -f docker-compose-prod.yml up
+# docker compose -f docker-compose.yml up
 
 version: '3'
 services:
@@ -19,17 +23,18 @@ services:
     depends_on:
       - engineer-blog-db
     networks:
-      - nginx-proxy-manager_default
+      - main
 
   engineer-blog-react:
     build:
       context: .
-      dockerfile: ./docker/static-server/Dockerfile
+      dockerfile: ./docker/dev/Dockerfile
       args:
         # Change me!
-        - REACT_APP_BACKEND_URL=https://api.ydubovitsky.ru
+        - REACT_APP_BACKEND_URL=http://localhost:8080
+        - REACT_APP_GITHUB_URL="${REACT_APP_GITHUB_URL}"
     networks:
-     - nginx-proxy-manager_default
+     - main
 
   engineer-blog-db:
     image: postgres:alpine3.17
@@ -40,12 +45,12 @@ services:
     volumes:
       - engineer-blog-db:/data/postgres
     networks:
-      - nginx-proxy-manager_default
+      - main
     restart: unless-stopped
 
 networks:
-  nginx-proxy-manager_default:
-    external: true
+  main:
+    driver: bridge
 
 volumes:
   engineer-blog-db:

@@ -7,7 +7,9 @@ const DashboardLayout = () => {
   return (
     <div className={cn(styles.container)}>
       <Navbar />
-      <Outlet />
+      <div className={styles.outletContainer}>
+        <Outlet />
+      </div>
     </div>
   )
 }

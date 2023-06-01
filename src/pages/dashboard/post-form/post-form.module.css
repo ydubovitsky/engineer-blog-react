@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
+  border-radius: 20px;
   background-color: whitesmoke;
 }
 
@@ -28,4 +29,12 @@ textarea[name="conclusion"] {
 .inputField {
   display: flex;
   flex-direction: column;
+}
+
+.inputField .disclosure {
+  min-height: 100px;
+}
+
+.inputField textarea {
+  padding: 20px;
 }

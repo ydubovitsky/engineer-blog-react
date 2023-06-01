@@ -14,8 +14,8 @@ const ColumnWidgets = (props) => {
       { imageSrc: AboutMeImage, text: columnWidgets.about, href: "https://github.com/ydubovitsky" },
       { imageSrc: FeedbackImage, text: columnWidgets.writeMe, href: "https://github.com/ydubovitsky" },
       { imageSrc: GithubImage, text: columnWidgets.github, href: "https://github.com/ydubovitsky" }
-    ].map(props => (
-      <Widget imageSrc={props.imageSrc} text={props.text} href={props.href} />
+    ].map((props, idx) => (
+      <Widget key={idx} imageSrc={props.imageSrc} text={props.text} href={props.href} />
     ));
 
     return widgets;

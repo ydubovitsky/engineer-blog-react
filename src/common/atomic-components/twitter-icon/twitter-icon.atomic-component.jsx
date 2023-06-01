@@ -1,5 +1,5 @@
 import styles from './twitter-icon.module.css';
-import getRandomColor from '../../../utils/random-color';
+import getRandomColor from '../../../utils/color.util';
 
 const TwitterIconAtomicComponent = ({ size }) => {
   return (

@@ -10,7 +10,7 @@ import {
   postEntityByIdSelector,
   updatePost
 } from '../../../redux/features/post/post.slice';
-import callApiService from '../../../services/callApi/callApiService';
+import { saveImageToRemoteServer } from '../../../redux/features/image/image.slice';
 import styles from './post-form.module.css';
 
 const PostForm = () => {
@@ -30,7 +30,7 @@ const PostForm = () => {
     }
   }, [id]);
 
-  const handlerDataPost = (event) => {
+  const onPostStateChanged = (event) => {
     const { name, value } = event.target;
     setPost({
       ...post,
@@ -39,31 +39,32 @@ const PostForm = () => {
   }
 
   const updatePostHandler = () => {
-    dispatch(updatePost({ refForm, post }))
+    dispatch(updatePost({ post }))
   }
 
   const savePostHandler = () => {
-    dispatch(addPost({ refForm, post }))
+    dispatch(addPost({ post }))
   }
 
   // Получаем файл, формируем полезную нагрузку, отправляем на сервер и ответ 
-  // в виде адреса сохраненного ресурса
-  // вставляем в текст поста
-  const dropFunction = async (file) => {
-    var formData = new FormData();
-    formData.append('file', file[0])
-    const payload = {
-      url: `${BASE_URL}/api/v1/file`,
-      method: 'POST',
-      body: formData
-    };
-    await callApiService(payload).then(imgSrc => addImgTagToPostText(imgSrc));
+  // в виде адреса сохраненного ресурса вставляем в текст поста
+  const addImageSrcToPostText = async (files) => {
+    dispatch(saveImageToRemoteServer(files[0]))
+    .then(result => {
+        refTextPost.current.value
+          = refTextPost.current.value
+          + `<img src=${BASE_URL}/api/v1/file/${result.payload} alt="Ooops, there is no image"/>`;
+    })
+    .catch(e => new Error(e));
   }
 
-  const addImgTagToPostText = (imgSrc) => {
-    refTextPost.current.value
-      = refTextPost.current.value
-      + `<img src=${BASE_URL}/api/v1/file/${imgSrc} alt="Ooops, there is no image"/>`;
+  const onPostImageChange = async (event) => {
+    dispatch(saveImageToRemoteServer(event.target.files[0]))
+      .then(result => setPost({
+        ...post,
+        postImageSrc: `${BASE_URL}/api/v1/file/${result.payload}`
+      }))
+      .catch(e => new Error(e));
   }
 
   return (
@@ -71,39 +72,39 @@ const PostForm = () => {
       <div className={styles.postContainer}>
         <div className={styles.postHeader}>
           <div className={styles.inputField}>
-            <label htmlFor="postImage">Главное изображение поста</label>
-            <input type='file' alt='' name="postImage" />
+            <label htmlFor="postImageSrc">Главное изображение поста</label>
+            <input type='file' alt='' name="postImageSrc" onChangeCapture={onPostImageChange} />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="category">Категория</label>
-            <input name="category" type="text" value={post?.category} onChange={handlerDataPost} />
+            <input name="category" type="text" value={post?.category} onChange={onPostStateChanged} />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="title">Название поста</label>
-            <input name="title" type="text" value={post?.title} onChange={handlerDataPost} />
+            <input name="title" type="text" value={post?.title} onChange={onPostStateChanged} />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="date">Дата</label>
-            <input name="date" type="text" value={post?.date} onChange={handlerDataPost} />
+            <input name="date" type="text" value={post?.date} onChange={onPostStateChanged} />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="author">Автор</label>
-            <input name="author" type="text" value={post?.author} onChange={handlerDataPost} />
+            <input name="author" type="text" value={post?.author} onChange={onPostStateChanged} />
           </div>
           <div className={styles.inputField}>
             <label htmlFor="disclosure">Краткое описание</label>
-            <input name="disclosure" type="text" value={post?.disclosure} onChange={handlerDataPost} />
+            <textarea className={styles.disclosure} name="disclosure" value={post?.disclosure} onChange={onPostStateChanged} />
           </div>
         </div>
-        <DndWrapper dropFunction={dropFunction}>
+        <DndWrapper dropFunction={addImageSrcToPostText}>
           <div className={styles.inputField}>
             <label htmlFor="text">Текст поста</label>
-            <textarea name="text" ref={refTextPost} value={post?.text} onChange={handlerDataPost} />
+            <textarea name="text" ref={refTextPost} value={post?.text} onChange={onPostStateChanged} />
           </div>
         </DndWrapper>
         <div className={styles.inputField}>
           <label htmlFor="conclusion">Заключение</label>
-          <textarea name="conclusion" value={post?.conclusion} onChange={handlerDataPost} />
+          <textarea name="conclusion" value={post?.conclusion} onChange={onPostStateChanged} />
         </div>
       </div>
       <div className={styles.buttons}>

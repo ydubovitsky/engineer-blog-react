@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import callApiService from '../../../services/callApi/callApiService';
+import { sendRequestToRemoteServer } from '../../../services/api.service';
 import { BASE_URL } from '../../../constants/constants';
-import { getNamedFileFromForm } from '../../../utils/formData-utils';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
@@ -10,19 +9,11 @@ import { getNamedFileFromForm } from '../../../utils/formData-utils';
  */
 export const addPost = createAsyncThunk("post/add", async (args, { getState }) => {
   const { auth } = getState();
-  const { refForm, post } = args;
-
-  const body = new FormData();
-  //FIXME Вынести в отдельный метод
-  const file = getNamedFileFromForm(refForm);
-  if (file != null) {
-    body.append('file', file);
-  }
-  body.append('newPost', JSON.stringify(post));
+  const { post } = args;
 
   const payload = {
     url: `${BASE_URL}/api/v1/post/add`,
-    body: body,
+    body: post,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +21,7 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -38,27 +29,19 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
  */
 export const updatePost = createAsyncThunk("post/update", async (args, { getState }) => {
   const { auth } = getState();
-  const { refForm, post } = args;
-
-  const body = new FormData();
-  //FIXME Вынести в отдельный метод
-  const file = getNamedFileFromForm(refForm);
-  if (file != null) {
-    body.append('file', file);
-  }
-  body.append('newPost', JSON.stringify(post));
+  const { post } = args;
 
   const payload = {
     url: `${BASE_URL}/api/v1/post/update`,
-    body: body,
-    method: 'POST',
+    body: post,
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': auth.authEntity.jwttoken
     }
   }
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -82,7 +65,7 @@ export const getPostPaging = createAsyncThunk("post/getPaging", async (page, { g
       'Accept': 'application/json',
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -102,7 +85,7 @@ export const getPostById = createAsyncThunk("post/getPostById", async (postId, {
       'Accept': 'application/json',
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -120,7 +103,7 @@ export const deletePostById = createAsyncThunk("post/deletePostById", async (id,
       'Authorization': auth.authEntity.jwttoken
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -138,7 +121,7 @@ export const getPostsByTitle = createAsyncThunk("post/getPostsByTextContains", a
       'Authorization': auth.authEntity.jwttoken
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -154,7 +137,7 @@ export const increasePostViewById = createAsyncThunk("post/increasePostViewById"
       'Accept': 'application/json',
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 /**
@@ -170,7 +153,7 @@ export const getPostsCount = createAsyncThunk("post/getPostsCount", async () => 
       'Accept': 'application/json',
     }
   };
-  return await callApiService(payload);
+  return await sendRequestToRemoteServer(payload);
 });
 
 // ------------------------------------- State -------------------------------------

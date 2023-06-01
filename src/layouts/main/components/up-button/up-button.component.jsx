@@ -1,5 +1,5 @@
 import styles from './up-button.module.css';
-import { smoothScrollToElement } from '../../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../../utils/scroll.util';
 
 const UpButton = () => {
 

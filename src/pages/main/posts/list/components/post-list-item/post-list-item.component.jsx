@@ -3,10 +3,9 @@ import {
   Link
 } from "react-router-dom";
 import { LangContext } from '../../../../../../context/lang/LangContext';
-import ByteImage from "../../../../../../hoc/byte-image/byte-image-component";
 import styles from './post-list-item.module.css';
 
-const PostListItem = ({ id, postImage, category, title, createAt, description }) => {
+const PostListItem = ({ id, postImageSrc, category, title, createAt, description }) => {
 
   //Context
   const { getLangData } = useContext(LangContext);
@@ -14,7 +13,7 @@ const PostListItem = ({ id, postImage, category, title, createAt, description })
 
   return (
     <div className={styles.container}>
-      <ByteImage byteImage={postImage.byteImage} />
+      <img src={postImageSrc} alt=""/>
       <div className={styles.infoContainer}>
         <div className={styles.category}><span>Category - </span> {category}</div>
         <div className={styles.title}>{title}</div>

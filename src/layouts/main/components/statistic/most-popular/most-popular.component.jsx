@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LangContext } from '../../../../../context/lang/LangContext';
 import { mostPopularPostsSelector } from '../../../../../redux/features/post/post.slice';
-import { smoothScrollToElement } from '../../../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../../../utils/scroll.util';
 import { useSelector } from 'react-redux';
 
 const MostPopular = () => {

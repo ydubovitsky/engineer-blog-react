@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import callApiService from '../../../services/callApi/callApiService';
+import { sendRequestToRemoteServer } from '../../../services/api.service';
 import { BASE_URL } from '../../../constants/constants';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 
 export const addComment = createAsyncThunk("comment/add", async (body) => {
-  console.log(body);
   const payload = {
     url: `${BASE_URL}/api/v1/post/${body.postId}/comments/add`,
     body: body,
@@ -15,9 +14,7 @@ export const addComment = createAsyncThunk("comment/add", async (body) => {
       'Accept': 'application/json',
     }
   }
-  const response = await callApiService(payload);
-
-  return response;
+  return await sendRequestToRemoteServer(payload);
 });
 
 // ------------------------------------- Slice -------------------------------------

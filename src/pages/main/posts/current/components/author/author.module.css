@@ -1,33 +1,21 @@
 .container {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-gap: 20px;
-  padding: 40px 0;
-  border-top: 2px solid #eee;
-}
-
-.avatar img {
-  border-radius: 50%;
-}
-
-.author {
-  display: grid;
-  grid-gap: 20px;
+  border-top: 1px solid silver;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   align-content: center;
   text-align: left;
 }
 
 .name {
-  display: grid;
-  grid-template-columns: min-content auto;
+  display: flex;
   gap: 25px;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
 .links {
-  display: grid;
-  grid-template-columns: repeat(5, min-content);
+  display: flex;
   gap: 5px;
 }

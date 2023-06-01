@@ -17,7 +17,7 @@ const ProjectsPage = () => {
       return (
         <div key={project.id} className={styles.project}>
           <div className={styles.cover}>
-            <a href={project.url}>
+            <a href={project.html_url} target="_blank" rel="noreferrer">
               <p className={styles.projectName}>{project.name}</p>
             </a>
             <p>{project.description}</p>

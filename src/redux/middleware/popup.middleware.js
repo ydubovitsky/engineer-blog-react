@@ -15,7 +15,7 @@ const POPUP_PROPERTIES = {
       backgroundColor: "#4BE066"
     }
   },
-  postFormAddFulfilled: {
+  postAddFulfilled: {
     message: "Article successfully created",
     styles: {
       color: "white",
@@ -50,14 +50,7 @@ const POPUP_PROPERTIES = {
       backgroundColor: "red"
     }
   },
-  setFavoriteFulfilled: {
-    message: "Favorite!",
-    styles: {
-      color: "white",
-      backgroundColor: "#4BE066"
-    }
-  },
-  postFormUpdatedFulfilled: {
+  postUpdatedFulfilled: {
     message: "Article updated!",
     styles: {
       color: "white",
@@ -66,6 +59,13 @@ const POPUP_PROPERTIES = {
   },
   commentAddFulfilled: {
     message: "Your comment added!",
+    styles: {
+      color: "white",
+      backgroundColor: "#4BE066"
+    }
+  },
+  imageSaveImageToRemoteServerFulfilled: {
+    message: "Image saved",
     styles: {
       color: "white",
       backgroundColor: "#4BE066"
@@ -85,20 +85,16 @@ const PopupMiddleware = ({ dispatch, getState }) => next => action => {
       dispatch(showPopup(POPUP_PROPERTIES.invalidateLoggedInUser));
       break;
     }
-    case 'postForm/add/fulfilled': {
-      dispatch(showPopup(POPUP_PROPERTIES.postFormAddFulfilled));
+    case 'post/add/fulfilled': {
+      dispatch(showPopup(POPUP_PROPERTIES.postAddFulfilled));
       break;
     }
     case 'post/deletePostById/fulfilled': {
       dispatch(showPopup(POPUP_PROPERTIES.postDeletePostByIdFulfilled));
       break;
     }
-    case 'card/setFavorite/fulfilled': {
-      dispatch(showPopup(POPUP_PROPERTIES.setFavoriteFulfilled));
-      break;
-    }
-    case 'postForm/update/fulfilled': {
-      dispatch(showPopup(POPUP_PROPERTIES.postFormUpdatedFulfilled));
+    case 'post/update/fulfilled': {
+      dispatch(showPopup(POPUP_PROPERTIES.postUpdatedFulfilled));
       break;
     }
     case 'auth/updateUserData/updated': {
@@ -115,6 +111,10 @@ const PopupMiddleware = ({ dispatch, getState }) => next => action => {
     }
     case 'comment/add/fulfilled': {
       dispatch(showPopup(POPUP_PROPERTIES.commentAddFulfilled));
+      break;
+    }
+    case 'image/saveImageToRemoteServer/fulfilled': {
+      dispatch(showPopup(POPUP_PROPERTIES.imageSaveImageToRemoteServerFulfilled));
       break;
     }
     default: break;

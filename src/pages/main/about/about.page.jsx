@@ -1,6 +1,6 @@
 import styles from './about.module.css';
 import { useContext, useEffect } from 'react';
-import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../utils/scroll.util';
 import { LangContext } from '../../../context/lang/LangContext';
 
 const AboutPage = () => {

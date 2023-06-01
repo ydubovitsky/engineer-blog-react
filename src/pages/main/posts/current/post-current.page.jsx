@@ -7,7 +7,6 @@ import { useReactToPrint } from 'react-to-print';
 import LoaderContent from "../../../../common/components/loader-content/loader-content.component";
 import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
 import { LangContext } from '../../../../context/lang/LangContext';
-import ByteImage from "../../../../hoc/byte-image/byte-image-component";
 import { authEntitySelector } from '../../../../redux/features/auth/auth.slice';
 import {
   deletePostById, getPostById, increasePostViewById, postEntityByIdSelector
@@ -83,7 +82,9 @@ const PostCurrentPage = () => {
 
   return (
     <div className={styles.container} ref={printRef}>
-      <ByteImage byteImage={post.postImage.byteImage} />
+      <div className={styles.postImage}>
+        <img src={post.postImageSrc} alt=""/>
+      </div>
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>
         <div className={styles.author}><span>{post_current.writtenBy} </span> {post.author}</div>
@@ -103,7 +104,7 @@ const PostCurrentPage = () => {
         <p>{post.conclusion}</p>
       </div>
       <SocialIconsListComponent iconSize="2rem" />
-      <Author name={post.author} />
+      <Author name={post.author} aboutAuthor={post_current.about_author} />
       <Comments />
       <CommentForm />
     </div>

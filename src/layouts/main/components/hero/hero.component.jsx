@@ -2,7 +2,7 @@ import cn from 'classnames';
 import styles from './hero.module.css';
 import { useContext, useState } from 'react';
 import { LangContext } from '../../../../context/lang/LangContext';
-import { smoothScrollToElement } from '../../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../../utils/scroll.util';
 //TODO! Сделать так, чтобы сразу массив импортировался!
 import {
   FirstSlideImage,

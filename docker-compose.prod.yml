@@ -1,0 +1,40 @@
+# How to use it?
+# docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+version: '3'
+services:
+  # You can rename this service special for docker-hub like: ydubovitsky/engineer-blog
+  engineer-blog-spring:
+    environment:
+      PROFILE_ACTIVE: postgres
+      ADMIN_NAME: admin
+      ADMIN_PASSWORD: "1we#few12d@a:${ADMIN_PASSWORD}"
+      POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: "postgres:${POSTGRES_PASSWORD}"
+      POSTGRES_DDL_AUTO: update
+    networks:
+      - nginx-proxy-manager_default
+
+  engineer-blog-react:
+    build:
+      context: .
+      dockerfile: ./docker/production/Dockerfile
+      args:
+        # Change me!
+        - REACT_APP_BACKEND_URL="${REACT_APP_BACKEND_URL}"
+        - REACT_APP_GITHUB_URL="${REACT_APP_GITHUB_URL}"
+    networks:
+     - nginx-proxy-manager_default
+
+  engineer-blog-db:
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12DASc3cz@cc3wcZXc:${POSTGRES_PASSWORD}"
+      PGDATA: /data/postgres
+    networks:
+      - nginx-proxy-manager_default
+
+networks:
+  nginx-proxy-manager_default:
+    external: true

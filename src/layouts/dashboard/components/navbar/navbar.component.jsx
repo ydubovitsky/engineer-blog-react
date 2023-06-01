@@ -7,11 +7,17 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
+
   return (
     <div className={styles.container}>
-      <Link to={"/"}>Main</Link>
-      <Link to={"/dashboard/post-form"}>Post Form</Link>
-      <span onClick={() => dispatch(logout())}>Logout</span>
+      <div className={styles.nav}>
+        <Link to={"/"}>Главная страница <i className="fas fa-home"></i></Link>
+        <Link to={"/dashboard/post-form"}>Создать новый пост</Link>
+      </div>
+      <span onClick={logoutHandler}>Выйти <i className="fas fa-sign-out-alt"></i></span>
     </div>
   )
 }

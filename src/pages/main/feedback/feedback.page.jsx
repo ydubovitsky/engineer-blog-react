@@ -5,7 +5,7 @@ import UnitTitleComponent from '../../../common/atomic-components/unit-title/uni
 import SocialIconsListComponent from '../../../common/components/social-icons-list/social-icons-list.component';
 import { LangContext } from '../../../context/lang/LangContext';
 import { feedbackMessageAdd } from '../../../redux/features/feedback/feedback.slice';
-import { smoothScrollToElement } from '../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../utils/scroll.util';
 import styles from './feedback.module.css';
 
 const FeedbackPage = () => {

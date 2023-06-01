@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { LangContext } from '../../../../context/lang/LangContext';
 import { getPostsByTitle } from '../../../../redux/features/post/post.slice';
-import { smoothScrollToElement } from '../../../../utils/smoothScrollToElement';
+import { smoothScrollToElement } from '../../../../utils/scroll.util';
 import styles from './search.module.css';
 
 const Search = ({ isShowTitle, style }) => {

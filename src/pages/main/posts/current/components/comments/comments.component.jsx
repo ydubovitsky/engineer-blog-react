@@ -21,7 +21,7 @@ const Comments = () => {
   //TODO Заменить на динамическое получение данных!
   const showAllComments = (comments) => {
     return (
-      comments.map((el, idx) => (
+      comments?.map((el, idx) => (
         <div key={el.id} className={(cn(styles.comment, idx % 2 === 0 ? styles.even : styles.uneven))}>
           <div className={styles.avatar}>
             <img src={avatar} alt="" />

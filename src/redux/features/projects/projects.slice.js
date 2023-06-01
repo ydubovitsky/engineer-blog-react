@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import callApiService from '../../../services/callApi/callApiService';
+import { sendRequestToRemoteServer } from '../../../services/api.service';
 import { GITHUB_URL } from '../../../constants/constants';
 
 // ------------------------------------- AsyncThunk -------------------------------------
@@ -13,8 +13,7 @@ export const getGitProfileInfo = createAsyncThunk("projects/getGitProfileInfo", 
       'Accept': 'application/json',
     }
   }
-  const response = await callApiService(payload);
-  return response;
+  return await sendRequestToRemoteServer(payload);
 });
 
 // ------------------------------------- Slice -------------------------------------
@@ -55,7 +54,7 @@ export const projectsSelector = state => {
     return {
       id: repo.id,
       name: repo.name,
-      url: repo.url,
+      html_url: repo.html_url,
       created_at: repo.created_at,
       updated_at: repo.updated_at,
       description: repo.description,

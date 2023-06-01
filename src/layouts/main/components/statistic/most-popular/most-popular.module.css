@@ -25,7 +25,7 @@
   display: grid;
   grid-template-areas: 
   "index articleTitle"
-  "index view";
+  ". view";
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 7fr;
   grid-gap: 10px;

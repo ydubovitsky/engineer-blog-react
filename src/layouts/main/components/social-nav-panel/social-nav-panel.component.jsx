@@ -36,11 +36,10 @@ const SocialNavPanel = () => {
           <div className={styles.menuItem}><Link to="/main/feedback"><p>{socialNavPanel.menu.contacts}</p></Link></div>
           <div className={styles.menuItem}><Link to="/main/policy"><p>{socialNavPanel.menu.policy}</p></Link></div>
         </div>
-        <div className={styles.langSwitcher}>
-          <LangSwitcher />
-        </div>
-        <div className={styles.socialContainer}>
-          <SocialIconsListComponent />
+        <LangSwitcher />
+        <SocialIconsListComponent />
+        <div className={styles.closeBtn} onClick={() => setIsSidebarShow(!isSidebarShow)}>
+          <i className="fas fa-times-circle"></i>
         </div>
         {showAuthButton(status)}
       </div>
