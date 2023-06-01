@@ -13,12 +13,12 @@ services:
       context: ./engineer-blog-spring
       dockerfile: ./docker/production/Dockerfile
     environment:
-      PROFILE_ACTIVE: postgres
-      ADMIN_NAME: admin
-      ADMIN_PASSWORD: pXmJ5M9dvP
+      PROFILE_ACTIVE: h2
+      ADMIN_NAME: ${ADMIN_NAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-password}
       POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DDL_AUTO: update
     depends_on:
       - engineer-blog-db
@@ -39,8 +39,8 @@ services:
   engineer-blog-db:
     image: postgres:alpine3.17
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       PGDATA: /data/postgres
     volumes:
       - engineer-blog-db:/data/postgres

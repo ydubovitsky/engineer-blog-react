@@ -6,12 +6,7 @@ services:
   # You can rename this service special for docker-hub like: ydubovitsky/engineer-blog
   engineer-blog-spring:
     environment:
-      PROFILE_ACTIVE: postgres
-      ADMIN_NAME: admin
-      ADMIN_PASSWORD: "1we#few12d@a:${ADMIN_PASSWORD}"
-      POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: "postgres:${POSTGRES_PASSWORD}"
+      PROFILE_ACTIVE: ${PROFILE_ACTIVE:-postgres}
       POSTGRES_DDL_AUTO: update
     networks:
       - nginx-proxy-manager_default
@@ -29,8 +24,8 @@ services:
 
   engineer-blog-db:
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "12DASc3cz@cc3wcZXc:${POSTGRES_PASSWORD}"
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       PGDATA: /data/postgres
     networks:
       - nginx-proxy-manager_default
