@@ -19,6 +19,7 @@ services:
       POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      ALLOWED_ORIGINS_ARRAY: ${ALLOWED_ORIGINS_ARRAY:-http://localhost:3000}
       POSTGRES_DDL_AUTO: update
     depends_on:
       - engineer-blog-db
