@@ -10,6 +10,7 @@ const LogoPanel = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>{logoPanel.title}</div>
+      <div className={styles.profession}>{logoPanel.profession}</div>
       <div className={styles.subtitle}>{logoPanel.subtitle}</div>
     </div>
   )

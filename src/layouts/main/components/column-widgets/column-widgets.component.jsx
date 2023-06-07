@@ -2,7 +2,7 @@ import styles from './column-widgets.module.css';
 import { useContext } from 'react';
 import { LangContext } from '../../../../context/lang/LangContext';
 import { AboutMeImage, FeedbackImage, GithubImage } from './images';
-import Widget from './widget/widget.component';
+import Widget from './components/widget/widget.component';
 
 const ColumnWidgets = (props) => {
 

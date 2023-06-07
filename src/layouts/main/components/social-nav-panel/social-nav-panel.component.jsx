@@ -5,7 +5,7 @@ import { authSelector, logout } from '../../../../redux/features/auth/auth.slice
 import { useSelector, useDispatch } from 'react-redux';
 import { useContext, useState } from "react";
 import { LangContext } from '../../../../context/lang/LangContext';
-import LangSwitcher from '../lang-switcher/lang-switcher.component';
+import LangSwitcher from './components/lang-switcher/lang-switcher.component';
 import SocialIconsListComponent from "../../../../common/components/social-icons-list/social-icons-list.component";
 
 const SocialNavPanel = () => {

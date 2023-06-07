@@ -1,7 +1,7 @@
 import {
   Navigate, Route, Routes
 } from "react-router-dom";
-import PostForm from "../pages/dashboard/post-form/post-form.component";
+import PostFormPage from "../pages/dashboard/post-form/post-form.page";
 import PostCurrentPage from "../pages/main/posts/current/post-current.page";
 import PostListPage from "../pages/main/posts/list/post-list.page";
 import AuthPage from "../pages/main/auth/auth.page";
@@ -10,11 +10,11 @@ import AboutPage from "../pages/main/about/about.page";
 import PolicyPage from "../pages/main/policy/policy.page";
 import ProjectsPage from "../pages/main/projects/projects.page";
 import FeedbackPage from "../pages/main/feedback/feedback.page";
+import TermOfUsePage from "../pages/main/term-of-use/term-of-use.page";
 
 //* Layouts!
 import DashboardLayout from '../layouts/dashboard/dashboard.layout.jsx';
 import MainLayout from '../layouts/main/main.layout';
-import TermOfUsePage from "../pages/main/term-of-use/term-of-use.page";
 
 const RoutesComponent = () => (
   <Routes>
@@ -30,8 +30,8 @@ const RoutesComponent = () => (
     </Route>
     <Route element={<ProtectedRoute />}>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route index element={<PostForm />} />
-        <Route path="post-form" element={<PostForm />} />
+        <Route index element={<PostFormPage />} />
+        <Route path="post-form" element={<PostFormPage />} />
       </Route>
     </Route>
     {/* //! Default Redirect */}

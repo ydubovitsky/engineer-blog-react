@@ -1,12 +1,12 @@
 .container {
-  display: 'inline-block';
   position: 'relative';
+  display: 'inline-block';
 }
 
 .active {
+ z-index: 9999;
  display: block;
  width: 100%;
  height: 100%;
- z-index: 9999;
  background-color: red;
 }

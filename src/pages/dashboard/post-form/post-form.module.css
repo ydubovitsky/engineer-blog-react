@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  border-radius: 20px;
   background-color: whitesmoke;
+  border-radius: 20px;
 }
 
 .postContainer {
@@ -14,7 +14,7 @@
 
 .postHeader {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 45%));
   gap: 20px;
 }
 

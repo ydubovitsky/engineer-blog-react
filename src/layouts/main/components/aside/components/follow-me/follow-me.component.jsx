@@ -1,7 +1,7 @@
-import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
+import SocialIconsListComponent from '../../../../../../common/components/social-icons-list/social-icons-list.component';
 import parse from 'html-react-parser';
 import { useContext } from 'react';
-import { LangContext } from '../../../../context/lang/LangContext';
+import { LangContext } from '../../../../../../context/lang/LangContext';
 import styles from './follow-me.module.css';
 
 const FollowMe = () => {

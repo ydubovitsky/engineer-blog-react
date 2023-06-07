@@ -1,6 +1,6 @@
 import styles from './about-me.module.css';
 import { useContext } from 'react';
-import { LangContext } from '../../../../context/lang/LangContext';
+import { LangContext } from '../../../../../../context/lang/LangContext';
 import AvatarImg from './images/avatar.jpg';
 
 const AboutMe = () => {

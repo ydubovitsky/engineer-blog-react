@@ -8,8 +8,8 @@
   grid-template-columns: 1.5fr 1fr;
   width: 50%;
   height: 70%;
-  background-color: whitesmoke;
   overflow: hidden;
+  background-color: whitesmoke;
   border-radius: 20px;
   transition: 0.3s ease;
   transform: translateX(-50%) translateY(-50%);

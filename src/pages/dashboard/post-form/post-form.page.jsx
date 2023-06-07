@@ -13,7 +13,7 @@ import {
 import { saveImageToRemoteServer } from '../../../redux/features/image/image.slice';
 import styles from './post-form.module.css';
 
-const PostForm = () => {
+const PostFormPage = () => {
 
   const dispatch = useDispatch();
   //! Загружаем state, т.е. данные для редактирования поста!
@@ -121,4 +121,4 @@ const PostForm = () => {
   )
 }
 
-export default PostForm;
+export default PostFormPage;

@@ -8,8 +8,9 @@
     }
   },
   "logoPanel": {
-    "title": "Engineer Blog",
-    "subtitle": "Concise and simple explanation of difficult issues"
+    "title": "Hello, I'am Yura",
+    "profession": "I'am developer",
+    "subtitle": "And this is my personal site, where I write in simple language about complex and not very things"
   },
   "navPAnel": {
     "about": "About",

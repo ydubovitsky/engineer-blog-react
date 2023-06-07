@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LangContext } from '../../../../context/lang/LangContext';
-import Search from '../search/search.component';
+import Search from '../aside/components/search/search.component';
 import styles from './nav-panel.module.css';
 
 const NavPanel = () => {
