@@ -9,7 +9,7 @@ import ColumnWidgets from "./components/column-widgets/column-widgets.component"
 import Hero from "./components/hero/hero.component";
 import LogoPanel from "./components/logo-panel/logo-panel.component";
 import NavPanel from "./components/nav-panel/nav-panel.component";
-import SocialNavPanel from "./components/social-nav-panel/social-nav-panel.component";
+import NavigationPanelComponent from "./components/navigation-panel/navigation-panel.component";
 import Statistic from "./components/statistic/statistic.component";
 import TickerImage from "./components/ticker-image/ticker-image.component";
 import UpButton from "./components/up-button/up-button.component";
@@ -21,7 +21,7 @@ const MainLayout = () => {
   return (
     <div className={styles.container}>
       <Sidebar />
-      <SocialNavPanel />
+      <NavigationPanelComponent />
       <Fade cascade>
         <LogoPanel />
         <NavPanel />

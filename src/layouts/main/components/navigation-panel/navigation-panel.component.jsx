@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { Link } from "react-router-dom";
-import styles from './social-nav-panel.module.css';
+import styles from './navigation-panel.module.css';
 import { authSelector, logout } from '../../../../redux/features/auth/auth.slice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useContext, useState } from "react";
@@ -8,7 +8,7 @@ import { LangContext } from '../../../../context/lang/LangContext';
 import LangSwitcher from './components/lang-switcher/lang-switcher.component';
 import SocialIconsListComponent from "../../../../common/components/social-icons-list/social-icons-list.component";
 
-const SocialNavPanel = () => {
+const NavigationPanelComponent = () => {
 
   const dispatch = useDispatch();
   const { status, authEntity } = useSelector(authSelector);
@@ -47,4 +47,4 @@ const SocialNavPanel = () => {
   )
 }
 
-export default SocialNavPanel;
+export default NavigationPanelComponent;

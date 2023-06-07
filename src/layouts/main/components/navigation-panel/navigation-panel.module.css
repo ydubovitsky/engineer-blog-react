@@ -68,8 +68,8 @@
   }
 
   .navContainer {
-    position: absolute;
-    top: 82px;
+    position: fixed;
+    top: 0;
     left: -220px;
     z-index: 9999;
     display: flex;
@@ -79,7 +79,7 @@
     justify-items: center;
     justify-items: start;
     width: 150px;
-    min-height: 100vh;
+    height: 100%;
     padding: 30px;
     background-color: var(--secondary-bg-color);
     border-right: 1px solid silver;
