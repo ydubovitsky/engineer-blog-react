@@ -13,6 +13,7 @@ import SocialNavPanel from "./components/social-nav-panel/social-nav-panel.compo
 import Statistic from "./components/statistic/statistic.component";
 import TickerImage from "./components/ticker-image/ticker-image.component";
 import UpButton from "./components/up-button/up-button.component";
+import { Fade } from 'react-awesome-reveal';
 import styles from './main.module.css';
 
 const MainLayout = () => {
@@ -21,22 +22,24 @@ const MainLayout = () => {
     <div className={styles.container}>
       <Sidebar />
       <SocialNavPanel />
-      <LogoPanel />
-      <NavPanel />
-      <div className={styles.content}>
-        <Hero />
-        <ColumnWidgets />
-        <div className={styles.contentContainer} id="container">
-          <div className={styles.posts}>
-            <Outlet />
-          </div>
-          <div className={styles.aside}>
-            <div className={styles.sticky}>
-              <AsideComponent />
+      <Fade cascade>
+        <LogoPanel />
+        <NavPanel />
+        <div className={styles.content}>
+          <Hero />
+          <ColumnWidgets />
+          <div className={styles.contentContainer} id="container">
+            <div className={styles.posts}>
+              <Outlet />
+            </div>
+            <div className={styles.aside}>
+              <div className={styles.sticky}>
+                <AsideComponent />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Fade>
       <TickerImage />
       <CookieAlert />
       <Statistic />
