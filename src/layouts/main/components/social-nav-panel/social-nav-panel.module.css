@@ -69,7 +69,7 @@
 
   .navContainer {
     position: absolute;
-    top: 0;
+    top: 82px;
     left: -220px;
     z-index: 9999;
     display: flex;
