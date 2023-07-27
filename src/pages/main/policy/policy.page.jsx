@@ -8,7 +8,7 @@ const Policy  = () => {
       </h1>
       <p>
         <strong>
-          "<span id="span_id_название_приложения">Engineer Blog</span>"
+          "<span id="span_id_название_приложения">Cайт ydubovitsky.ru или мобильное приложение "Engineer blog"</span>"
         </strong>
       </p>
       <p>
