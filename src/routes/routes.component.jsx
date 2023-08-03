@@ -15,6 +15,7 @@ import TermOfUsePage from "../pages/main/term-of-use/term-of-use.page";
 //* Layouts!
 import DashboardLayout from '../layouts/dashboard/dashboard.layout.jsx';
 import MainLayout from '../layouts/main/main.layout';
+import ProjectFormComponent from "../pages/dashboard/project/project.component";
 
 const RoutesComponent = () => (
   <Routes>
@@ -32,6 +33,7 @@ const RoutesComponent = () => (
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<PostFormPage />} />
         <Route path="post-form" element={<PostFormPage />} />
+        <Route path="project-form" element={<ProjectFormComponent />} />
       </Route>
     </Route>
     {/* //! Default Redirect */}

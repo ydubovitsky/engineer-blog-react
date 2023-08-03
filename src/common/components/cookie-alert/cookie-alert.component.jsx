@@ -13,7 +13,7 @@ const CookieAlert = () => {
   const stayHere = () => {
     containerRef.current.classList.add(styles.hide)
   }
-  
+
   const redirect = () => {
     window.location.href = 'https://google.com';
   }
@@ -22,8 +22,12 @@ const CookieAlert = () => {
     <div className={styles.container} ref={containerRef}>
       <p className={styles.text}>{cookieAlert.text}</p>
       <div className={styles.buttonsContainer}>
-        <ButtonComponent name={cookieAlert.agree} clickFunction={stayHere} />
-        <ButtonComponent name={cookieAlert.disagree} clickFunction={redirect} />
+        <ButtonComponent onClick={stayHere}>
+          <p>{cookieAlert.agree}</p>
+        </ButtonComponent>
+        <ButtonComponent onClick={redirect} >
+          <p>{cookieAlert.disagree}</p>
+        </ButtonComponent>
       </div>
     </div>
   )

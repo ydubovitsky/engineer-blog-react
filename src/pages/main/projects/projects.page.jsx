@@ -1,47 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGitProfileInfo, projectsSelector } from '../../../redux/features/projects/projects.slice';
+import { LangContext } from '../../../context/lang/LangContext';
+import LoaderContent from '../../../common/components/loader-content/loader-content.component';
+import { getAllProjects, projectEntitiesSelector } from '../../../redux/features/project/project.slice';
 import styles from './projects.module.css';
+import ProjectItemComponent from './components/project-item/project-item';
 
 const ProjectsPage = () => {
 
   const dispatch = useDispatch();
-  const projects = useSelector(projectsSelector);
+  const projectEntities = useSelector(projectEntitiesSelector);
+
+  // Context
+  const { getLangData } = useContext(LangContext);
+  const { projects } = getLangData();
 
   useEffect(() => {
-    dispatch(getGitProfileInfo());
+    dispatch(getAllProjects());
   }, []);
 
   const showProjects = () => {
-    return projects?.map(project => {
-      return (
-        <div key={project.id} className={styles.project}>
-          <div className={styles.cover}>
-            <a href={project.html_url} target="_blank" rel="noreferrer">
-              <p className={styles.projectName}>{project.name}</p>
-            </a>
-            <p>{project.description}</p>
-            <div className={styles.topicsContainer}>
-              {project.topics?.map((topic, idx) => (
-                <div
-                  key={project.id + ':' + idx}
-                  className={styles.topic}
-                >
-                  <p>{topic}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )
-    })
+    return projectEntities?.map(project => <ProjectItemComponent key={project.id} {...project} />)
+  }
+
+  const showLoader = () => {
+    return Array(7).fill(null).map((_, idx) => <LoaderContent key={idx} />)
   }
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Projects</h1>
+      <h1 className={styles.title}>{projects.title}</h1>
       <div className={styles.projectsContainer}>
-        {showProjects()}
+        {typeof projectEntities != 'undefined' && projectEntities.length > 0
+          ?
+          showProjects()
+          :
+          showLoader()
+        }
       </div>
     </div>
   )

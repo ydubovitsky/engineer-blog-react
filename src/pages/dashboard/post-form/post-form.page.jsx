@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -20,7 +19,6 @@ const PostFormPage = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   let id = searchParams.get("id");
   const [post, setPost] = useState({});
-  const refForm = useRef(null);
   const refTextPost = useRef(null);
   const postEntityById = useSelector(state => postEntityByIdSelector(state, id));
 
@@ -50,12 +48,12 @@ const PostFormPage = () => {
   // в виде адреса сохраненного ресурса вставляем в текст поста
   const addImageSrcToPostText = async (files) => {
     dispatch(saveImageToRemoteServer(files[0]))
-    .then(result => {
+      .then(result => {
         refTextPost.current.value
           = refTextPost.current.value
           + `<img src=${BASE_URL}/api/v1/file/${result.payload} alt="Ooops, there is no image"/>`;
-    })
-    .catch(e => new Error(e));
+      })
+      .catch(e => new Error(e));
   }
 
   const onPostImageChange = async (event) => {
@@ -68,7 +66,7 @@ const PostFormPage = () => {
   }
 
   return (
-    <form ref={refForm} className={cn(styles.container, styles.svgBackground)}>
+    <form className={styles.container}>
       <div className={styles.postContainer}>
         <div className={styles.postHeader}>
           <div className={styles.inputField}>
@@ -110,12 +108,14 @@ const PostFormPage = () => {
       <div className={styles.buttons}>
         {id ?
           <ButtonComponent
-            name="Edit post"
-            clickFunction={updatePostHandler} />
+            onClick={updatePostHandler}>
+            <p>Edit post</p>
+          </ButtonComponent>
           :
           <ButtonComponent
-            name="Save post"
-            clickFunction={savePostHandler} />}
+            onClick={savePostHandler}>
+            <p>Save post</p>
+          </ButtonComponent>}
       </div>
     </form>
   )

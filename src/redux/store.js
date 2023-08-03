@@ -3,7 +3,7 @@ import { loadStateByNameFromLocalStorage, saveStateToLocalStorage } from '../ser
 import authReducer from './features/auth/auth.slice';
 import postReducer from './features/post/post.slice';
 import commentFormSlice from './features/comment-form/comment-form.slice';
-import projectsSlice from './features/projects/projects.slice';
+import projectSlice from './features/project/project.slice';
 import popupSlice from './features/popup/popup.slice';
 import feedbackSlice from './features/feedback/feedback.slice';
 import imageSlice from './features/image/image.slice';
@@ -16,7 +16,7 @@ const store = configureStore({
     auth: authReducer,
     post: postReducer,
     commentForm: commentFormSlice,
-    projects: projectsSlice,
+    project: projectSlice,
     popup: popupSlice,
     feedback: feedbackSlice,
     image: imageSlice

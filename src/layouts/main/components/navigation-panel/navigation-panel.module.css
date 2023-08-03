@@ -36,7 +36,7 @@
   display: flex;
   justify-content: center;
   color: black;
-  text-align: center;
+  text-align: start;
   transition: 0.2s ease;
 }
 
@@ -79,7 +79,6 @@
     justify-items: center;
     justify-items: start;
     width: 150px;
-    height: 100%;
     padding: 30px;
     background-color: var(--secondary-bg-color);
     border-right: 1px solid silver;

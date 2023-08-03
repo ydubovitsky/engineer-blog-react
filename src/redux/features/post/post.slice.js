@@ -25,7 +25,7 @@ export const addPost = createAsyncThunk("post/add", async (args, { getState }) =
 });
 
 /**
- * Add post to remote server
+ * Update post on a remote server
  */
 export const updatePost = createAsyncThunk("post/update", async (args, { getState }) => {
   const { auth } = getState();

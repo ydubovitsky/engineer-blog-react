@@ -3,6 +3,7 @@
     "menu": {
       "home": "Home",
       "about": "About",
+      "projects": "Projects",
       "contacts": "Contacts",
       "policy": "Privacy policy"
     }
@@ -35,6 +36,10 @@
     "about": "Engineer/Developer",
     "button": "Read More",
     "paragraph": "<p>Hi there! This is my personal blog, where i write about programming and other closest technology.</p><p>I love programming, especially - JavaScript, React ❤️ Redux, React Native, Java and related technologies.</p><p><b>Buy the way, this blog has written via React/Redux on frontend and Java/Spring on backend.</b></p>"
+  },
+  "projects": {
+    "title": "My projects",
+    "projectUrl": "See more"
   },
   "postList": {
     "columnTitle": "Latest Post"

@@ -16,6 +16,7 @@ const Navbar = () => {
       <div className={styles.nav}>
         <Link to={"/"}>Главная страница <i className="fas fa-home"></i></Link>
         <Link to={"/dashboard/post-form"}>Создать новый пост</Link>
+        <Link to={"/dashboard/project-form"}>Добавить описание проекта</Link>
       </div>
       <span onClick={logoutHandler}>Выйти <i className="fas fa-sign-out-alt"></i></span>
     </div>
