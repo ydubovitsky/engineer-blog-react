@@ -33,15 +33,15 @@ const PostCurrentPage = () => {
   const post = useSelector(state => postEntityByIdSelector(state, postId));
   const { username, jwttoken } = useSelector(authEntitySelector);
 
+  //!TODO Реализовать механизм увеличения количества просмотров постов
+  //! Можно сделать сперва запрос только заголовков постов и основной информации, а по id уже грузить
+  //! Конкретный пост
   /**
-   * Если поста нет в стейте, происходит запрос получения данных с id поста,
-   * в противном случае, делается запрос на изменение количества просмотров
+   * Если поста нет в стейте, происходит запрос получения данных с id поста
    */
   useEffect(() => {
     if (post === undefined) {
       dispatch(getPostById(postId));
-    } else {
-      dispatch(increasePostViewById(postId))
     }
   }, [])
 
@@ -83,7 +83,7 @@ const PostCurrentPage = () => {
   return (
     <div className={styles.container} ref={printRef}>
       <div className={styles.postImage}>
-        <img src={post.postImageSrc} alt=""/>
+        <img src={post.postImageSrc} alt="" />
       </div>
       <div className={styles.title}>{post.title}</div>
       <div className={styles.postDescription}>
