@@ -13,14 +13,14 @@ services:
       context: ./engineer-blog-spring
       dockerfile: ./docker/production/Dockerfile
     environment:
-      PROFILE_ACTIVE: h2
+      PROFILE_ACTIVE: ${PROFILE_ACTIVE:-postgres}
       ADMIN_NAME: ${ADMIN_NAME:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-password}
       POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       ALLOWED_ORIGINS_ARRAY: ${ALLOWED_ORIGINS_ARRAY:-http://localhost:3000}
-      POSTGRES_DDL_AUTO: update
+      POSTGRES_DDL_AUTO: ${POSTGRES_DDL_AUTO:-update}
     depends_on:
       - engineer-blog-db
     networks:
@@ -32,7 +32,7 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       args:
         # Change me!
-        - REACT_APP_BACKEND_URL=http://localhost:8080
+        - REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL:-http://localhost:8080}
         - REACT_APP_GITHUB_URL=${REACT_APP_GITHUB_URL}
     networks:
      - main
