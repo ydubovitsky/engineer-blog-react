@@ -14,6 +14,7 @@ services:
       dockerfile: ./docker/production/Dockerfile
     environment:
       PROFILE_ACTIVE: ${PROFILE_ACTIVE:-postgres}
+      JWT_SECURITY_KEY: ${JWT_SECURITY_KEY:-2GdQ!HO6asdX629EdRh&Oo%#vy&jua9G@kabKxeqX&ffA#qe2TrE92GdQ!HO6XEdRh&Oo%#vy&juC9G@kabKxeqX&ffA#qe2TrE92GdQ!1236X629EdRh&Oo%#vy&juC9G@kabKxeqX&ffA#qe2TrE92GdQ!HO6X629EdRh&Oo%#vy&juC9G@kabKxeqX&ffA#qe2TrE9}
       ADMIN_NAME: ${ADMIN_NAME:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-password}
       POSTGRES_URL: jdbc:postgresql://engineer-blog-db:5432/postgres
