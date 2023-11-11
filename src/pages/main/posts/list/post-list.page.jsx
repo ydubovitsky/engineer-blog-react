@@ -11,7 +11,7 @@ import {
 } from '../../../../redux/features/post/post.slice';
 import Pagination from './components/pagination/pagination.component';
 import PostListItem from './components/post-list-item/post-list-item.component';
-import styles from './post-list.module.css';
+import styles from './post-list.module.scss';
 
 const PostListPage = () => {
 

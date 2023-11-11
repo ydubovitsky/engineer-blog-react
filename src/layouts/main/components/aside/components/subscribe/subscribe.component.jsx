@@ -1,4 +1,4 @@
-import styles from './subscribe.module.css';
+import styles from './subscribe.module.scss';
 import { useContext } from 'react';
 import { LangContext } from '../../../../../../context/lang/LangContext';
 

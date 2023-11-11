@@ -1,4 +1,4 @@
-import styles from './email-icon.module.css';
+import styles from './email-icon.module.scss';
 
 const EmailIconAtomicComponent = ({ color, size }) => {
   return (

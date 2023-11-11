@@ -1,4 +1,4 @@
-import styles from './tg-icon.module.css';
+import styles from './tg-icon.module.scss';
 
 const TgIconAtomicComponent = ({ color, size }) => {
   return (

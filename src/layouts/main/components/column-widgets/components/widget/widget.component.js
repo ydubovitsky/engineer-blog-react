@@ -1,4 +1,4 @@
-import styles from "./widget.module.css";
+import styles from "./widget.module.scss";
 
 const Widget = ({ imageSrc, text, href }) => {
   return (

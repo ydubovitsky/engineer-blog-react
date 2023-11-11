@@ -1,4 +1,4 @@
-import styles from './aside.module.css';
+import styles from './aside.module.scss';
 import AboutMe from "./components/about-me/about-me.component";
 import FollowMe from "./components/follow-me/follow-me.component";
 import Search from "./components/search/search.component";

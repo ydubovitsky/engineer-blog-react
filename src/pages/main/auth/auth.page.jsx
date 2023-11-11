@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './auth.module.css';
+import styles from './auth.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { LangContext } from '../../../context/lang/LangContext';
 import LoginForm from './components/login-form/login-form.component';

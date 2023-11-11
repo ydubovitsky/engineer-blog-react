@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { LangContext } from '../../../../../../context/lang/LangContext';
 import { arrayOfKeysAndValuesOfCategoriesAndTheirCountSelector } from '../../../../../../redux/features/post/post.slice';
-import styles from './categories.module.css';
+import styles from './categories.module.scss';
 
 const Categories = () => {
 

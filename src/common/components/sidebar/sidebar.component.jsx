@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useRef, useContext } from 'react';
-import styles from './sidebar.module.css';
+import styles from './sidebar.module.scss';
 import { Link } from 'react-router-dom';
 import { authSelector, logout } from '../../../redux/features/auth/auth.slice';
 import { useSelector, useDispatch } from 'react-redux';

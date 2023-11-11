@@ -5,7 +5,7 @@ import {
 import { useSearchParams } from "react-router-dom";
 import { maxPageCountSelector } from '../../../../../../redux/features/post/post.slice';
 import PaginationLinkButton from './pagination-link-button/pagination-link-button.component';
-import styles from './pagination.module.css';
+import styles from './pagination.module.scss';
 
 const Pagination = () => {
 

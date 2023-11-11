@@ -1,4 +1,4 @@
-import styles from './column-widgets.module.css';
+import styles from './column-widgets.module.scss';
 import { useContext } from 'react';
 import { LangContext } from '../../../../context/lang/LangContext';
 import { AboutMeImage, FeedbackImage, GithubImage } from './images';

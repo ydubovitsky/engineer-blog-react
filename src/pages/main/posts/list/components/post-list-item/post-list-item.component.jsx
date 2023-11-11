@@ -3,7 +3,7 @@ import {
   Link
 } from "react-router-dom";
 import { LangContext } from '../../../../../../context/lang/LangContext';
-import styles from './post-list-item.module.css';
+import styles from './post-list-item.module.scss';
 
 const PostListItem = ({ id, postImageSrc, category, title, createAt, description }) => {
 

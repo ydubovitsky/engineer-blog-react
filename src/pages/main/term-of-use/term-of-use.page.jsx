@@ -1,4 +1,4 @@
-import styles from './term-of-use.module.css';
+import styles from './term-of-use.module.scss';
 
 const TermOfUsePage = () => {
 

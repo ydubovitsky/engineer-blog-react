@@ -1,4 +1,4 @@
-import styles from './github-icon.module.css';
+import styles from './github-icon.module.scss';
 
 const GithubIconAtomicComponent = ({ color, size }) => {
   return (

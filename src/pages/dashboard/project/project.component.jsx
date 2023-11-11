@@ -1,4 +1,4 @@
-import styles from './project.module.css';
+import styles from './project.module.scss';
 import { BASE_URL } from '../../../constants/constants';
 import { useDispatch } from 'react-redux';
 import { saveImageToRemoteServer } from '../../../redux/features/image/image.slice';

@@ -1,4 +1,4 @@
-import styles from './logo-panel.module.css';
+import styles from './logo-panel.module.scss';
 import { useContext } from 'react';
 import { LangContext } from '../../../../context/lang/LangContext';
 

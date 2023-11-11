@@ -3,7 +3,7 @@ import GithubIconAtomicComponent from '../../atomic-components/github-icon/githu
 import SkypeIconAtomicComponent from '../../atomic-components/skype-icon/skype-icon.atomic-component';
 import TgIconAtomicComponent from '../../atomic-components/tg-icon/tg-icon.atomic-component';
 import TwitterIconAtomicComponent from '../../atomic-components/twitter-icon/twitter-icon.atomic-component';
-import styles from './social-icons-list.module.css';
+import styles from './social-icons-list.module.scss';
 
 const SocialIconsListComponent = ({ iconSize }) => {
   return (

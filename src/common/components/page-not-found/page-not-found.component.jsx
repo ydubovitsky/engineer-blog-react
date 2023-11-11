@@ -1,4 +1,4 @@
-import styles from './page-not-found.module.css';
+import styles from './page-not-found.module.scss';
 
 const PageNotFound = ({ message = 'Page not found' }) => {
 

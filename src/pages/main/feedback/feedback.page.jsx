@@ -6,7 +6,7 @@ import SocialIconsListComponent from '../../../common/components/social-icons-li
 import { LangContext } from '../../../context/lang/LangContext';
 import { feedbackMessageAdd } from '../../../redux/features/feedback/feedback.slice';
 import { smoothScrollToElement } from '../../../utils/scroll.util';
-import styles from './feedback.module.css';
+import styles from './feedback.module.scss';
 
 const FeedbackPage = () => {
   // Context

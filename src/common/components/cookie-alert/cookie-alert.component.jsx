@@ -2,7 +2,7 @@ import { useContext, useRef } from 'react';
 import { cookieWrapper } from '../../../context/cookie';
 import { LangContext } from '../../../context/lang/LangContext';
 import ButtonComponent from '../../atomic-components/button/button.component';
-import styles from './cookie-alert.module.css';
+import styles from './cookie-alert.module.scss';
 
 const CookieAlert = () => {
 

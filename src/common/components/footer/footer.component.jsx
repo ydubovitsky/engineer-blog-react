@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LangContext } from '../../../context/lang/LangContext';
-import styles from './footer.module.css';
+import styles from './footer.module.scss';
 
 const Footer = () => {
 

@@ -1,4 +1,4 @@
-import styles from './loader-content.module.css';
+import styles from './loader-content.module.scss';
 
 const LoaderContent = ({style}) => {
   return (

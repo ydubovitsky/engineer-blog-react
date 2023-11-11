@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import styles from './login-form.module.css';
+import styles from './login-form.module.scss';
 import { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LangContext } from '../../../../../context/lang/LangContext';

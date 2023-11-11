@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { LangContext } from '../../../../../../context/lang/LangContext';
 import avatar from './images/avatar.jpg';
 import { commentListForPostByPostIdSelector } from '../../../../../../redux/features/post/post.slice';
-import styles from './comments.module.css';
+import styles from './comments.module.scss';
 
 const Comments = () => {
 

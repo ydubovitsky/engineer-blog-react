@@ -1,4 +1,4 @@
-import styles from './author.module.css';
+import styles from './author.module.scss';
 import SocialIconsListComponent from '../../../../../../common/components/social-icons-list/social-icons-list.component';
 
 const Author = ({ name, aboutAuthor = "" }) => {

@@ -1,4 +1,4 @@
-import styles from './unit-title.module.css';
+import styles from './unit-title.module.scss';
 
 const UnitTitleComponent = ({ text }) => {
   return (

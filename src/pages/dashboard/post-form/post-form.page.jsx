@@ -10,7 +10,7 @@ import {
   updatePost
 } from '../../../redux/features/post/post.slice';
 import { saveImageToRemoteServer } from '../../../redux/features/image/image.slice';
-import styles from './post-form.module.css';
+import styles from './post-form.module.scss';
 
 const PostFormPage = () => {
 

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import styles from './dashboard.module.css';
+import styles from './dashboard.module.scss';
 
 const DashboardPage = () => {
   return (

@@ -14,7 +14,7 @@ import Statistic from "./components/statistic/statistic.component";
 import TickerImage from "./components/ticker-image/ticker-image.component";
 import UpButton from "./components/up-button/up-button.component";
 import { Fade } from 'react-awesome-reveal';
-import styles from './main.module.css';
+import styles from './main.module.scss';
 
 const MainLayout = () => {
 

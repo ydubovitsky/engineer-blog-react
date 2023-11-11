@@ -14,7 +14,7 @@ import {
 import Author from './components/author/author.component';
 import CommentForm from './components/comment-form/comment-form.component';
 import Comments from './components/comments/comments.component';
-import styles from './post-current.module.css';
+import styles from './post-current.module.scss';
 
 const REDIRECT_TIME_AFTER_SUCCESSFUL_POST_REMOVING = 5000;
 

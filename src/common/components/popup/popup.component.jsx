@@ -1,4 +1,4 @@
-import styles from './popup.module.css';
+import styles from './popup.module.scss';
 import cn from 'classnames';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

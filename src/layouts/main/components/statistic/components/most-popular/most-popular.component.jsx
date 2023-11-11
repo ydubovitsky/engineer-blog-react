@@ -1,4 +1,4 @@
-import styles from './most-popular.module.css';
+import styles from './most-popular.module.scss';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LangContext } from '../../../../../../context/lang/LangContext';

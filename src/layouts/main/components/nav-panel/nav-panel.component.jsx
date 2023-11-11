@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { LangContext } from '../../../../context/lang/LangContext';
 import Search from '../aside/components/search/search.component';
-import styles from './nav-panel.module.css';
+import styles from './nav-panel.module.scss';
 
 const NavPanel = () => {
 

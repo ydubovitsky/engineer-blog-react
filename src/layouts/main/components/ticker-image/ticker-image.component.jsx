@@ -1,4 +1,4 @@
-import styles from './ticker-image.module.css';
+import styles from './ticker-image.module.scss';
 
 const TickerImage = () => {
   return (

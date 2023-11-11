@@ -1,4 +1,4 @@
-import styles from './about-me.module.css';
+import styles from './about-me.module.scss';
 import { useContext } from 'react';
 import { LangContext } from '../../../../../../context/lang/LangContext';
 import AvatarImg from './images/avatar.jpg';

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { LangContext } from '../../../../../context/lang/LangContext';
 import { deleteProjectById } from '../../../../../redux/features/project/project.slice';
 import { isAuthEntitySuperAdminSelector } from '../../../../../redux/features/auth/auth.slice';
-import styles from './project-item.module.css';
+import styles from './project-item.module.scss';
 
 const ProjectItemComponent = ({ id, title, imageSRC, projectURL, repositoryURL, description }) => {
 

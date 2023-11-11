@@ -1,4 +1,4 @@
-import styles from './skype-icon.module.css';
+import styles from './skype-icon.module.scss';
 import getRandomColor from '../../../utils/color.util';
 
 const SkypeIconAtomicComponent = ({ size }) => {

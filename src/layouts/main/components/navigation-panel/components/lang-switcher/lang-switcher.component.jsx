@@ -1,4 +1,4 @@
-import styles from './lang-switcher.module.css';
+import styles from './lang-switcher.module.scss';
 import cn from 'classnames';
 import { useContext } from 'react';
 import { LangContext } from '../../../../../../context/lang/LangContext';

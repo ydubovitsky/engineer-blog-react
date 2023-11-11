@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 import cn from 'classnames';
 
-import styles from './pagination-link-button.module.css';
+import styles from './pagination-link-button.module.scss';
 
 const PaginationLinkButton = ({ handler, currentPage, children, style }) => {
 

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { LangContext } from '../../../../../../context/lang/LangContext';
 import { useSearchParams } from "react-router-dom";
 import { addComment } from '../../../../../../redux/features/comment-form/comment-form.slice';
-import styles from './comment-form.module.css';
+import styles from './comment-form.module.scss';
 
 const CommentForm = () => {
 

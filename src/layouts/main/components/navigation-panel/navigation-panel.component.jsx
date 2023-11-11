@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { Link } from "react-router-dom";
-import styles from './navigation-panel.module.css';
+import styles from './navigation-panel.module.scss';
 import { authSelector, logout } from '../../../../redux/features/auth/auth.slice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useContext, useState } from "react";

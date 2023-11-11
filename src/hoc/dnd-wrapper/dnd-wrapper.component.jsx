@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import cn from 'classnames';
-import styles from './dnd-wrapper.module.css';
+import styles from './dnd-wrapper.module.scss';
 
 const DndWrapper = ({ dropFunction, children }) => {
   const dndRef = useRef();

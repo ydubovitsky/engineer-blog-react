@@ -1,5 +1,5 @@
 import cn from "classnames";
-import styles from "./hero.module.css";
+import styles from "./hero.module.scss";
 import { useContext, useState } from "react";
 import { LangContext } from "../../../../context/lang/LangContext";
 import { smoothScrollToElement } from "../../../../utils/scroll.util";
