@@ -1,4 +1,4 @@
-import Popup from "../../common/components/popup/popup.component";
+import Popup from "../../widgets/popup/popup.component";
 
 export const withPopup = (component) => (
   <>

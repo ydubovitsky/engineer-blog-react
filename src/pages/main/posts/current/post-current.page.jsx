@@ -4,8 +4,8 @@ import {
   useNavigate, useSearchParams
 } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print';
-import LoaderContent from "../../../../common/components/loader-content/loader-content.component";
-import SocialIconsListComponent from '../../../../common/components/social-icons-list/social-icons-list.component';
+import LoaderContent from "../../../../widgets/loader-content/loader-content.component";
+import SocialIconsListComponent from '../../../../widgets/social-icons-list/social-icons-list.component';
 import { LangContext } from '../../../../context/lang/LangContext';
 import { authEntitySelector } from '../../../../redux/features/auth/auth.slice';
 import {

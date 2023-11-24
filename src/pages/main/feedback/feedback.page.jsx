@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import UnitTitleComponent from '../../../common/atomic-components/unit-title/unit-title.component';
-import SocialIconsListComponent from '../../../common/components/social-icons-list/social-icons-list.component';
+import UnitTitleComponent from '../../../shared/ui/unit-title/unit-title.component';
+import SocialIconsListComponent from '../../../widgets/social-icons-list/social-icons-list.component';
 import { LangContext } from '../../../context/lang/LangContext';
 import { feedbackMessageAdd } from '../../../redux/features/feedback/feedback.slice';
-import { smoothScrollToElement } from '../../../utils/scroll.util';
+import { smoothScrollToElement } from '../../../shared/utils/scroll.util';
 import styles from './feedback.module.scss';
 
 const FeedbackPage = () => {

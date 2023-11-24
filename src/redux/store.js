@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { loadStateByNameFromLocalStorage, saveStateToLocalStorage } from '../services/local-storage.service';
+import { loadStateByNameFromLocalStorage, saveStateToLocalStorage } from '../shared/services/local-storage.service';
 import authReducer from './features/auth/auth.slice';
 import postReducer from './features/post/post.slice';
 import commentFormSlice from './features/comment-form/comment-form.slice';

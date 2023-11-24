@@ -1,4 +1,4 @@
-import ButtonComponent from '../../../../../common/atomic-components/button/button.component';
+import ButtonComponent from '../../../../../shared/ui/button/button.component';
 import { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { LangContext } from '../../../../../context/lang/LangContext';

@@ -1,10 +1,10 @@
 import styles from './project.module.scss';
-import { BASE_URL } from '../../../constants/constants';
+import { BASE_URL } from '../../../shared/constants/constants';
 import { useDispatch } from 'react-redux';
 import { saveImageToRemoteServer } from '../../../redux/features/image/image.slice';
 import { useState } from 'react';
 import { addProject } from '../../../redux/features/project/project.slice';
-import ButtonComponent from '../../../common/atomic-components/button/button.component';
+import ButtonComponent from '../../../shared/ui/button/button.component';
 
 const ProjectFormComponent = () => {
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import ButtonComponent from '../../../common/atomic-components/button/button.component';
-import { BASE_URL } from '../../../constants/constants';
-import DndWrapper from '../../../hoc/dnd-wrapper/dnd-wrapper.component';
+import ButtonComponent from '../../../shared/ui/button/button.component';
+import { BASE_URL } from '../../../shared/constants/constants';
+import DndWrapper from '../../../shared/hoc/dnd-wrapper/dnd-wrapper.component';
 import {
   addPost,
   postEntityByIdSelector,

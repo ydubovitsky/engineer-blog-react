@@ -5,7 +5,7 @@ import PostFormPage from "../pages/dashboard/post-form/post-form.page";
 import PostCurrentPage from "../pages/main/posts/current/post-current.page";
 import PostListPage from "../pages/main/posts/list/post-list.page";
 import AuthPage from "../pages/main/auth/auth.page";
-import ProtectedRoute from "../hoc/protected-route/protectedRoute";
+import ProtectedRoute from "../shared/hoc/protected-route/protectedRoute";
 import AboutPage from "../pages/main/about/about.page";
 import PolicyPage from "../pages/main/policy/policy.page";
 import ProjectsPage from "../pages/main/projects/projects.page";
@@ -13,8 +13,8 @@ import FeedbackPage from "../pages/main/feedback/feedback.page";
 import TermOfUsePage from "../pages/main/term-of-use/term-of-use.page";
 
 //* Layouts!
-import DashboardLayout from '../layouts/dashboard/dashboard.layout.jsx';
-import MainLayout from '../layouts/main/main.layout';
+import DashboardLayout from '../shared/layouts/dashboard/dashboard.layout.jsx';
+import MainLayout from '../shared/layouts/main/main.layout';
 import ProjectFormComponent from "../pages/dashboard/project/project.component";
 
 const RoutesComponent = () => (

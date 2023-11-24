@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { sendRequestToRemoteServer } from '../../../services/api.service';
-import { BASE_URL } from '../../../constants/constants';
+import { sendRequestToRemoteServer } from '../../../shared/services/api.service';
+import { BASE_URL } from '../../../shared/constants/constants';
 
 // ------------------------------------- AsyncThunk -------------------------------------
 

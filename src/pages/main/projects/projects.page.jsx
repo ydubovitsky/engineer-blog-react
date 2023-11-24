@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LangContext } from '../../../context/lang/LangContext';
-import LoaderContent from '../../../common/components/loader-content/loader-content.component';
+import LoaderContent from '../../../widgets/loader-content/loader-content.component';
 import { getAllProjects, projectEntitiesSelector } from '../../../redux/features/project/project.slice';
 import styles from './projects.module.scss';
 import ProjectItemComponent from './components/project-item/project-item';

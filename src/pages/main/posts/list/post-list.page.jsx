@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   useSearchParams
 } from "react-router-dom";
-import LoaderContent from '../../../../common/components/loader-content/loader-content.component';
+import LoaderContent from '../../../../widgets/loader-content/loader-content.component';
 import { LangContext } from '../../../../context/lang/LangContext';
 import {
   getPostPaging,
