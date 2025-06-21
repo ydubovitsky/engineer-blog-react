@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/engineer-blog-react/static/css/main.a0f7133d.css",
+    "main.js": "/engineer-blog-react/static/js/main.4b7b110a.js",
+    "static/media/avatar.jpg": "/engineer-blog-react/static/media/avatar.2dc7caf369f19087c442.jpg",
+    "static/media/second.jpg": "/engineer-blog-react/static/media/second.a81df3568e0eec9ad23f.jpg",
+    "static/media/third.avif": "/engineer-blog-react/static/media/third.b427b3f1debee584cd02.avif",
+    "static/media/first.avif": "/engineer-blog-react/static/media/first.a5e51861c02b30831964.avif",
+    "static/media/feedback.jpg": "/engineer-blog-react/static/media/feedback.74c1340403f665c873c3.jpg",
+    "static/media/git-hub.jpg": "/engineer-blog-react/static/media/git-hub.76aea312738aec2085c2.jpg",
+    "static/media/about-me.jpg": "/engineer-blog-react/static/media/about-me.1b20ec210be97d785964.jpg",
+    "index.html": "/engineer-blog-react/index.html",
+    "main.a0f7133d.css.map": "/engineer-blog-react/static/css/main.a0f7133d.css.map",
+    "main.4b7b110a.js.map": "/engineer-blog-react/static/js/main.4b7b110a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0f7133d.css",
+    "static/js/main.4b7b110a.js"
+  ]
+}
